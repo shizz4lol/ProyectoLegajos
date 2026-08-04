@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Curso extends Model
+{
+    protected $table = 'cursos';
+    protected $primaryKey = 'id_curso';
+    public function divisiones():BelongsToMany{
+        return $this->belongsToMany(
+            Division::class,
+            'cursosXdivisions',
+            'id_curso',
+            'id_division'
+        );
+    }
+}

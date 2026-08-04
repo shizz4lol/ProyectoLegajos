@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+
+class Alumno extends Model
+{
+    protected $table = 'alumnos';
+    protected $primaryKey = 'id_alumno';
+    protected $fillable = [
+        'nombre',
+        'apellido',
+        'dni',
+        'acta_nacimiento',
+        'inscripcion',
+        'constanciaregular',
+        'apto_herramientas'
+    ];
+    public function familiares(): BelongsToMany{
+        return $this->belongsToMany(
+            Familiar::class,
+            'alumnosXfamiliars',
+            'id_alumno',
+            'id_familiar'
+        );
+    }
+}
