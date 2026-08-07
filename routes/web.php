@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ControladorAlumno;
+use App\Http\Controllers\ControladorLogin;
 
-Route::get('/login', function () {
-    return view('index');
-});
-Route::get ('/');
+Route::get('/', [ControladorLogin::class, 'login'])->name('login');
+
+Route::resource('alumnos', ControladorAlumno::class);

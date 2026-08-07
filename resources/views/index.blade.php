@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>LEGAJOS - EPET N°20 - Ingresar</title>
+<link rel="stylesheet" href="{{ asset('css/index.css') }}">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="logo">
+    <div class="escudo">🎓</div>
+    <div class="txt"><b>LEGAJOS</b><span>EPET N°20</span></div>
+  </div>
+</header>
+
+<div class="login-wrap">
+  <h2>Ingrese clave</h2>
+
+  <div class="login-field">
+    <input type="password" placeholder="Ingrese su clave">
+    <span class="icono">&#128274;</span>
+  </div>
+
+  <a class="login-btn" href="secretaria.html">Ingresar</a>
+
+  <details class="login-demo">
+    <summary>Acceder como (demo)</summary>
+    <a href="secretaria.html">→ Secretaría</a><br>
+    <a href="jefe-preceptores.html">→ Jefe de Preceptores</a><br>
+    <a href="preceptor.html">→ Preceptoría</a>
+  </details>
+</div>
+
+</body>
+</html>

@@ -9,15 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 class ControladorLogin extends Controller{
     public function login(){
-        return view('Proyecto.login');
+        return view('index');
     }
     public function validar(Request $request){
-        $user= User::where('name', $request->name)->first();
+        $user= User::where('tipo_rol', $request->tipo_rol)->first();
 
         if ($user && Hash::check($request->password, $user->password)) {
             Auth::login($user);
-            session_start();
-            $_SESSION['usuario'] = $user->name;
+            session(['usuario' => $user->tipo_rol]);
             return redirect('inicio');
         } else {
             return back()->with('error', 'Por favor ingrese un usuario y contraseña validos');
@@ -25,9 +24,7 @@ class ControladorLogin extends Controller{
     }
     public function logout(){
         Auth::logout();
-        session_start();
-        $_SESSION = [];
-        session_destroy();
+        session()->invalidate();
         return redirect('login');
     }
 
