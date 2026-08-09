@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('cursos', function (Blueprint $table) {
             $table->bigIncrements('id_curso');
-            $table->integer('numeracion');
+            $table->integer('numeracion')->nullable();
+            $table->string('codigo')->nullable();
             $table->string('turno')->nullable();
+            $table->timestamps();
         });
     }
 

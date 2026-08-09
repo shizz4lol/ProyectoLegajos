@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
 class ControladorLogin extends Controller{
-    public function login(){
-        return view('index');
+
+    public function iralogout(){
+        return view('logout');
     }
     public function validar(Request $request){
         $user= User::where('tipo_rol', $request->tipo_rol)->first();
@@ -18,7 +19,10 @@ class ControladorLogin extends Controller{
             Auth::login($user);
             session(['usuario' => $user->tipo_rol]);
             return redirect('inicio');
-        } else {
+        } else if ($request->tipo_rol=='Preceptor') {
+           
+        }
+        else {
             return back()->with('error', 'Por favor ingrese un usuario y contraseña validos');
         }
     }
