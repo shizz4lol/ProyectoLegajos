@@ -20,8 +20,9 @@ return new class extends Migration
             $table->string('inscripcion');
             $table->string('constanciaregular');
             $table->string('apto_herramientas');
+            $table->string('certificado7mo');
             $table->foreignId('id_curso')
-            ->constrained('cursos', 'id_curso')
+            ->constrained('cursos', 'id')
             ->onDelete('cascade')
             ->onUpdate('cascade');
             $table->timestamps();

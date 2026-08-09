@@ -10,15 +10,25 @@ use Illuminate\Http\Request;
 
 class ControladorLegajo extends Controller
 {  
-   /*  public function def(){
+    public function def(){
         $legajos=array();
-    } */
+        $legajos = Alumno::with([
+            'familiares',
+            'documentos'
+        ])->get();
+        return $legajos;
+    }
     public function index(){
         $alumnos=[];
         if (!Auth::check()) {
             $user=Auth::user();
             if(($user->tipo_rol=='Secretaria')||($user->tipo_rol=='Jefe')) {
                     $alumnos = Alumno::all();
+            }
+            else{
+                $alumnos = Alumno::whereHas('curso.divisions', function ($query) use ($codigo) {
+                  $query->wherePivot('codigo', $codigo);
+                  })->get();
             }
            /*  return redirect('inicio')->with ($alumnos);  */
         }

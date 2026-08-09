@@ -6,9 +6,11 @@ use App\Http\Controllers\ControladorLogin;
 use App\Http\Controllers\ControladorLegajo;
 
 Route::get('/', function(){
-    return view ('login');
+    return view ('auth.login');
 })->name('login');
-Route::post('/validar', [ControladorLogin::class, 'validar'])->name('login.validar'); 
+
+Route::post('/validar', [ControladorLogin::class, 'validar'])->name('validar'); 
 
 Route::get('/inicio', [ControladorLegajo::class, 'index'])->name('inicio');
+
 Route::resource('/legajos', ControladorLegajo::class);

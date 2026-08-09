@@ -15,7 +15,7 @@
 </header>
 
 <div class="login-wrap">
-  <form action="{{ route('login.validar') }}" method="POST">
+  <form action="{{ route('validar') }}" method="POST">
     <h2>Ingrese clave</h2>
     <div class="login-field">
       <input type="text" placeholder="Rol" name="tipo_rol">

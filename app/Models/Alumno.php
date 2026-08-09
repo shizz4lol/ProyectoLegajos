@@ -29,4 +29,7 @@ class Alumno extends Model
     public function documentaciones(){
     return $this->hasMany(Documentacion::class, 'id_alumno');
     }
+    public function curso(): BelongsTo{
+    return $this->belongsTo(Curso::class, 'id_curso');
+    }
 }

@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('cursosXdivisions', function (Blueprint $table) {
             $table->id();
+            $table->string('codigo');            
+            $table->string('turno');
             $table->foreignId('id_curso')
-            ->constrained('cursos','id_curso')
+            ->constrained('cursos','id')
             ->onDelete('cascade')
             ->onUpdate('cascade');
             $table->foreignId('id_division')

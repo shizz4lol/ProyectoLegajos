@@ -14,11 +14,11 @@ class UserSeeder extends Seeder
     {
         User::create([
             'tipo_rol'=>'Secretaria',
-            'password'=>'1111'
+            'password'=>'R1Secre2026'
         ]);
         User::create([
             'tipo_rol'=>'Jefe',
-            'password'=>'2222'
+            'password'=>'R2JefePrece2026'
         ]);
         User::create([
             'tipo_rol'=>'Preceptor',
