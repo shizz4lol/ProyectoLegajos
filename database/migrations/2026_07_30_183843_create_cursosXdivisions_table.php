@@ -7,10 +7,9 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     
-    public function up(): void
-    {
+    public function up(): void{
         Schema::create('cursosXdivisions', function (Blueprint $table) {
-            $table->string('codigo');            
+            $table->string('codigo',12);            
             $table->string('turno');
             $table->foreignId('id_curso')
             ->constrained('cursos','id')

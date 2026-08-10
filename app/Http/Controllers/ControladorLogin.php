@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ControladorLogin extends Controller{
 
-    public function validar(Request $request){
+    public function IniciarSesion(Request $request){
         $rol='';
         $request->tipo_rol=strtolower(trim($request->tipo_rol));
         $user= User::where('tipo_rol', $request->tipo_rol)->first();
@@ -46,7 +46,7 @@ class ControladorLogin extends Controller{
             return back()->with('error', 'Por favor, ingrese un usuario valido');
         }
     }
-    public function logout(){
+    public function CerrarSesion(){
         Auth::logout();
         session()->invalidate();
         return redirect('login');
