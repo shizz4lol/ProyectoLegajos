@@ -30,27 +30,14 @@
       <div class="item"><span class="ic"></span>Alumnos</div>
     </div>
 
-    <!-- Reemplazás el botón anterior por tu código -->
-    <a class="salir" href="login.html" onclick="document.getElementById('modalLogout').style.display='flex'; return false;">
+    <a class="salir" href="#" onclick="document.getElementById('modalLogout').style.display='flex'; return false;">
       <span class="ic">&#128682;</span>Cerrar sesión
     </a>
   </div>
-</div>
-
-<!-- Pegás el modal acá abajo, bien afuera de la sidebar -->
-<div class="overlay" id="modalLogout" style="display:none;">
-  <div class="modal-confirm">
-    <p>¿Seguro que querés cerrar sesión?</p>
-    <div class="fila-btn">
-      <button class="btn-secundario" onclick="document.getElementById('modalLogout').style.display='none'">Cancelar</button>
-      <a class="btn-primario" style="background:#dc2626;" href="login.html">Cerrar sesión</a>
-    </div>
-  </div>
-</div>
 
   <div class="contenido">
     <div class="panel-card">
-      <h3> ¡Bienvenido/a! <span class="badge-rol Preceptor">Preceptoría</span></h3>
+      <h3>¡Bienvenido/a! <span class="badge-rol Preceptor">Preceptoría</span></h3>
       <p class="sub">Panel principal · Resumen general del sistema</p>
       <p class="tip">Solo ves los cursos que tenés a cargo: 4° 1° y 6° 3°.</p>
     </div>
@@ -74,9 +61,19 @@
       </div>
       <div class="curso-col">
         <div class="titulo-col"><span class="dot vespertino"></span> Turno Vespertino</div>
-                  <div class="curso-fila"><span>4° 1°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>6° 3°</span><span class="flecha">›</span></div>
+        <div class="curso-fila"><span>4° 1°</span><span class="flecha">›</span></div>
+        <div class="curso-fila"><span>6° 3°</span><span class="flecha">›</span></div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="modalLogout" style="display:none;">
+  <div class="modal-confirm">
+    <p>¿Seguro que querés cerrar sesión?</p>
+    <div class="fila-btn">
+      <button class="btn-secundario" onclick="document.getElementById('modalLogout').style.display='none'">Cancelar</button>
+      <a class="btn-primario" style="background:#dc2626;" href="login.html">Cerrar sesión</a>
     </div>
   </div>
 </div>
