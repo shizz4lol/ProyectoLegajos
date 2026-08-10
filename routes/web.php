@@ -12,7 +12,7 @@ Route::get('/salir', function(){
     return view ('auth.logout');
 })->name('logout');
 
-Route::post('/validando', [ControladorLogin::class, 'validar'])->name('validar'); 
+Route::post('/validando', [ControladorLogin::class, 'IniciarSesion'])->name('validar'); 
 
 Route::get('/inicio', [ControladorLegajo::class, 'index'])->name('iniciouno');
 
