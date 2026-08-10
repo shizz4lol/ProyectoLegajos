@@ -13,16 +13,16 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'tipo_rol'=>'Secretaria',
-            'password'=>'R1Secre2026'
+            'tipo_rol'=>'secretaria',
+            'password'=>'1234'
         ]);
         User::create([
-            'tipo_rol'=>'Jefe',
-            'password'=>'R2JefePrece2026'
+            'tipo_rol'=>'jefe',
+            'password'=>'12345'
         ]);
         User::create([
-            'tipo_rol'=>'Preceptor',
-            'password'=>''
+            'tipo_rol'=>'preceptor',
+            'password'=>'pizza'
         ]);
     }
 }

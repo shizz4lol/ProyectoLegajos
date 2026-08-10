@@ -7,9 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Curso;
 class CursoSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+
     public function run(): void
     {
         Curso::create([]);//curso 1

@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 class ControladorLegajo extends Controller
 {  
     public function def(){
-        $legajos=array();
         $legajos = Alumno::with([
             'familiares',
             'documentos'
@@ -19,20 +18,20 @@ class ControladorLegajo extends Controller
         return $legajos;
     }
     public function index(){
-        $alumnos=[];
-        if (!Auth::check()) {
-            $user=Auth::user();
-            if(($user->tipo_rol=='Secretaria')||($user->tipo_rol=='Jefe')) {
-                    $alumnos = Alumno::all();
+        $alumnos = $this->def();
+        $rol = session('rol');
+        if (Auth::check()) {
+            if(($rol=='s')||($rol=='j')) {
+                    return view('iniciouno', compact ('alumnos'));
             }
             else{
-                $alumnos = Alumno::whereHas('curso.divisions', function ($query) use ($codigo) {
+                /* $alumnos = Alumno::whereHas('curso.divisions', function ($query) use ($codigo) {
                   $query->wherePivot('codigo', $codigo);
-                  })->get();
+                  })->get(); */
+                  return view('prueba');
             }
            /*  return redirect('inicio')->with ($alumnos);  */
         }
-        return view('inicio');
     }
     public function create(){
 

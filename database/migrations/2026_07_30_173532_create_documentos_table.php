@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string ('nombre');
             $table->string('tipo');
             $table->string('archivo_adj');
-            $table->integer('anio');
+            $table->integer('año');
             $table->boolean('copia');
             $table->foreignId('id_alumno')
             ->constrained('alumnos','id_alumno')

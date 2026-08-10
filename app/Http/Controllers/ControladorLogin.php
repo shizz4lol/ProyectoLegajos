@@ -39,11 +39,11 @@ class ControladorLogin extends Controller{
             return redirect('inicio');
         } 
         else {
-            return back()->with('error', 'Por favor ingrese contraseña valida');
+            return back()->with('error', 'Por favor, ingrese una contraseña valida');
         }
         }
         else {
-            return back()->with('error', 'Por favor ingrese un usuario valido');
+            return back()->with('error', 'Por favor, ingrese un usuario valido');
         }
     }
     public function logout(){
