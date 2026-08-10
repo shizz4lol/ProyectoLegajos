@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>LEGAJOS - EPET N°20 - Ingresar</title>
-<link rel="stylesheet" href="{{ asset('css/index.css') }}">
+<link rel="stylesheet" href="{{ asset('css/legajo.css') }}">
 </head>
 <body>
 
@@ -15,21 +15,26 @@
 </header>
 
 <div class="login-wrap">
-  <h2>Ingrese clave</h2>
-
+  <form action="{{ route('validar') }}" method="POST">
+    <h2>Ingrese clave</h2>
+    <div class="login-field">
+      <input type="text" placeholder="Rol" name="tipo_rol">
+      <span class="icono">&#128274;</span>
+    </div>
   <div class="login-field">
-    <input type="password" placeholder="Ingrese su clave">
+    <input type="password" placeholder="Ingrese su clave" name="password">
     <span class="icono">&#128274;</span>
   </div>
-
-  <a class="login-btn" href="secretaria.html">Ingresar</a>
+   <input type="submit" class="login-btn" value="Ingresar">
 
   <details class="login-demo">
     <summary>Acceder como (demo)</summary>
-    <a href="secretaria.html">→ Secretaría</a><br>
+    <a href="/secretaria">→ Secretaría</a><br>
     <a href="jefe-preceptores.html">→ Jefe de Preceptores</a><br>
     <a href="preceptor.html">→ Preceptoría</a>
   </details>
+  </form>
+  <p id="error">{{ session('error') }}</p>
 </div>
 
 </body>

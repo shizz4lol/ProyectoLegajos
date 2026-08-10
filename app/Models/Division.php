@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany; 
 
 class Division extends Model
 {
@@ -13,6 +14,6 @@ class Division extends Model
             'cursosXdivisions',
             'id_division',
             'id_curso'
-        );
+        )->withPivot('codigo', 'turno');
     }
 }

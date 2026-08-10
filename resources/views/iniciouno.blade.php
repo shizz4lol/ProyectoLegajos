@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>LEGAJOS - EPET N°20 - Preceptoría</title>
+<link rel="stylesheet" href="{{ asset('css/legajo.css') }}">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="logo">
+    <div class="escudo"></div>
+    <div class="txt"><b>LEGAJOS</b><span>EPET N°20</span></div>
+  </div>
+  <div class="buscador">
+    <input type="text" placeholder="Buscar alumno...">
+    <span class="lupa">&#128269;</span>
+  </div>
+  <div class="userchip">
+    <div class="av">S</div>
+    <div class="txt"><b>Secretaría</b><span>Usuario</span></div>
+  </div>
+</header>
+
+<div class="layout">
+  <div class="sidebar">
+    <div>
+      <div class="item act"><span class="ic">🏠</span>Inicio</div>
+      <div class="item"><span class="ic">📚</span>Cursos</div>
+      <div class="item"><span class="ic">👥</span>Alumnos</div>
+    </div>
+    <a class="salir" href=""><span class="ic">🚪</span>Cerrar sesión</a>
+  </div>
+
+  <div class="contenido">
+    <div class="panel-card">
+      <h3>¡Bienvenido/a! <span class="badge-rol">al panel de Secretaria</span></h3>
+      <p class="sub">Panel principal · Resumen general del sistema</p>
+      <p class="tip"></p>
+    </div>
+
+    <div class="stats-row" style="margin-bottom:22px;">
+      <div class="stat-box blue"><div class="ic">👥</div><div><div class="num">8</div><div class="lbl">Alumnos totales</div></div></div>
+      <div class="stat-box purple"><div class="ic"></div><div><div class="num">22</div><div class="lbl">Documentos subidos al sistema</div></div></div>
+    </div>
+
+    <h2 class="section-title"> Cursos</h2>
+    <p class="section-sub">Todos los cursos disponibles</p>
+
+    <div class="cursos-cols">
+      <div class="curso-col">
+        <div class="titulo-col"><span class="dot manana"></span>Turno Mañana</div>
+        <div class="empty">-</div>
+      </div>
+      <div class="curso-col">
+        <div class="titulo-col"><span class="dot tarde"></span>Turno Tarde</div>
+        <div class="empty">-</div>
+      </div>
+      <div class="curso-col">
+        <div class="titulo-col"><span class="dot vespertino"></span>Turno Vespertino</div>
+                  <div class="curso-fila"><span>4° 1°</span><span class="flecha">›</span></div>
+          <div class="curso-fila"><span>6° 3°</span><span class="flecha">›</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
