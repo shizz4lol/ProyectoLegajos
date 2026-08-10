@@ -93,6 +93,10 @@ header.topbar{
 .login-demo a:hover{text-decoration:underline;}
 
 /* SIDEBAR oscura, pegada a la topbar */
+.main-layout {
+  display: flex;
+  min-height: calc(100vh - 64px); /* Ocupa el resto de la pantalla */
+}
 .sidebar{
   width:220px;
   flex-shrink:0;
