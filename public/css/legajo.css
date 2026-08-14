@@ -143,6 +143,36 @@ header.topbar{
 .sidebar .salir .ic{width:20px;text-align:center;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .sidebar .salir .ic img{width:18px;height:18px;object-fit:contain;}
 
+/* MODAL */
+.modal-header{
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+.modal-body{
+  height: 100px;
+  font-size: large;
+}
+.modal-footer .btn-primary{
+  background-color: #a30b0b;
+  border-color: #a30b0b;
+}
+#cierre  data-cell, #cierre button, #cierre .btn {
+  display: inline-block;
+}
+#salir button{
+  justify-self: center;
+  margin-left:45px;
+  border-color: var(--gris-suave);
+  color: var(--gris-suave);
+}
+#salir button:hover{
+  
+  background-color: var(--azul-cielo);
+  color: var(--gris-suave);
+  border-color: var(--azul-cielo);
+}
+
 /* Cuando el sidebar está colapsado, ocultamos el texto y dejamos solo el ícono */
 .sidebar.colapsada .item,
 .sidebar.colapsada .salir{justify-content:center;padding-left:0;padding-right:0;}
@@ -181,13 +211,13 @@ h2.section-title{color:var(--azul-oscuro);font-size:18px;margin:0 0 3px;display:
 
 /* Bordes de color al seleccionar cada turno */
 .curso-col.sel-manana{border-color:#f59e0b;box-shadow:0 10px 24px rgba(245,158,11,.20);}
-.curso-col.sel-tarde{border-color:#f97316;box-shadow:0 10px 24px rgba(249,115,22,.20);}
+.curso-col.sel-tarde{border-color:#f91616;box-shadow:0 10px 24px rgba(249,115,22,.20);}
 .curso-col.sel-vespertino{border-color:#7c3aed;box-shadow:0 10px 24px rgba(124,58,237,.20);}
 
 .curso-col .titulo-col{font-size:14px;font-weight:800;color:var(--azul-oscuro);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
 .curso-col .titulo-col .dot{width:9px;height:9px;border-radius:50%;}
 .curso-col .dot.manana{background:#f59e0b;}
-.curso-col .dot.tarde{background:#f97316;}
+.curso-col .dot.tarde{background: #f91616;;}
 .curso-col .dot.vespertino{background:#7c3aed;}
 
 .curso-fila{display:flex;justify-content:space-between;align-items:center;padding:8px 4px;font-size:13.5px;border-bottom:1px solid #f0f1f6;color:var(--gris-texto);transition:transform .12s ease;}
@@ -202,12 +232,6 @@ h2.section-title{color:var(--azul-oscuro);font-size:18px;margin:0 0 3px;display:
 
 .empty{text-align:center;padding:16px 0;color:var(--gris-sub);font-size:13px;}
 
-#cierre  data-cell, #cierre button, #cierre .btn {
-  display: inline-block;
-}
-#cierre button{
-  margin:45px;
-}
 
 .empty{text-align:center;padding:16px 0;color:var(--gris-sub);font-size:13px;}
 

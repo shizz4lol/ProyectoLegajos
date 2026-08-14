@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>LEGAJOS - EPET N°20 - Secretaria</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <link rel="stylesheet" href="{{asset('css/legajo.css')}}">
 </head>
 <body>
@@ -28,7 +29,6 @@
   <div class="userchip">
     <div class="av">S</div>
     <div class="txt"><b>Secretaría</b><span>Usuario</span></div>
-    <span class="chevron">&#8964;</span>
   </div>
 </header>
 
@@ -48,10 +48,10 @@
         <span class="label">Alumnos</span>
       </div>
     </div>
-    <a class="salir" href="">
-      <span class="ic"><img src="imagen/puerta.png" alt="Cerrar sesión"></span>
-      <span class="label">Cerrar sesión</span>
-    </a>
+      <div id="salir">
+      <span class="ic"><img src="" ></span>
+      <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#cierre">Cerrar Sesion</button>
+      </div>
   </div>
 
   <div class="contenido">
@@ -76,7 +76,7 @@
     <p class="section-sub">Todos los cursos disponibles</p>
 
     <div class="cursos-cols">
-      <div class="curso-col" id="manana">
+      <div class="curso-col" data-turno="manana">
         <div class="titulo-col"><span class="dot manana"></span>Turno Mañana</div>
         <div class="curso-fila"><span>1° 1°</span><span class="flecha">›</span></div>
         <div class="curso-fila"><span>1° 2°</span><span class="flecha">›</span></div>
@@ -95,7 +95,7 @@
         <div class="curso-fila"><span>3° 5°</span><span class="flecha">›</span></div>
       </div>
 
-      <div class="curso-col" id="tarde">
+      <div class="curso-col" data-turno="tarde">
         <div class="titulo-col"><span class="dot tarde"></span>Turno Tarde</div>
         <div class="curso-fila"><span>1° 1°</span><span class="flecha">›</span></div>
         <div class="curso-fila"><span>1° 2°</span><span class="flecha">›</span></div>
@@ -114,7 +114,7 @@
         <div class="curso-fila"><span>3° 5°</span><span class="flecha">›</span></div>
       </div>
 
-      <div class="curso-col" id="vespertino">
+      <div class="curso-col" data-turno="vespertino">
         <div class="titulo-col"><span class="dot vespertino"></span>Turno Vespertino</div>
         <div class="curso-fila"><span>4° 1°</span><span class="flecha">›</span></div>
         <div class="curso-fila"><span>4° 2°</span><span class="flecha">›</span></div>
@@ -135,7 +135,25 @@
     </div>
   </div>
 </div>
-
+<div class="modal fade" id="cierre" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" >¿Desea salir?</h1>
+        <button type="button" class="btn-close" id="eliminar" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <p>Los cambios hechos seran permanentes pero debera ingresar nuevamente.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <form action="" method="POST">
+            <button type="submit" class="btn btn-primary">Cerrar Sesion</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
   // Botón hamburguesa: colapsa/expande el sidebar (rectángulo de la izquierda)
   document.getElementById('btnMenu').addEventListener('click', function(){
@@ -157,6 +175,6 @@
     });
   });
 </script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

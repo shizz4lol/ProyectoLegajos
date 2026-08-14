@@ -8,9 +8,7 @@ use App\Http\Controllers\ControladorLegajo;
 Route::get('/', function(){
     return view ('auth.login');
 })->name('login');
-Route::get('/salir', function(){
-    return view ('auth.logout');
-})->name('logout');
+
 
 Route::post('/validando', [ControladorLogin::class, 'IniciarSesion'])->name('validar'); 
 
