@@ -9,7 +9,7 @@
 
 <header class="topbar">
   <div class="logo">
-    <div class="escudo">🎓</div>
+  <div id="gorro"><img src="/imagen/gorro.png"></div>
     <div class="txt"><b>LEGAJOS</b><span>EPET N°20</span></div>
   </div>
 </header>
@@ -19,7 +19,6 @@
     <h2>Inicio de sesion</h2>
     <div class="login-field">
       <input type="text" placeholder="Rol" name="tipo_rol">
-      <span class="icono">&#128274;</span>
     </div>
   <div class="login-field">
     <input type="password" placeholder="Ingrese su clave" name="password">

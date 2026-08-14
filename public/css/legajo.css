@@ -53,9 +53,9 @@ header.topbar{
 }
 .logo{display:flex;align-items:center;gap:10px;}
 
-/* Círculo del escudo: acomoda tu imagen sin deformarla */
-.logo .escudo{
-  width:40px;height:40px;
+.logo #escudo, #gorro{
+  width:40px;
+  height:40px;
   border-radius:50%;
   background:#ffffff22;
   color:#fff;
@@ -64,10 +64,18 @@ header.topbar{
   flex-shrink:0;
   overflow:hidden;
 }
-.logo .escudo img{
+.logo #gorro{
+  width:40px;
+  height:40px;
+}
+.logo #escudo img{
   width:100%;
   height:100%;
   object-fit:cover;
+}
+.logo #gorro img{
+  width:100%;
+  height:80%;
 }
 
 .logo .txt b{display:block;font-size:15px;color:#fff;font-weight:800;letter-spacing:.3px;}

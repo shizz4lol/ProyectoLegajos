@@ -12,7 +12,7 @@
 
   <button class="ham-btn" id="btnMenu" title="Abrir / cerrar menú">&#9776;</button>
   <div class="logo">
-    <div class="escudo"><img src="imagen/epet.png" alt="Escudo EPET 20"></div>
+    <div id="escudo"><img src="/imagen/epet.png" alt="Escudo EPET 20"></div>
     <div class="txt"><b>LEGAJOS</b><span>EPET N°20</span></div>
   </div>
 
@@ -40,7 +40,7 @@
         <span class="label">Inicio</span>
       </div>
       <div class="item">
-        <span class="ic"><img src="imagen/hoja en blanco.png" alt="Cursos"></span>
+        <span class="ic"><img src="imagen/hoja.png" alt="Cursos"></span>
         <span class="label">Cursos</span>
       </div>
       <div class="item">
@@ -148,7 +148,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <form action="" method="POST">
+        <form action="{{route('logout')}}" method="POST">
+        @csrf
             <button type="submit" class="btn btn-primary">Cerrar Sesion</button>
         </form>
       </div>

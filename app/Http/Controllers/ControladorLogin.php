@@ -49,7 +49,7 @@ class ControladorLogin extends Controller{
     public function CerrarSesion(){
         Auth::logout();
         session()->invalidate();
-        return redirect('login');
+        return redirect('/');
     }
 
 }

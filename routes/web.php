@@ -9,6 +9,7 @@ Route::get('/', function(){
     return view ('auth.login');
 })->name('login');
 
+Route::post('/salir', [ControladorLogin::class, 'CerrarSesion'])->name('logout');
 
 Route::post('/validando', [ControladorLogin::class, 'IniciarSesion'])->name('validar'); 
 
