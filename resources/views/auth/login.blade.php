@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>LEGAJOS - EPET N°20 - Ingresar</title>
-<link rel="stylesheet" href="{{ asset('css/legajo.css') }}">
+<link rel="stylesheet" href="{{ asset('css/general.css') }}">
 </head>
 <body>
 

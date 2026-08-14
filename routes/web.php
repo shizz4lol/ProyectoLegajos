@@ -8,6 +8,9 @@ use App\Http\Controllers\ControladorLegajo;
 Route::get('/', function(){
     return view ('auth.login');
 })->name('login');
+Route::get('/crear', function(){
+    return view ('bdconn.crear');
+})->name('crearlegajo');
 
 Route::post('/salir', [ControladorLogin::class, 'CerrarSesion'])->name('logout');
 

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>LEGAJOS - EPET N°20 - Secretaria</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-<link rel="stylesheet" href="{{asset('css/legajo.css')}}">
+<link rel="stylesheet" href="{{asset('css/general.css')}}">
 </head>
 <body>
 
@@ -47,8 +47,12 @@
         <span class="ic"><img src="imagen/usuario.png" alt="Alumnos"></span>
         <span class="label">Alumnos</span>
       </div>
+      <div class="item">
+        <span class="ic"><img src="" alt="Crear"></span>
+        <a href="{{route('crearlegajo')}}"><span class="label">Crear legajo</span></a>
+      </div>
       <div id="salir" class="salir">
-      <span class="ic"><img src="" ></span>
+      <span class="ic"><img src="imagen/puerta.png" ></span>
       <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#cierre">Cerrar Sesion</button>
       </div>
     </div>

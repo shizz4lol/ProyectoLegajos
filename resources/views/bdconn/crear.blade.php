@@ -3,13 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear nuevo Legajo</title>
-    <!-- Tus hojas de estilo (legajo.css se linkea antes) -->
-    <link rel="stylesheet" href="{{asset('css/legajo.css')}}">
+    <title>Cargar Datos</title>
+    <link rel="stylesheet" href="{{asset('css/formulario.css')}}">
 </head>
 <body>
+<header class="topbar">
 
-    <!-- Encabezado superior de la página -->
+  <button class="ham-btn" id="btnMenu" title="Abrir / cerrar menú">&#9776;</button>
+  <div class="logo">
+    <div id="escudo"><img src="/imagen/epet.png" alt="Escudo EPET 20"></div>
+    <div class="txt"><b>LEGAJOS</b><span>EPET N°20</span></div>
+  </div>
+
+  <div class="bienvenida-top">
+    <b>¡Bienvenido/a, Secretaría!</b>
+    <span>Sistema de Gestión de Legajos</span>
+  </div>
+
+  <div class="buscador">
+    <input type="text" placeholder="Buscar alumno...">
+    <span class="lupa">&#128269;</span>
+  </div>
+
+  <div class="userchip">
+    <div class="av">S</div>
+    <div class="txt"><b>Secretaría</b><span>Usuario</span></div>
+  </div>
+</header>
     <div class="form-header">
         <div class="titulo-wrap">
             <div class="icono-cuadrado">
@@ -27,7 +47,7 @@
 
     <!-- Tarjeta Principal del Formulario -->
     <div class="legajo-card">
-        <form action="guardar_legajo.php" method="POST" id="formCrearLegajo">
+        <form action="" method="POST" id="crear">
             
             <!-- Parte superior de la tarjeta (Avatar, Nombre y Badge Estado) -->
             <div class="legajo-card-top">
