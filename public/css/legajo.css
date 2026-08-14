@@ -211,3 +211,102 @@ h2.section-title{color:var(--azul-oscuro);font-size:18px;margin:0 0 3px;display:
 
 .empty{text-align:center;padding:16px 0;color:var(--gris-sub);font-size:13px;}
 
+/* ============================================================
+   legajo-form.css
+   Estilos para la tarjeta de "Crear nuevo Legajo".
+   Se linkea ADEMÁS de legajo.css (no lo reemplaza).
+   ============================================================ */
+
+.form-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;flex-wrap:wrap;gap:14px;}
+.form-header .titulo-wrap{display:flex;gap:14px;align-items:center;}
+.form-header .icono-cuadrado{
+  width:46px;height:46px;border-radius:12px;
+  background:var(--azul-claro);color:var(--azul-medio);
+  display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;
+}
+.form-header h2{margin:0;color:var(--azul-oscuro);font-size:19px;}
+.form-header p{margin:2px 0 0;color:var(--gris-sub);font-size:13px;}
+.btn-volver{
+  background:#fff;border:1.5px solid var(--gris-borde);color:var(--gris-texto);
+  padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;
+}
+.btn-volver:hover{background:var(--gris-suave);}
+
+/* Tarjeta blanca, igual formato que la ficha de alumno */
+.legajo-card{
+  background:#fff;
+  border:1px solid var(--gris-borde);
+  border-radius:14px;
+  padding:26px 28px;
+  max-width:520px;
+  box-shadow:0 4px 18px rgba(18,32,107,.05);
+}
+
+.legajo-card-top{display:flex;align-items:flex-start;gap:16px;margin-bottom:18px;}
+.avatar-generico{
+  width:58px;height:58px;border-radius:50%;
+  background:#eef0f6;color:#9aa1b8;
+  display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;
+}
+.nombre-wrap{flex:1;}
+.nombre-wrap label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--gris-sub);margin-bottom:4px;}
+.nombre-wrap input.input-nombre{
+  width:100%;font-size:18px;font-weight:800;color:var(--azul-oscuro);
+  border:none;border-bottom:2px solid var(--gris-borde);
+  padding:2px 0 6px;font-family:inherit;outline:none;background:transparent;
+}
+.nombre-wrap input.input-nombre::placeholder{color:#c3c7d8;font-weight:700;}
+.nombre-wrap input.input-nombre:focus{border-bottom-color:var(--azul-cielo);}
+
+.badge-estado{
+  font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;
+  background:#dcfce7;color:#15803d;white-space:nowrap;margin-top:4px;
+}
+
+/* Filas con ícono, igual que la imagen de referencia */
+.campo-icono-form{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.campo-icono-form .ic{width:20px;text-align:center;flex-shrink:0;color:var(--azul-medio);font-size:15px;}
+.campo-icono-form label{
+  font-size:13px;font-weight:700;color:var(--gris-texto);
+  min-width:110px;flex-shrink:0;
+}
+.campo-icono-form label .req{color:#b91c1c;}
+.campo-icono-form input,
+.campo-icono-form select{
+  flex:1;
+  padding:8px 10px;
+  border:1.5px solid var(--gris-borde);
+  border-radius:7px;
+  font-size:13.5px;
+  font-family:inherit;
+  outline:none;
+  background:#fff;
+  color:var(--gris-texto);
+}
+.campo-icono-form input:focus,
+.campo-icono-form select:focus{border-color:var(--azul-cielo);}
+
+.otra-escuela-row{margin:6px 0 16px 30px;}
+.otra-escuela-row .check-row{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--gris-texto);margin-bottom:8px;}
+.otra-escuela-row .check-row input{width:auto;}
+.otra-escuela-row input[type=text]{
+  width:100%;padding:8px 10px;border:1.5px solid var(--gris-borde);border-radius:7px;
+  font-size:13px;font-family:inherit;
+}
+
+.form-hint{font-size:12px;color:var(--gris-sub);margin:2px 0 18px 30px;}
+
+.btn-guardar-legajo{
+  display:block;
+  width:100%;
+  background:var(--azul-medio);
+  color:#fff;
+  border:none;
+  padding:12px;
+  border-radius:8px;
+  font-weight:700;
+  font-size:14px;
+  cursor:pointer;
+  margin-top:6px;
+}
+.btn-guardar-legajo:hover{background:var(--azul-oscuro);}
