@@ -9,12 +9,12 @@
 <body>
 
 <header class="topbar">
+
+  <button class="ham-btn" id="btnMenu" title="Abrir / cerrar menú">&#9776;</button>
   <div class="logo">
     <div class="escudo"><img src="imagen/epet.jpg" alt="Escudo EPET 20"></div>
     <div class="txt"><b>LEGAJOS</b><span>EPET N°20</span></div>
   </div>
-
-  <button class="ham-btn" id="btnMenu" title="Abrir / cerrar menú">&#9776;</button>
 
   <div class="bienvenida-top">
     <b>¡Bienvenido/a, Secretaría!</b>
@@ -47,11 +47,12 @@
         <span class="ic"><img src="imagen/usuario.png" alt="Alumnos"></span>
         <span class="label">Alumnos</span>
       </div>
-    </div>
-      <div id="salir">
+      <div id="salir" class="salir">
       <span class="ic"><img src="" ></span>
       <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#cierre">Cerrar Sesion</button>
       </div>
+    </div>
+      
   </div>
 
   <div class="contenido">
@@ -136,7 +137,7 @@
   </div>
 </div>
 <div class="modal fade" id="cierre" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" >¿Desea salir?</h1>

@@ -157,6 +157,10 @@ header.topbar{
   background-color: #a30b0b;
   border-color: #a30b0b;
 }
+.modal-footer .btn-primary:hover{
+  background-color: #7c0d0d;
+  border-color: #7c0d0d;
+}
 #cierre  data-cell, #cierre button, #cierre .btn {
   display: inline-block;
 }
