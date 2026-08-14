@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>LEGAJOS - EPET N°20 - Secretaria</title>
-<link rel="stylesheet" href="legajo.css">
+<link rel="stylesheet" href="{{asset('css/legajo.css')}}">
 </head>
 <body>
 
@@ -76,7 +76,7 @@
     <p class="section-sub">Todos los cursos disponibles</p>
 
     <div class="cursos-cols">
-      <div class="curso-col" data-turno="manana">
+      <div class="curso-col" id="manana">
         <div class="titulo-col"><span class="dot manana"></span>Turno Mañana</div>
         <div class="curso-fila"><span>1° 1°</span><span class="flecha">›</span></div>
         <div class="curso-fila"><span>1° 2°</span><span class="flecha">›</span></div>
@@ -95,7 +95,7 @@
         <div class="curso-fila"><span>3° 5°</span><span class="flecha">›</span></div>
       </div>
 
-      <div class="curso-col" data-turno="tarde">
+      <div class="curso-col" id="tarde">
         <div class="titulo-col"><span class="dot tarde"></span>Turno Tarde</div>
         <div class="curso-fila"><span>1° 1°</span><span class="flecha">›</span></div>
         <div class="curso-fila"><span>1° 2°</span><span class="flecha">›</span></div>
@@ -114,7 +114,7 @@
         <div class="curso-fila"><span>3° 5°</span><span class="flecha">›</span></div>
       </div>
 
-      <div class="curso-col" data-turno="vespertino">
+      <div class="curso-col" id="vespertino">
         <div class="titulo-col"><span class="dot vespertino"></span>Turno Vespertino</div>
         <div class="curso-fila"><span>4° 1°</span><span class="flecha">›</span></div>
         <div class="curso-fila"><span>4° 2°</span><span class="flecha">›</span></div>

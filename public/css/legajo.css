@@ -114,3 +114,9 @@ h2.section-title{color:var(--azul-oscuro);font-size:18px;margin:0 0 3px;display:
 
 .empty{text-align:center;padding:16px 0;color:var(--gris-sub);font-size:13px;}
 
+#cierre  data-cell, #cierre button, #cierre .btn {
+  display: inline-block;
+}
+#cierre button{
+  margin:45px;
+}
