@@ -1,123 +1,136 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>LEGAJOS - EPET N°20 - Jefe de Preceptores</title>
-<link rel="stylesheet" href="legajo.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear nuevo Legajo</title>
+    <!-- Tus hojas de estilo (legajo.css se linkea antes) -->
+    <link rel="stylesheet" href="legajo.css">
 </head>
 <body>
 
-<header class="topbar">
-  <div class="logo">
-  <img src="imagen epet20/images.jpg" alt="Escudo EPET 20" style="width:40px;height:40px;border-radius:50%;object-fit:cover;">
-    <div class="txt"><b>LEGAJOS</b><span>EPET N°20</span></div>
-  </div>
-  <div class="buscador">
-    <input type="text" placeholder="Buscar alumno...">
-    <span class="lupa">&#128269;</span>
-  </div>
-  <div class="userchip">
-    <div class="av">Jd</div>
-    <div class="txt"><b>Jefe de Preceptores</b><span>Usuario</span></div>
-  </div>
-</header>
-
-<div class="layout">
-  <div class="sidebar">
-    <div>
-      <div class="item act"><span class="ic"></span>Inicio</div>
-      <div class="item"><span class="ic"></span>Cursos</div>
-      <div class="item"><span class="ic"></span>Alumnos</div>
-    </div>
-    <a class="salir" href=""><span class="ic"></span>Cerrar sesión</a>
-  </div>
-
-  <div class="contenido">
-    <div class="panel-card">
-      <h3> ¡Bienvenido/a! <span class="badge-rol JefePreceptores">Jefe de Preceptores</span></h3>
-
-      <h3>¡Bienvenido/a! <span class="badge-rol JefePreceptores">Jefe de Preceptores</span></h3>
-
-      <p class="sub">Panel principal · Resumen general del sistema</p>
-      <p class="tip">Tenés acceso a todos los cursos y podés editar legajos, pero no podés crear legajos nuevos ni ver los legajos de egresados.</p>
+    <!-- Encabezado superior de la página -->
+    <div class="form-header">
+        <div class="titulo-wrap">
+            <div class="icono-cuadrado">
+                <i class="fa-solid fa-folder-plus"></i>
+            </div>
+            <div>
+                <h2>Crear nuevo Legajo</h2>
+                <p>Complete los datos correspondientes para dar de alta al alumno en el sistema.</p>
+            </div>
+        </div>
+        <button type="button" class="btn-volver" onclick="window.history.back()">
+            <i class="fa-solid fa-arrow-left"></i> Volver
+        </button>
     </div>
 
-    <div class="stats-row" style="margin-bottom:22px;">
-      <div class="stat-box blue"><div class="ic"></div><div><div class="num">512</div><div class="lbl">Alumnos totales</div></div></div>
-      <div class="stat-box purple"><div class="ic"></div><div><div class="num">1256</div><div class="lbl">Documentos subidos al sistema</div></div></div>
+    <!-- Tarjeta Principal del Formulario -->
+    <div class="legajo-card">
+            
+            <!-- Parte superior de la tarjeta (Avatar, Nombre y Badge Estado) -->
+            <div class="legajo-card-top">
+                <div class="avatar-generico">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="nombre-wrap">
+                    <label for="nombre_apellido">Nombre y Apellido <span class="req">*</span></label>
+                    <input type="text" id="nombre_apellido" name="nombre_apellido" class="input-nombre" placeholder="Ej: Juan Pérez" required autocomplete="off">
+                </div>
+                <span class="badge-estado">Activo</span>
+            </div>
+
+            <!-- Filas del formulario con íconos estilo ficha de alumno -->
+            
+            <!-- DNI -->
+            <div class="campo-icono-form">
+                <span class="ic"><i class="fa-solid fa-address-card"></i></span>
+                <label for="dni">DNI <span class="req">*</span></label>
+                <input type="text" id="dni" name="dni" placeholder="Ej: 45.123.456" required>
+            </div>
+
+            <!-- Curso -->
+            <div class="campo-icono-form">
+                <span class="ic"><i class="fa-solid fa-graduation-cap"></i></span>
+                <label for="curso">Curso <span class="req">*</span></label>
+                <select id="curso" name="curso" required>
+                    <option value="" disabled selected>Seleccione un curso...</option>
+                    <option value="1° 1°">1° 1°</option>
+                    <option value="1° 2°">1° 2°</option>
+                    <option value="2° 1°">2° 1°</option>
+                    <option value="3° 1°">3° 1°</option>
+                    <option value="4° 1°">4° 1°</option>
+                    <option value="5° 1°">5° 1°</option>
+                    <option value="6° 3°">6° 3°</option>
+                </select>
+            </div>
+
+            <!-- Fecha de Nacimiento -->
+            <div class="campo-icono-form">
+                <span class="ic"><i class="fa-solid fa-calendar-days"></i></span>
+                <label for="fecha_nacimiento">F. Nacimiento <span class="req">*</span></label>
+                <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+            </div>
+
+            <!-- Domicilio -->
+            <div class="campo-icono-form">
+                <span class="ic"><i class="fa-solid fa-location-dot"></i></span>
+                <label for="domicilio">Domicilio <span class="req">*</span></label>
+                <input type="text" id="domicilio" name="domicilio" placeholder="Ej: Av. Argentina 123, Neuquén" required>
+            </div>
+
+            <!-- Teléfono -->
+            <div class="campo-icono-form">
+                <span class="ic"><i class="fa-solid fa-phone"></i></span>
+                <label for="telefono">Teléfono <span class="req">*</span></label>
+                <input type="tel" id="telefono" name="telefono" placeholder="Ej: 299 123-4567" required>
+            </div>
+
+            <!-- Tutor -->
+            <div class="campo-icono-form">
+                <span class="ic"><i class="fa-solid fa-user-group"></i></span>
+                <label for="tutor">Tutor / Responsable <span class="req">*</span></label>
+                <input type="text" id="tutor" name="tutor" placeholder="Ej: María Pérez (Madre)" required>
+            </div>
+
+            <!-- Email -->
+            <div class="campo-icono-form">
+                <span class="ic"><i class="fa-solid fa-envelope"></i></span>
+                <label for="email">Email <span class="req">*</span></label>
+                <input type="email" id="email" name="email" placeholder="Ej: juanperez@example.com" required>
+            </div>
+
+            <!-- Opción: Viene de otra escuela -->
+            <div class="otra-escuela-row">
+                <div class="check-row">
+                    <input type="checkbox" id="check_otra_escuela" name="check_otra_escuela" onchange="toggleOtraEscuela(this)">
+                    <label for="check_otra_escuela">¿Proviene de otra institución?</label>
+                </div>
+                <input type="text" id="escuela_origen" name="escuela_origen" placeholder="Nombre de la escuela de origen" style="display: none;">
+            </div>
+
+            <p class="form-hint">Los campos marcados con (<span class="req">*</span>) son obligatorios.</p>
+
+            <!-- Botón para guardar -->
+            <button type="submit" class="btn-guardar-legajo">
+                <i class="fa-solid fa-floppy-disk"></i> Guardar Legajo
+            </button>
+
+        </form>
     </div>
 
-    <h2 class="section-title"> Cursos</h2>
-    <h2 class="section-title">Cursos</h2>
-
-    <p class="section-sub">45 curso(s) disponibles para tu usuario.</p>
-
-    <div class="cursos-cols">
-      <div class="curso-col">
-
-        <div class="titulo-col"><span class="dot manana"></span> Turno Mañana</div>
-
-        <div class="titulo-col"><span class="dot manana"></span>Turno Mañana</div>
-
-                  <div class="curso-fila"><span>1° 1°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>1° 2°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>1° 3°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>1° 4°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>1° 5°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>2° 1°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>2° 2°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>2° 3°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>2° 4°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>2° 5°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>3° 1°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>3° 2°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>3° 3°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>3° 4°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>3° 5°</span><span class="flecha">›</span></div>
-      </div>
-      <div class="curso-col">
-
-        <div class="titulo-col"><span class="dot tarde"></span> Turno Tarde</div>
-
-        <div class="titulo-col"><span class="dot tarde"></span>Turno Tarde</div>
-
-                  <div class="curso-fila"><span>1° 1°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>1° 2°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>1° 3°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>1° 4°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>1° 5°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>2° 1°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>2° 2°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>2° 3°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>2° 4°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>2° 5°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>3° 1°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>3° 2°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>3° 3°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>3° 4°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>3° 5°</span><span class="flecha">›</span></div>
-      </div>
-      <div class="curso-col">
-        <div class="titulo-col"><span class="dot vespertino"></span> Turno Vespertino</div>
-                  <div class="curso-fila"><span>4° 1°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>4° 2°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>4° 3°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>4° 4°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>4° 5°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>5° 1°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>5° 2°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>5° 3°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>5° 4°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>5° 5°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>6° 1°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>6° 2°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>6° 3°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>6° 4°</span><span class="flecha">›</span></div>
-          <div class="curso-fila"><span>6° 5°</span><span class="flecha">›</span></div>
-      </div>
-    </div>
-  </div>
-</div>
-
+    <!-- JS opcional para mostrar/ocultar el input de otra escuela -->
+    <script>
+        function toggleOtraEscuela(checkbox) {
+            const inputEscuela = document.getElementById('escuela_origen');
+            if (checkbox.checked) {
+                inputEscuela.style.display = 'block';
+                inputEscuela.focus();
+            } else {
+                inputEscuela.style.display = 'none';
+                inputEscuela.value = '';
+            }
+        }
+    </script>
 </body>
 </html>
