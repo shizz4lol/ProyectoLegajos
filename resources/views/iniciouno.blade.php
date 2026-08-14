@@ -12,7 +12,7 @@
 
   <button class="ham-btn" id="btnMenu" title="Abrir / cerrar menú">&#9776;</button>
   <div class="logo">
-    <div class="escudo"><img src="imagen/epet.jpg" alt="Escudo EPET 20"></div>
+    <div class="escudo"><img src="imagen/epet.png" alt="Escudo EPET 20"></div>
     <div class="txt"><b>LEGAJOS</b><span>EPET N°20</span></div>
   </div>
 
