@@ -13,15 +13,17 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'nombre'=>'mariana',
+            'nombre'=>'maria3',
             'tipo_rol'=>'secretaria',
             'password'=>'1234'
         ]);
         User::create([
+            'nombre'=>'maria3',
             'tipo_rol'=>'jefe',
             'password'=>'12345'
         ]);
         User::create([
+            'nombre'=>'maria3',
             'tipo_rol'=>'preceptor',
             'password'=>'pizza'
         ]);

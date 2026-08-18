@@ -177,7 +177,7 @@ header.topbar{
 }
 #salir button{
   justify-self: center;
-  margin-left:45px;
+  margin:15px;
   border-color: var(--gris-suave);
   color: var(--gris-suave);
 }
