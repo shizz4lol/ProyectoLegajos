@@ -15,17 +15,22 @@ class UserSeeder extends Seeder
         User::create([
             'nombre'=>'maria3',
             'tipo_rol'=>'secretaria',
-            'password'=>'1234'
+            'password'=>'maria1'
         ]);
         User::create([
-            'nombre'=>'maria3',
+            'nombre'=>'carla',
+            'tipo_rol'=>'secretaria',
+            'password'=>'carla1'
+        ]);
+        User::create([
+            'nombre'=>'charly',
             'tipo_rol'=>'jefe',
-            'password'=>'12345'
+            'password'=>'carlos'
         ]);
         User::create([
-            'nombre'=>'maria3',
+            'nombre'=>'malen2',
             'tipo_rol'=>'preceptor',
-            'password'=>'pizza'
+            'password'=>'malen'
         ]);
     }
 }

@@ -21,15 +21,24 @@ class ControladorLegajo extends Controller
         $alumnos = $this->def();
         $rol = session('rol');
         if (Auth::check()) {
-            if(($rol=='s')||($rol=='j')) {
+            switch($rol){
+                case 'secretaria':
                     return view('iniciouno', compact ('alumnos'));
-            }
-            else{
-                /* $alumnos = Alumno::whereHas('curso.divisions', function ($query) use ($codigo) {
+                    break;
+                case 'jefe':
+                    return view('iniciodos', compact ('alumnos'));
+                    break;
+                case 'preceptor':
+                    /* $alumnos = Alumno::whereHas('curso.divisions', function ($query) use ($codigo) {
                   $query->wherePivot('codigo', $codigo);
                   })->get(); */
                   return view('prueba');
+                    break;
+                default:
+                return view ('login');
+                    break;
             }
+            
            /*  return redirect('inicio')->with ($alumnos);  */
         }
     }

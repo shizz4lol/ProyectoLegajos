@@ -154,6 +154,11 @@ header.topbar{
   width:30px;
   height: 30px;
 }
+.sidebar a, .sidebar span{
+  margin:0;
+  padding:0;
+  border: 0;
+}
 /* MODAL */
 .modal-header{
   height: 60px;
@@ -191,7 +196,7 @@ header.topbar{
 /* Cuando el sidebar está colapsado, ocultamos el texto y dejamos solo el ícono */
 .sidebar.colapsada .item,
 .sidebar.colapsada .salir{justify-content:center;padding-left:0;padding-right:0;}
-.sidebar.colapsada .label{display:none;}
+.sidebar.colapsada .label, .sidebar.colapsada .btn-outline-info{display:none;}
 
 .contenido{flex:1;min-width:0;padding:26px 32px 60px;}
 

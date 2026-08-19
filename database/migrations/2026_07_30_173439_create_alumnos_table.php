@@ -15,7 +15,10 @@ return new class extends Migration
             $table->bigIncrements('id_alumno');
             $table->string('nombre');
             $table->string('apellido');
-            $table->integer('dni');
+            $table->integer('dni')->unique();
+            $table->string('email');
+            $table->integer('telefono')->nullable();
+            $table->string('domicilio');
             $table->string('acta_nacimiento');
             $table->string('inscripcion');
             $table->string('constanciaregular');

@@ -34,9 +34,7 @@
 </header>
     <div class="form-header">
         <div class="titulo-wrap">
-            <div class="icono-cuadrado">
-                <i class="fa-solid fa-folder-plus"></i>
-            </div>
+            
             <div>
                 <h2>Crear nuevo Legajo</h2>
                 <p>Complete los datos correspondientes para dar de alta al alumno en el sistema.</p>
@@ -57,8 +55,10 @@
                     <i class="fa-solid fa-user"></i>
                 </div>
                 <div class="nombre-wrap">
-                    <label for="nombre_apellido">Nombre y Apellido <span class="req">*</span></label>
-                    <input type="text" id="nombre_apellido" name="nombre_apellido" class="input-nombre" placeholder="Ej: Juan Pérez" required autocomplete="off">
+                    <label for="nombre">Nombre/s<span class="req">*</span></label>
+                    <input type="text" id="nombre" name="nombre" class="input-nombre" required autocomplete="off">
+                    <label for="apellido">Apellido/s<span class="req">*</span></label>
+                    <input type="text" id="apellido" name="apellido" class="input-nombre" required autocomplete="off">
                 </div>
                 <span class="badge-estado">Activo</span>
             </div>
@@ -72,22 +72,32 @@
                 <input type="text" id="dni" name="dni" placeholder="Ej: 45.123.456" required>
             </div>
 
-            <!-- Curso -->
             <div class="campo-icono-form">
                 <span class="ic"><i class="fa-solid fa-graduation-cap"></i></span>
                 <label for="curso">Curso <span class="req">*</span></label>
                 <select id="curso" name="curso" required>
                     <option value="" disabled selected>Seleccione un curso...</option>
-                    <option value="1° 1°">1° 1°</option>
-                    <option value="1° 2°">1° 2°</option>
-                    <option value="2° 1°">2° 1°</option>
-                    <option value="3° 1°">3° 1°</option>
-                    <option value="4° 1°">4° 1°</option>
-                    <option value="5° 1°">5° 1°</option>
-                    <option value="6° 3°">6° 3°</option>
+                    <option value="1">1°</option>
+                    <option value="2">2°</option>
+                    <option value="3">3°</option>
+                    <option value="4">4°</option>
+                    <option value="5">5°</option>
+                    <option value="6">6°</option>
                 </select>
             </div>
 
+            <div class="campo-icono-form">
+                <span class="ic"><i class="fa-solid fa-graduation-cap"></i></span>
+                <label for="curso">Division <span class="req">*</span></label>
+                <select id="division" name="division" required>
+                    <option value="" disabled selected>Seleccione una division...</option>
+                    <option value="1">1°</option>
+                    <option value="2">2°</option>
+                    <option value="3">3°</option>
+                    <option value="4">4°</option>
+                    <option value="5">5°</option>
+                </select>
+            </div>
             <!-- Fecha de Nacimiento -->
             <div class="campo-icono-form">
                 <span class="ic"><i class="fa-solid fa-calendar-days"></i></span>
@@ -109,12 +119,6 @@
                 <input type="tel" id="telefono" name="telefono" placeholder="Ej: 299 123-4567" required>
             </div>
 
-            <!-- Tutor -->
-            <div class="campo-icono-form">
-                <span class="ic"><i class="fa-solid fa-user-group"></i></span>
-                <label for="tutor">Tutor / Responsable <span class="req">*</span></label>
-                <input type="text" id="tutor" name="tutor" placeholder="Ej: María Pérez (Madre)" required>
-            </div>
 
             <!-- Email -->
             <div class="campo-icono-form">
@@ -140,9 +144,9 @@
             </button>
 
         </form>
+
     </div>
 
-    <!-- JS opcional para mostrar/ocultar el input de otra escuela -->
     <script>
         function toggleOtraEscuela(checkbox) {
             const inputEscuela = document.getElementById('escuela_origen');

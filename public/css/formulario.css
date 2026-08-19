@@ -1,3 +1,7 @@
+
+.form-header{
+  margin: 10px;
+}
 .legajo-card{
   background:#fff;
   border:1px solid var(--gris-borde);
@@ -17,7 +21,7 @@
 .nombre-wrap{flex:1;}
 .nombre-wrap label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--gris-sub);margin-bottom:4px;}
 .nombre-wrap input.input-nombre{
-  width:100%;font-size:18px;font-weight:800;color:var(--azul-oscuro);
+  width:320px;font-size:18px;font-weight:800;color:var(--azul-oscuro);
   border:none;border-bottom:2px solid var(--gris-borde);
   padding:2px 0 6px;font-family:inherit;outline:none;background:transparent;
 }

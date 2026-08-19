@@ -17,7 +17,7 @@
   </div>
 
   <div class="bienvenida-top">
-    <b>¡Bienvenido/a, Secretaría!</b>
+    <b>¡Bienvenido/a, Jefe!</b>
     <span>Sistema de Gestión de Legajos</span>
   </div>
 
@@ -28,7 +28,7 @@
 
   <div class="userchip">
     <div class="av">S</div>
-    <div class="txt"><b>Secretaría</b><span>Usuario</span></div>
+    <div class="txt"><b>Jefe de Preceptores</b><span>Usuario</span></div>
   </div>
 </header>
 
@@ -48,8 +48,8 @@
         <span class="label">Alumnos</span>
       </div>
       <div class="item">
-        <span class="ic"><img src="imagen/mas.png" alt="Crear"></span>
-        <span class="label"><a href="{{route('crearlegajo')}}">Crear legajo</a></span>
+        <span class="ic"><img src="" alt="Crear"></span>
+        <a href="{{route('crearlegajo')}}"><span class="label">Crear legajo</span></a>
       </div>
       <div id="salir" class="salir">
       <span class="ic"><img src="imagen/puerta.png" ></span>
@@ -61,7 +61,7 @@
 
   <div class="contenido">
     <div class="panel-card">
-      <h3>¡Bienvenido/a! <span class="badge-rol Secretaria">al panel de Secretaria</span></h3>
+      <h3>¡Bienvenido/a! <span class="badge-rol Jefe">al panel de Jefatura</span></h3>
       <p class="sub">Panel principal · Resumen general del sistema</p>
       <p class="tip"></p>
     </div>
@@ -69,11 +69,11 @@
     <div class="stats-row" style="margin-bottom:22px;">
       <div class="stat-box blue">
         <div class="ic"><img src="imagen/usuario.png" alt=""></div>
-        <div><div class="num">8</div><div class="lbl">Alumnos totales</div></div>
+        <div><div class="num">10</div><div class="lbl">Alumnos totales</div></div>
       </div>
       <div class="stat-box purple">
-        <div class="ic"><img src="imagen/hoja.png" alt=""></div>
-        <div><div class="num">22</div><div class="lbl">Documentos subidos al sistema</div></div>
+        <div class="ic"></div>
+        <div><div class="num">24</div><div class="lbl">Documentos subidos al sistema</div></div>
       </div>
     </div>
 
@@ -166,38 +166,20 @@
     document.getElementById('sidebar').classList.toggle('colapsada');
   });
 
+  // Al tocar una columna de turno, le pone el borde de color correspondiente
   var clasesPorTurno = {
-  manana: 'sel-manana',
-  tarde: 'sel-tarde',
-  vespertino: 'sel-vespertino'
-};
-
-document.querySelectorAll('.curso-col').forEach(function(col) {
-  col.addEventListener('click', function(event) {
-    // Evita que el click se propague al document
-    event.stopPropagation();
-    document.querySelectorAll('.curso-col').forEach(function(c) {
-      c.classList.remove(
-        'sel-manana',
-        'sel-tarde',
-        'sel-vespertino'
-      );
+    manana: 'sel-manana',
+    tarde: 'sel-tarde',
+    vespertino: 'sel-vespertino'
+  };
+  document.querySelectorAll('.curso-col').forEach(function(col){
+    col.addEventListener('click', function(){
+      document.querySelectorAll('.curso-col').forEach(function(c){
+        c.classList.remove('sel-manana', 'sel-tarde', 'sel-vespertino');
+      });
+      col.classList.add(clasesPorTurno[col.dataset.turno]);
     });
-
-    col.classList.add(clasesPorTurno[col.dataset.turno]);
   });
-});
-document.addEventListener('click', function(event) {
-  if (!event.target.closest('.curso-col')) {
-    document.querySelectorAll('.curso-col').forEach(function(col) {
-      col.classList.remove(
-        'sel-manana',
-        'sel-tarde',
-        'sel-vespertino'
-      );
-    });
-  }
-});
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
