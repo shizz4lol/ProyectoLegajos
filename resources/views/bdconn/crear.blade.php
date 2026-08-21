@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<<<<<<< HEAD
+
 <meta charset="UTF-8">
 <title>LEGAJOS - EPET N°20 - Crear Legajo</title>
 <link rel="stylesheet" href="legajo.css">
 <link rel="stylesheet" href="legajo-form.css">
-=======
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cargar Datos</title>
     <link rel="stylesheet" href="{{asset('css/general.css')}}">
     <link rel="stylesheet" href="{{asset('css/formulario.css')}}">
 
->>>>>>> af4cb832cb9eda7163421b219c6a0d0d18633df2
+
 </head>
 <body>
 
@@ -75,28 +75,28 @@
   <div class="contenido">
 
     <div class="form-header">
-<<<<<<< HEAD
+
       <div class="titulo-wrap">
         <div class="icono-cuadrado">&#127891;</div>
         <div>
           <h2>Crear nuevo Legajo</h2>
           <p>Cargá los datos del alumno recopilados de la planilla física</p>
-=======
+
         <div class="titulo-wrap">
             
             <div>
                 <h2>Crear nuevo Legajo</h2>
                 <p>Complete los datos correspondientes para dar de alta al alumno en el sistema.</p>
             </div>
->>>>>>> af4cb832cb9eda7163421b219c6a0d0d18633df2
+
         </div>
       </div>
       <button class="btn-volver">&#8592; Volver</button>
     </div>
 
-<<<<<<< HEAD
+
     <form class="legajo-card">
-=======
+
     <!-- Tarjeta Principal del Formulario -->
     <div class="legajo-card">
         <form action="" method="POST" id="crear">
@@ -114,7 +114,7 @@
                 </div>
                 <span class="badge-estado">Activo</span>
             </div>
->>>>>>> af4cb832cb9eda7163421b219c6a0d0d18633df2
+
 
       <div class="legajo-card-top">
         <div class="avatar-generico">&#128100;</div>
@@ -125,7 +125,7 @@
         <span class="badge-estado">Activo</span>
       </div>
 
-<<<<<<< HEAD
+
       <div class="campo-icono-form">
         <span class="ic">&#128274;</span>
         <label>DNI <span class="req">*</span></label>
@@ -148,7 +148,7 @@
           <option>6° 3° - Vespertino</option>
         </select>
       </div>
-=======
+
             <div class="campo-icono-form">
                 <span class="ic"><i class="fa-solid fa-graduation-cap"></i></span>
                 <label for="curso">Curso <span class="req">*</span></label>
@@ -181,7 +181,7 @@
                 <label for="fecha_nacimiento">F. Nacimiento <span class="req">*</span></label>
                 <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
             </div>
->>>>>>> af4cb832cb9eda7163421b219c6a0d0d18633df2
+
 
       <div class="campo-icono-form">
         <span class="ic">&#128197;</span>
@@ -195,14 +195,13 @@
         <input type="text" id="nfDireccion" placeholder="Calle y número, localidad">
       </div>
 
-<<<<<<< HEAD
+
       <div class="campo-icono-form">
         <span class="ic">&#128222;</span>
         <label>Teléfono <span class="req">*</span></label>
         <input type="text" id="nfTel" placeholder="299 123-4567">
       </div>
-=======
->>>>>>> af4cb832cb9eda7163421b219c6a0d0d18633df2
+
 
       <div class="campo-icono-form">
         <span class="ic">&#128100;</span>
@@ -226,7 +225,7 @@
 
       <div class="form-hint"><span class="req">*</span> Campos obligatorios del alumno y del adulto responsable.</div>
 
-<<<<<<< HEAD
+
       <button type="submit" class="btn-guardar-legajo">Guardar Legajo</button>
     </form>
 
@@ -239,7 +238,7 @@
   });
 </script>
 
-=======
+
         </form>
 
     </div>
@@ -256,6 +255,6 @@
             }
         }
     </script>
->>>>>>> af4cb832cb9eda7163421b219c6a0d0d18633df2
+>
 </body>
 </html>
