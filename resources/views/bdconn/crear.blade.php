@@ -10,13 +10,14 @@
 
 </head>
 <body>
-<header class="topbar">
 
-  <button class="ham-btn" id="btnMenu" title="Abrir / cerrar menú">&#9776;</button>
+<header class="topbar">
   <div class="logo">
-    <div id="escudo"><img src="/imagen/epet.png" alt="Escudo EPET 20"></div>
+    <div class="escudo"><img src="imagen/epet.jpg" alt="Escudo EPET 20"></div>
     <div class="txt"><b>LEGAJOS</b><span>EPET N°20</span></div>
   </div>
+
+  <button class="ham-btn" id="btnMenu" title="Abrir / cerrar menú">&#9776;</button>
 
   <div class="bienvenida-top">
     <b>¡Bienvenido/a, Secretaría!</b>
@@ -31,6 +32,7 @@
   <div class="userchip">
     <div class="av">S</div>
     <div class="txt"><b>Secretaría</b><span>Usuario</span></div>
+    <span class="chevron">&#8964;</span>
   </div>
 </header>
 <div class="layout">
