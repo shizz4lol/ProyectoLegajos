@@ -43,10 +43,24 @@ class ControladorLegajo extends Controller
         }
     }
     public function create(){
-
+        if (!Auth::check()) {
+            return redirect('login');
+        }
+        return view('bdconn.crear');
     }
-    public function store(){
-
+    public function store(Request $request){
+        if (!Auth::check()) {
+            return redirect('login');
+        }
+        $alumno = new Alumno;
+        $alumno = $request->input('alumno');
+        $alumno->save();
+        $madre = new Familiar;
+        $padre = new Familiar;
+        $madre = $request->input('madre');
+        $padre = $request->input('padre');
+        $madre->save();
+        $padre->save();
     }
     public function update(){
 

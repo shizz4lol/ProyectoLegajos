@@ -8,9 +8,9 @@ use App\Http\Controllers\ControladorLegajo;
 Route::get('/', function(){
     return view ('auth.login');
 })->name('login');
-Route::get('/crear', function(){
+/* Route::get('/crear', function(){
     return view ('bdconn.crear');
-})->name('crearlegajo');
+})->name('crearlegajo'); */
 
 Route::post('/salir', [ControladorLogin::class, 'CerrarSesion'])->name('logout');
 
@@ -18,4 +18,4 @@ Route::post('/validando', [ControladorLogin::class, 'IniciarSesion'])->name('val
 
 Route::get('/inicio', [ControladorLegajo::class, 'index'])->name('inicio');
 
-Route::resource('/legajos', ControladorLegajo::class);
+Route::resource('legajos', ControladorLegajo::class);

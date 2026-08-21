@@ -13,10 +13,13 @@ return new class extends Migration
     {
         Schema::create('familiars', function (Blueprint $table) {
             $table->id();
-            $table->integer('dni');
+            $table->integer('dni')->unique();
             $table->string('nombre');
             $table->string('apellido');
+            $table->string('telefono');
+            $table->string('domicilio');
             $table->string('parentezco');
+            $table->string('email');
             $table->timestamps();
         });
     }

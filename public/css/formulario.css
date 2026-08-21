@@ -1,7 +1,23 @@
 
-.form-header{
-  margin: 10px;
+:root{
+  --azul-oscuro:#12206b;
+  --azul-medio:#1e3a8a;
+  --azul-claro:#e8edfc;
+  --gris-texto:#334;
+  --gris-suave:#f4f6fc;
 }
+.btn-volver{
+  background-color: var(--azul-oscuro);
+  color: var(--azul-claro)
+}
+.btn-volver:hover{
+  background-color: var(--azul-medio);
+  color: var(--azul-claro)
+}
+.titulo-wrap *{
+  font-weight: 700;
+}
+/* CONTENIDO */
 .legajo-card{
   background:#fff;
   border:1px solid var(--gris-borde);
@@ -10,9 +26,17 @@
   max-width:520px;
   box-shadow:0 4px 18px rgba(18,32,107,.05);
   justify-self: center;
+  margin: 30px 0px;
 }
 
-.legajo-card-top{display:flex;align-items:flex-start;gap:16px;margin-bottom:18px;}
+.legajo-card-top{display:flex;align-items:flex-start;gap:16px;margin:18px;}
+.legajo-card h2{
+  margin-bottom: 30px;
+}
+.padres-card{
+  display: flex;
+  justify-content: space-evenly;
+}
 .avatar-generico{
   width:58px;height:58px;border-radius:50%;
   background:#eef0f6;color:#9aa1b8;

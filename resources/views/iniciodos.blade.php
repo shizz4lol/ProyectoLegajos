@@ -49,7 +49,7 @@
       </div>
       <div class="item">
         <span class="ic"><img src="" alt="Crear"></span>
-        <a href="{{route('crearlegajo')}}"><span class="label">Crear legajo</span></a>
+        <a href="{{route('legajos.create')}}"><span class="label">Crear legajo</span></a>
       </div>
       <div id="salir" class="salir">
       <span class="ic"><img src="imagen/puerta.png" ></span>

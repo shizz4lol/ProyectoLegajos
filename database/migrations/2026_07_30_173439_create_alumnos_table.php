@@ -18,12 +18,12 @@ return new class extends Migration
             $table->integer('dni')->unique();
             $table->string('email');
             $table->integer('telefono')->nullable();
-            $table->string('domicilio');
-            $table->string('acta_nacimiento');
-            $table->string('inscripcion');
-            $table->string('constanciaregular');
-            $table->string('apto_herramientas');
-            $table->string('certificado7mo');
+            $table->date('fecha_nacimiento');
+            $table->string('acta_nacimiento')->nullable();
+            $table->string('inscripcion')->nullable();
+            $table->string('constanciaregular')->nullable();
+            $table->string('apto_herramientas')->nullable();
+            $table->string('certificado7mo')->nullable();
             $table->foreignId('id_curso')
             ->constrained('cursos', 'id')
             ->onDelete('cascade')

@@ -49,14 +49,13 @@
       </div>
       <div class="item">
         <span class="ic"><img src="imagen/mas.png" alt="Crear"></span>
-        <span class="label"><a href="{{route('crearlegajo')}}">Crear legajo</a></span>
+        <span class="label"><a href="{{route('legajos.create')}}">Crear legajo</a></span>
       </div>
       <div id="salir" class="salir">
       <span class="ic"><img src="imagen/puerta.png" ></span>
       <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#cierre">Cerrar Sesion</button>
       </div>
     </div>
-      
   </div>
 
   <div class="contenido">

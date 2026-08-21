@@ -170,15 +170,15 @@ header.topbar{
   font-size: large;
 }
 .modal-footer .btn-primary{
-  background-color: #a30b0b;
-  border-color: #a30b0b;
+  background-color: #a30b0b !important;
+  border-color: #a30b0b !important;
 }
 .modal-footer .btn-primary:hover{
-  background-color: #7c0d0d;
-  border-color: #7c0d0d;
+  background-color: #7c0d0d !important;
+  border-color: #7c0d0d !important;
 }
 #cierre  data-cell, #cierre button, #cierre .btn {
-  display: inline-block;
+  display: inline-block !important;
 }
 #salir button{
   justify-self: center;
