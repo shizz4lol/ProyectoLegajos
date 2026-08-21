@@ -18,10 +18,10 @@
   <form action="{{ route('validar') }}" method="POST">
     <h2>Inicio de sesion</h2>
     <div class="login-field">
-      <input type="text" placeholder="Rol" name="tipo_rol">
+      <input type="text" placeholder="Nombre de usuario" name="nombre" autocomplete="off">
     </div>
   <div class="login-field">
-    <input type="password" placeholder="Ingrese su clave" name="password">
+    <input type="password" placeholder="Ingrese su clave" name="password" autocomplete="off">
     <span class="icono">&#128274;</span>
   </div>
    <input type="submit" class="login-btn" value="Ingresar">

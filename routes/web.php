@@ -16,6 +16,6 @@ Route::post('/salir', [ControladorLogin::class, 'CerrarSesion'])->name('logout')
 
 Route::post('/validando', [ControladorLogin::class, 'IniciarSesion'])->name('validar'); 
 
-Route::get('/inicio', [ControladorLegajo::class, 'index'])->name('iniciouno');
+Route::get('/inicio', [ControladorLegajo::class, 'index'])->name('inicio');
 
 Route::resource('/legajos', ControladorLegajo::class);
