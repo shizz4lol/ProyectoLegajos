@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cargar Datos</title>
-    <link rel="stylesheet" href="{{asset('css/formulario.css')}}">
+<meta charset="UTF-8">
+<title>LEGAJOS - EPET N°20 - Crear Legajo</title>
+<link rel="stylesheet" href="legajo.css">
+<link rel="stylesheet" href="legajo-form.css">
 </head>
 <body>
-<header class="topbar">
 
-  <button class="ham-btn" id="btnMenu" title="Abrir / cerrar menú">&#9776;</button>
+<header class="topbar">
   <div class="logo">
-    <div id="escudo"><img src="/imagen/epet.png" alt="Escudo EPET 20"></div>
+    <div class="escudo"><img src="imagen/epet.jpg" alt="Escudo EPET 20"></div>
     <div class="txt"><b>LEGAJOS</b><span>EPET N°20</span></div>
   </div>
+
+  <button class="ham-btn" id="btnMenu" title="Abrir / cerrar menú">&#9776;</button>
 
   <div class="bienvenida-top">
     <b>¡Bienvenido/a, Secretaría!</b>
@@ -28,130 +29,138 @@
   <div class="userchip">
     <div class="av">S</div>
     <div class="txt"><b>Secretaría</b><span>Usuario</span></div>
+    <span class="chevron">&#8964;</span>
   </div>
 </header>
+
+<div class="layout">
+  <div class="sidebar" id="sidebar">
+    <div>
+      <div class="item">
+        <span class="ic"><img src="imagen/casita.png" alt="Inicio"></span>
+        <span class="label">Inicio</span>
+      </div>
+      <div class="item">
+        <span class="ic"><img src="imagen/hoja en blanco.png" alt="Cursos"></span>
+        <span class="label">Cursos</span>
+      </div>
+      <div class="item">
+        <span class="ic"><img src="imagen/usuario.png" alt="Alumnos"></span>
+        <span class="label">Alumnos</span>
+      </div>
+      <div class="item">
+        <span class="ic"><img src="imagen/hoja en blanco.png" alt="Legajos"></span>
+        <span class="label">Legajos Egresados</span>
+      </div>
+      <div class="item act">
+        <span class="ic">&#10133;</span>
+        <span class="label">Crear Legajo</span>
+      </div>
+    </div>
+    <a class="salir" href="">
+      <span class="ic"><img src="imagen/puerta.png" alt="Cerrar sesión"></span>
+      <span class="label">Cerrar sesión</span>
+    </a>
+  </div>
+
+  <div class="contenido">
+
     <div class="form-header">
-        <div class="titulo-wrap">
-            <div class="icono-cuadrado">
-                <i class="fa-solid fa-folder-plus"></i>
-            </div>
-            <div>
-                <h2>Crear nuevo Legajo</h2>
-                <p>Complete los datos correspondientes para dar de alta al alumno en el sistema.</p>
-            </div>
+      <div class="titulo-wrap">
+        <div class="icono-cuadrado">&#127891;</div>
+        <div>
+          <h2>Crear nuevo Legajo</h2>
+          <p>Cargá los datos del alumno recopilados de la planilla física</p>
         </div>
-        <button type="button" class="btn-volver" onclick="window.history.back()">
-            <i class="fa-solid fa-arrow-left"></i> Volver
-        </button>
+      </div>
+      <button class="btn-volver">&#8592; Volver</button>
     </div>
 
-    <!-- Tarjeta Principal del Formulario -->
-    <div class="legajo-card">
-        <form action="" method="POST" id="crear">
-            
-            <!-- Parte superior de la tarjeta (Avatar, Nombre y Badge Estado) -->
-            <div class="legajo-card-top">
-                <div class="avatar-generico">
-                    <i class="fa-solid fa-user"></i>
-                </div>
-                <div class="nombre-wrap">
-                    <label for="nombre_apellido">Nombre y Apellido <span class="req">*</span></label>
-                    <input type="text" id="nombre_apellido" name="nombre_apellido" class="input-nombre" placeholder="Ej: Juan Pérez" required autocomplete="off">
-                </div>
-                <span class="badge-estado">Activo</span>
-            </div>
+    <form class="legajo-card">
 
-            <!-- Filas del formulario con íconos estilo ficha de alumno -->
-            
-            <!-- DNI -->
-            <div class="campo-icono-form">
-                <span class="ic"><i class="fa-solid fa-address-card"></i></span>
-                <label for="dni">DNI <span class="req">*</span></label>
-                <input type="text" id="dni" name="dni" placeholder="Ej: 45.123.456" required>
-            </div>
+      <div class="legajo-card-top">
+        <div class="avatar-generico">&#128100;</div>
+        <div class="nombre-wrap">
+          <label>Apellido y Nombre <span class="req">*</span></label>
+          <input class="input-nombre" type="text" id="nfNombre" placeholder="Ej: Pérez Juan">
+        </div>
+        <span class="badge-estado">Activo</span>
+      </div>
 
-            <!-- Curso -->
-            <div class="campo-icono-form">
-                <span class="ic"><i class="fa-solid fa-graduation-cap"></i></span>
-                <label for="curso">Curso <span class="req">*</span></label>
-                <select id="curso" name="curso" required>
-                    <option value="" disabled selected>Seleccione un curso...</option>
-                    <option value="1° 1°">1° 1°</option>
-                    <option value="1° 2°">1° 2°</option>
-                    <option value="2° 1°">2° 1°</option>
-                    <option value="3° 1°">3° 1°</option>
-                    <option value="4° 1°">4° 1°</option>
-                    <option value="5° 1°">5° 1°</option>
-                    <option value="6° 3°">6° 3°</option>
-                </select>
-            </div>
+      <div class="campo-icono-form">
+        <span class="ic">&#128274;</span>
+        <label>DNI <span class="req">*</span></label>
+        <input type="text" id="nfDni" placeholder="45.123.456">
+      </div>
 
-            <!-- Fecha de Nacimiento -->
-            <div class="campo-icono-form">
-                <span class="ic"><i class="fa-solid fa-calendar-days"></i></span>
-                <label for="fecha_nacimiento">F. Nacimiento <span class="req">*</span></label>
-                <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
-            </div>
+      <div class="campo-icono-form">
+        <span class="ic">&#127891;</span>
+        <label>Curso <span class="req">*</span></label>
+        <select id="nfCurso">
+          <option value="" selected disabled>Seleccione un curso</option>
+          <option>1° 1° - Mañana</option>
+          <option>1° 2° - Tarde</option>
+          <option>2° 1° - Mañana</option>
+          <option>2° 2° - Tarde</option>
+          <option>3° 1° - Mañana</option>
+          <option>3° 2° - Tarde</option>
+          <option>4° 1° - Vespertino</option>
+          <option>5° 1° - Vespertino</option>
+          <option>6° 3° - Vespertino</option>
+        </select>
+      </div>
 
-            <!-- Domicilio -->
-            <div class="campo-icono-form">
-                <span class="ic"><i class="fa-solid fa-location-dot"></i></span>
-                <label for="domicilio">Domicilio <span class="req">*</span></label>
-                <input type="text" id="domicilio" name="domicilio" placeholder="Ej: Av. Argentina 123, Neuquén" required>
-            </div>
+      <div class="campo-icono-form">
+        <span class="ic">&#128197;</span>
+        <label>Nacimiento</label>
+        <input type="date" id="nfNacimiento">
+      </div>
 
-            <!-- Teléfono -->
-            <div class="campo-icono-form">
-                <span class="ic"><i class="fa-solid fa-phone"></i></span>
-                <label for="telefono">Teléfono <span class="req">*</span></label>
-                <input type="tel" id="telefono" name="telefono" placeholder="Ej: 299 123-4567" required>
-            </div>
+      <div class="campo-icono-form">
+        <span class="ic">&#128205;</span>
+        <label>Domicilio <span class="req">*</span></label>
+        <input type="text" id="nfDireccion" placeholder="Calle y número, localidad">
+      </div>
 
-            <!-- Tutor -->
-            <div class="campo-icono-form">
-                <span class="ic"><i class="fa-solid fa-user-group"></i></span>
-                <label for="tutor">Tutor / Responsable <span class="req">*</span></label>
-                <input type="text" id="tutor" name="tutor" placeholder="Ej: María Pérez (Madre)" required>
-            </div>
+      <div class="campo-icono-form">
+        <span class="ic">&#128222;</span>
+        <label>Teléfono <span class="req">*</span></label>
+        <input type="text" id="nfTel" placeholder="299 123-4567">
+      </div>
 
-            <!-- Email -->
-            <div class="campo-icono-form">
-                <span class="ic"><i class="fa-solid fa-envelope"></i></span>
-                <label for="email">Email <span class="req">*</span></label>
-                <input type="email" id="email" name="email" placeholder="Ej: juanperez@example.com" required>
-            </div>
+      <div class="campo-icono-form">
+        <span class="ic">&#128100;</span>
+        <label>Tutor <span class="req">*</span></label>
+        <input type="text" id="nfTutor" placeholder="Ej: María Pérez (Madre)">
+      </div>
 
-            <!-- Opción: Viene de otra escuela -->
-            <div class="otra-escuela-row">
-                <div class="check-row">
-                    <input type="checkbox" id="check_otra_escuela" name="check_otra_escuela" onchange="toggleOtraEscuela(this)">
-                    <label for="check_otra_escuela">¿Proviene de otra institución?</label>
-                </div>
-                <input type="text" id="escuela_origen" name="escuela_origen" placeholder="Nombre de la escuela de origen" style="display: none;">
-            </div>
+      <div class="campo-icono-form">
+        <span class="ic">&#9993;</span>
+        <label>Email</label>
+        <input type="email" id="nfEmail" placeholder="alumno@example.com">
+      </div>
 
-            <p class="form-hint">Los campos marcados con (<span class="req">*</span>) son obligatorios.</p>
+      <div class="otra-escuela-row">
+        <div class="check-row">
+          <input type="checkbox" id="nfOtraEscuelaCheck">
+          <label for="nfOtraEscuelaCheck" style="min-width:auto;">El alumno proviene de otra escuela</label>
+        </div>
+        <input type="text" id="nfEscuelaOrigen" placeholder="Escuela de origen (opcional)">
+      </div>
 
-            <!-- Botón para guardar -->
-            <button type="submit" class="btn-guardar-legajo">
-                <i class="fa-solid fa-floppy-disk"></i> Guardar Legajo
-            </button>
+      <div class="form-hint"><span class="req">*</span> Campos obligatorios del alumno y del adulto responsable.</div>
 
-        </form>
-    </div>
+      <button type="submit" class="btn-guardar-legajo">Guardar Legajo</button>
+    </form>
 
-    <!-- JS opcional para mostrar/ocultar el input de otra escuela -->
-    <script>
-        function toggleOtraEscuela(checkbox) {
-            const inputEscuela = document.getElementById('escuela_origen');
-            if (checkbox.checked) {
-                inputEscuela.style.display = 'block';
-                inputEscuela.focus();
-            } else {
-                inputEscuela.style.display = 'none';
-                inputEscuela.value = '';
-            }
-        }
-    </script>
+  </div>
+</div>
+
+<script>
+  document.getElementById('btnMenu').addEventListener('click', function(){
+    document.getElementById('sidebar').classList.toggle('colapsada');
+  });
+</script>
+
 </body>
 </html>
