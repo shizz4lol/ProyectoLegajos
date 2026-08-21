@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Legajo</title>
+   <meta charset="UTF-8">
+<title>LEGAJOS - EPET N°20 - Crear Legajo</title>
+<link rel="stylesheet" href="{{asset('css/general.css')}}">
 </head>
 <body>
  <header class="topbar">
