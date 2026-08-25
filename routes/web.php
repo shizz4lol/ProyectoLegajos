@@ -21,3 +21,22 @@ Route::post('/validando', [ControladorLogin::class, 'IniciarSesion'])->name('val
 Route::get('/inicio', [ControladorLegajo::class, 'index'])->name('inicio');
 
 Route::resource('legajos', ControladorLegajo::class);
+
+//RUTAS FAMILIARES:
+Route::post('/alumnos/{alumno}/familiares', [ControladorFamiliar::class, 'store'])
+    ->name('alumnos.familiares.store');
+
+Route::put('/alumnos/{alumno}/familiares/{familiar}', [ControladorFamiliar::class, 'update'])
+    ->name('alumnos.familiares.update');
+
+Route::delete('/alumnos/{alumno}/familiares/{familiar}', [ControladorFamiliar::class, 'destroy'])
+    ->name('alumnos.familiares.destroy');
+//RUTAS DOCUMENTOS:
+Route::post('/alumnos/{alumno}/documentos', [ControladorDocumento::class, 'store'])
+    ->name('alumnos.documentos.store');
+
+Route::put('/alumnos/{alumno}/documentos/{documento}', [ControladorDocumento::class, 'update'])
+    ->name('alumnos.documentos.update');
+
+Route::delete('/alumnos/{alumno}/documentos/{documento}', [ControladorDocumento::class, 'destroy'])
+    ->name('alumnos.documentos.destroy');

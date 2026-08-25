@@ -44,13 +44,10 @@
         <span class="label">Cursos</span>
       </div>
       <div class="item">
-        <span class="ic"><img src="imagen/usuario.png" alt="Alumnos"></span>
-        <span class="label">Alumnos</span>
-      </div>
-      <div class="item">
         <span class="ic"><img src="" alt="Crear"></span>
         <a href="{{route('legajos.create')}}"><span class="label">Crear legajo</span></a>
       </div>
+      
       <div id="salir" class="salir">
       <span class="ic"><img src="imagen/puerta.png" ></span>
       <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#cierre">Cerrar Sesion</button>
