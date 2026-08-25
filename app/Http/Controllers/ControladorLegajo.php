@@ -86,8 +86,7 @@ class ControladorLegajo extends Controller
             $padre->id
         ]);
     });
-    /* return redirect('inicio')->with('aviso', 'El legajo fue creado correctamente.'); */
-    return response('STORE FUNCIONA');
+    return redirect('inicio')->with('aviso', 'El legajo fue creado correctamente.');
     }
     public function update(){
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
    <meta charset="UTF-8">
 <title>LEGAJOS - EPET N°20 - Crear Legajo</title>
@@ -12,8 +12,8 @@
     <header class="topbar">
 
         <div class="logo">
-            <div class="escudo">
-                <img src="imagen/epet.jpg" alt="Escudo EPET 20">
+            <div id="escudo">
+                <img src="/imagen/epet.png" alt="Escudo EPET 20">
             </div>
 
             <div class="txt">
@@ -31,31 +31,30 @@
 
 
     <div class="layout">
-
-        <!-- Menú lateral -->
-        <div class="sidebar">
-
-            <div class="item">
-                <span>Inicio</span>
-            </div>
-
-            <div class="item">
-                <span>Cursos</span>
-            </div>
-
-            <div class="item">
-                <span>Alumnos</span>
-            </div>
-
-            <div class="item">
-                <span>Legajos Egresados</span>
-            </div>
-
-            <div class="item act">
-                <span>Crear Legajo</span>
-            </div>
-
-        </div>
+  <div class="sidebar" id="sidebar">
+    <div>
+      <div class="item act">
+        <span class="ic"><img src="imagen/casita.png" alt="Inicio"></span>
+        <span class="label"><a href="{{route('inicio')}}">Inicio</a></span>
+      </div>
+      <div class="item">
+        <span class="ic"><img src="imagen/hoja.png" alt="Cursos"></span>
+        <span class="label"><a href="{{route('curso')}}">Cursos</a></span>
+      </div>
+      <div class="item">
+        <span class="ic"><img src="imagen/usuario.png" alt="Alumnos"></span>
+        <span class="label">Alumnos</span>
+      </div>
+      <div class="item">
+        <span class="ic"><img src="imagen/mas.png" alt="Crear"></span>
+        <span class="label"><a href="{{route('legajos.create')}}">Crear legajo</a></span>
+      </div>
+      <div id="salir" class="salir">
+      <span class="ic"><img src="imagen/puerta.png" ></span>
+      <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#cierre">Cerrar Sesion</button>
+      </div>
+    </div>
+  </div>
 
 
         <!-- Contenido principal -->
@@ -215,7 +214,26 @@
                 <button type="submit">
                     Guardar Legajo
                 </button>
-
-
+                <div class="modal fade" id="cierre" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" >¿Desea salir?</h1>
+        <button type="button" class="btn-close" id="eliminar" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <p>Los cambios hechos seran permanentes pero debera ingresar nuevamente.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <form action="{{route('logout')}}" method="POST">
+        @csrf
+            <button type="submit" class="btn btn-primary">Cerrar Sesion</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -13,7 +13,7 @@
 
 <header class="topbar">
   <div class="logo">
-    <div class="escudo"><img src="imagen/epet.jpg" alt="Escudo EPET 20"></div>
+    <div id="escudo"><img src="/imagen/epet.png" alt="Escudo EPET 20"></div>
     <div class="txt"><b>LEGAJOS</b><span>EPET N°20</span></div>
   </div>
 

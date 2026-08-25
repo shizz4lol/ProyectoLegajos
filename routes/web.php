@@ -11,7 +11,9 @@ Route::get('/', function(){
 /* Route::get('/crear', function(){
     return view ('bdconn.crear');
 })->name('crearlegajo'); */
-
+Route::get('/curso', function(){
+    return view ('curso');
+})->name('curso');
 Route::post('/salir', [ControladorLogin::class, 'CerrarSesion'])->name('logout');
 
 Route::post('/validando', [ControladorLogin::class, 'IniciarSesion'])->name('validar'); 
