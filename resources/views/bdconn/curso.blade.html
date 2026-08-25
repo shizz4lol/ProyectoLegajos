@@ -8,59 +8,214 @@
 
 </head>
 <body>
- <header class="topbar">
-  <div class="logo">
-    <div class="escudo"><img src="imagen/epet.jpg" alt="Escudo EPET 20"></div>
-    <div class="txt"><b>LEGAJOS</b><span>EPET N°20</span></div>
-  </div>
+    <!-- Encabezado -->
+    <header class="topbar">
 
-  <button class="ham-btn" id="btnMenu" title="Abrir / cerrar menú">&#9776;</button>
+        <div class="logo">
+            <div class="escudo">
+                <img src="imagen/epet.jpg" alt="Escudo EPET 20">
+            </div>
 
-  <div class="bienvenida-top">
-    <b>¡Bienvenido/a, Secretaría!</b>
-    <span>Sistema de Gestión de Legajos</span>
-  </div>
+            <div class="txt">
+                <b>LEGAJOS</b>
+                <span>EPET N°20</span>
+            </div>
+        </div>
 
-  <div class="buscador">
-    <input type="text" placeholder="Buscar alumno...">
-    <span class="lupa">&#128269;</span>
-  </div>
+        <div class="bienvenida-top">
+            <b>¡Bienvenido/a, Secretaría!</b>
+            <span>Sistema de Gestión de Legajos</span>
+        </div>
 
-  <div class="userchip">
-    <div class="av">S</div>
-    <div class="txt"><b>Secretaría</b><span>Usuario</span></div>
-    <span class="chevron">&#8964;</span>
-  </div>
-</header>
+    </header>
 
-<div class="layout">
-  <div class="sidebar" id="sidebar">
-    <div>
-      <div class="item">
-        <span class="ic"><img src="imagen/casita.png" alt="Inicio"></span>
-        <span class="label">Inicio</span>
-      </div>
-      <div class="item">
-        <span class="ic"><img src="imagen/hoja en blanco.png" alt="Cursos"></span>
-        <span class="label">Cursos</span>
-      </div>
-      <div class="item">
-        <span class="ic"><img src="imagen/usuario.png" alt="Alumnos"></span>
-        <span class="label">Alumnos</span>
-      </div>
-      <div class="item">
-        <span class="ic"><img src="imagen/hoja en blanco.png" alt="Legajos"></span>
-        <span class="label">Legajos Egresados</span>
-      </div>
-      <div class="item act">
-        <span class="ic">&#10133;</span>
-        <span class="label">Crear Legajo</span>
-      </div>
-    </div>
-    <a class="salir" href="">
-      <span class="ic"><img src="imagen/puerta.png" alt="Cerrar sesión"></span>
-      <span class="label">Cerrar sesión</span>
-    </a>
-  </div>
+
+    <div class="layout">
+
+        <!-- Menú lateral -->
+        <div class="sidebar">
+
+            <div class="item">
+                <span>Inicio</span>
+            </div>
+
+            <div class="item">
+                <span>Cursos</span>
+            </div>
+
+            <div class="item">
+                <span>Alumnos</span>
+            </div>
+
+            <div class="item">
+                <span>Legajos Egresados</span>
+            </div>
+
+            <div class="item act">
+                <span>Crear Legajo</span>
+            </div>
+
+        </div>
+
+
+        <!-- Contenido principal -->
+        <main>
+
+            <!-- Navegación -->
+            <nav>
+                <a href="index.html">Inicio</a>
+                >
+                <a href="cursos.html">Cursos</a>
+                >
+                <span>6° 3°</span>
+            </nav>
+
+
+            <!-- Título -->
+            <header>
+
+                <h1>Legajo del Alumno</h1>
+
+                <p>Información completa del alumno</p>
+
+            </header>
+
+
+            <!-- FORMULARIO -->
+            <!--
+                action="legajo.php"
+                significa que cuando se envíe el formulario,
+                los datos van a legajo.php
+            -->
+            <form action="legajo.php" method="POST">
+
+
+                <!-- Datos personales -->
+                <section>
+
+                    <h2>Datos del alumno</h2>
+
+
+                    <label for="nombre">
+                        Nombre y apellido
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        placeholder="Nombre y apellido"
+                    >
+
+
+                    <label for="dni">
+                        DNI
+                    </label>
+
+                    <input
+                        type="text"
+                        id="dni"
+                        name="dni"
+                        placeholder="DNI"
+                    >
+
+
+                    <label for="curso">
+                        Curso
+                    </label>
+
+                    <input
+                        type="text"
+                        id="curso"
+                        name="curso"
+                        placeholder="Curso"
+                    >
+
+
+                    <label for="fecha">
+                        Fecha de nacimiento
+                    </label>
+
+                    <input
+                        type="date"
+                        id="fecha"
+                        name="fecha"
+                    >
+
+
+                    <label for="domicilio">
+                        Domicilio
+                    </label>
+
+                    <input
+                        type="text"
+                        id="domicilio"
+                        name="domicilio"
+                        placeholder="Domicilio"
+                    >
+
+
+                    <label for="telefono">
+                        Teléfono
+                    </label>
+
+                    <input
+                        type="text"
+                        id="telefono"
+                        name="telefono"
+                        placeholder="Teléfono"
+                    >
+
+
+                    <label for="tutor">
+                        Tutor
+                    </label>
+
+                    <input
+                        type="text"
+                        id="tutor"
+                        name="tutor"
+                        placeholder="Nombre del tutor"
+                    >
+
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Correo electrónico"
+                    >
+
+                </section>
+
+
+                <!-- Observaciones -->
+                <section>
+
+                    <h2>Observaciones</h2>
+
+                    <!--
+                        TEXTAREA sirve para escribir
+                        un texto más largo
+                    -->
+                    <textarea
+                        id="observaciones"
+                        name="observaciones"
+                        placeholder="Escriba las observaciones..."
+                    ></textarea>
+
+                </section>
+
+
+                <!-- Botón -->
+                <button type="submit">
+                    Guardar Legajo
+                </button>
+
+
 </body>
 </html>
