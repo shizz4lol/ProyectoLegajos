@@ -86,7 +86,7 @@
                 significa que cuando se envíe el formulario,
                 los datos van a legajo.php
             -->
-            <form action="legajo.php" method="POST">
+            <form action="" method="POST">
 
 
                 <!-- Datos personales -->
