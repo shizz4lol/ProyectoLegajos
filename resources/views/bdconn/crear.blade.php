@@ -66,6 +66,7 @@
             <div>
                 <h2>Crear nuevo Legajo</h2>
                 <p>Complete los datos correspondientes para dar de alta al alumno en el sistema.</p>
+                
             </div>
         </div>
         <button type="button" class="btn-volver" onclick="window.history.back()">
@@ -75,7 +76,7 @@
 
     <!-- Tarjeta Principal del Formulario -->
     
-    <form action="" method="POST" id="crear">
+    <form action="{{route('legajos.store')}}" method="POST" id="crear">
     @csrf
         <div class="legajo-card">
             <h2>Datos del Alumno/a</h2>
@@ -105,12 +106,12 @@
                 <label for="curso">Curso <span class="req">*</span></label>
                 <select id="curso" name="alumno[curso]" required>
                     <option value="" disabled selected>Seleccione un curso...</option>
-                    <option value="1">1°</option>
-                    <option value="2">2°</option>
-                    <option value="3">3°</option>
-                    <option value="4">4°</option>
-                    <option value="5">5°</option>
-                    <option value="6">6°</option>
+                    <option value="1°">1°</option>
+                    <option value="2°">2°</option>
+                    <option value="3°">3°</option>
+                    <option value="4°">4°</option>
+                    <option value="5°">5°</option>
+                    <option value="6°">6°</option>
                 </select>
             </div>
 
@@ -119,11 +120,12 @@
                 <label for="curso">Division <span class="req">*</span></label>
                 <select id="division" name="alumno[division]" required>
                     <option value="" disabled selected>Seleccione una division...</option>
-                    <option value="1">1°</option>
-                    <option value="2">2°</option>
-                    <option value="3">3°</option>
-                    <option value="4">4°</option>
-                    <option value="5">5°</option>
+                    <option value="1°">1°</option>
+                    <option value="2°">2°</option>
+                    <option value="3°">3°</option>
+                    <option value="4°">4°</option>
+                    <option value="5°">5°</option>
+                    <option value="6°">6°</option>
                 </select>
             </div>
             <!-- Fecha de Nacimiento -->
@@ -133,12 +135,6 @@
                 <input type="date" id="fecha_nacimiento" name="alumno[fecha_nacimiento]" required>
             </div>
 
-            <!-- Domicilio -->
-            <div class="campo-icono-form">
-                <span class="ic"><i class="fa-solid fa-location-dot"></i></span>
-                <label for="domicilio">Domicilio <span class="req">*</span></label>
-                <input type="text" id="domicilio" name="alumno[domicilio]" placeholder="Ej: Av. Argentina 123, Neuquén" required>
-            </div>
 
             <!-- Teléfono -->
             <div class="campo-icono-form">

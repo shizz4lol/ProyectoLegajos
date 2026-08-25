@@ -13,10 +13,15 @@ class Alumno extends Model
         'nombre',
         'apellido',
         'dni',
+        'email',
+        'telefono',
+        'fecha_nacimiento',
         'acta_nacimiento',
         'inscripcion',
         'constanciaregular',
-        'apto_herramientas'
+        'apto_herramientas',
+        'certificado7mo',
+        'id_curso'
     ];
     public function familiares(): BelongsToMany{
         return $this->belongsToMany(

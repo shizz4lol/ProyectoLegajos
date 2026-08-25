@@ -64,7 +64,7 @@
       <p class="sub">Panel principal · Resumen general del sistema</p>
       <p class="tip"></p>
     </div>
-
+    <p id="aviso">{{ session('aviso') }}</p>
     <div class="stats-row" style="margin-bottom:22px;">
       <div class="stat-box blue">
         <div class="ic"><img src="imagen/usuario.png" alt=""></div>

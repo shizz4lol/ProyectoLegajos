@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Alumno;
 use App\Models\Documento;
 use App\Models\Familiar;
-use Illuminate\Http\Request;
+use App\Models\Curso;
+use App\Models\Division;
+
+
 
 class ControladorLegajo extends Controller
 {  
@@ -44,23 +49,45 @@ class ControladorLegajo extends Controller
     }
     public function create(){
         if (!Auth::check()) {
-            return redirect('login');
+            return redirect('/');
         }
         return view('bdconn.crear');
     }
     public function store(Request $request){
-        if (!Auth::check()) {
-            return redirect('login');
-        }
-        $alumno = new Alumno;
-        $alumno = $request->input('alumno');
-        $alumno->save();
-        $madre = new Familiar;
-        $padre = new Familiar;
-        $madre = $request->input('madre');
-        $padre = $request->input('padre');
-        $madre->save();
-        $padre->save();
+    
+    if (!Auth::check()) {
+        return redirect('/');
+    }
+
+    $datosAlumno = $request->input('alumno');
+    $curso = $datosAlumno['curso'];
+    $division = $datosAlumno['division'];
+
+    unset($datosAlumno['curso'], $datosAlumno['division']);
+    $curso = Curso::where('curso', $curso)->firstOrFail();
+    $division = Division::where('division', $division)->firstOrFail();
+    $cursoDivision = DB::table('cursosXdivisions')
+        ->where('id_curso', $curso->id)
+        ->where('id_division', $division->id)
+        ->first();
+    if (!$cursoDivision) {
+        return redirect('inicio')
+            ->with('aviso', 'La combinación de curso y división no existe.');
+    }
+    
+    $datosAlumno['id_curso'] = $curso->id;
+
+    DB::transaction(function () use ($datosAlumno, $request) {
+        $alumno = Alumno::create($datosAlumno);
+        $madre = Familiar::create($request->input('madre'));
+        $padre = Familiar::create($request->input('padre'));
+        $alumno->familiares()->attach([
+            $madre->id,
+            $padre->id
+        ]);
+    });
+    /* return redirect('inicio')->with('aviso', 'El legajo fue creado correctamente.'); */
+    return response('STORE FUNCIONA');
     }
     public function update(){
 

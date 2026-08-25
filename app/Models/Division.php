@@ -14,6 +14,6 @@ class Division extends Model
             'cursosXdivisions',
             'id_division',
             'id_curso'
-        )->withPivot('codigo', 'turno');
+        )->withPivot('turno');
     }
 }

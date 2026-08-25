@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('apellido');
             $table->integer('dni')->unique();
             $table->string('email');
-            $table->integer('telefono')->nullable();
+            $table->string('telefono')->nullable();
             $table->date('fecha_nacimiento');
             $table->string('acta_nacimiento')->nullable();
             $table->string('inscripcion')->nullable();

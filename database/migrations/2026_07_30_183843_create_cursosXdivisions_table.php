@@ -8,8 +8,7 @@ return new class extends Migration
 {
     
     public function up(): void{
-        Schema::create('cursosXdivisions', function (Blueprint $table) {
-            $table->string('codigo',12);            
+        Schema::create('cursosXdivisions', function (Blueprint $table) {           
             $table->string('turno');
             $table->foreignId('id_curso')
             ->constrained('cursos','id')
