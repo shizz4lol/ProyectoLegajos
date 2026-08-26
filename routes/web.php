@@ -10,12 +10,10 @@ use App\Http\Controllers\ControladorDocumento;
 Route::get('/', function(){
     return view ('auth.login');
 })->name('login');
-Route::get('/alumno/{alumno}', function(){
+Route::get('/alumno', function(){
     return view ('bdconn.alumno');
 })->name('alumno');
-Route::get('/curso', function(){
-    return view ('curso');
-})->name('curso');
+
 Route::post('/salir', [ControladorLogin::class, 'CerrarSesion'])->name('logout');
 
 Route::post('/validando', [ControladorLogin::class, 'IniciarSesion'])->name('validar'); 
@@ -23,9 +21,9 @@ Route::post('/validando', [ControladorLogin::class, 'IniciarSesion'])->name('val
 Route::get('/inicio', [ControladorLegajo::class, 'index'])->name('inicio');
 
 Route::resource('legajos', ControladorLegajo::class);
-
-Route::post('/inicioprece', [ControladorLegajo::class, 'prece'])->name('legajos.prece');
-
+Route::get('/curso', [ControladorLegajo::class, 'curso'])->name('curso');
+Route::post('/validarcurso', [ControladorLegajo::class, 'prece'])->name('legajos.prece');
+Route::get('/inicio3', [ControladorLegajo::class, 'inicio3'])->name('inicio3');
 //RUTAS FAMILIARES:
 Route::post('/alumnos/{alumno}/familiares', [ControladorFamiliar::class, 'store'])
     ->name('alumnos.familiares.store');

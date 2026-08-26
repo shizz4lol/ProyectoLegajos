@@ -1,72 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
-
     <title>LEGAJOS - EPET N°20 - Crear Legajo</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-sRIlkxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-          crossorigin="anonymous">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIlkxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/general.css')}}">
 </head>
 
 <body>
+<header class="topbar">
 
-    <div class="familiar"></div>
+  <button class="ham-btn" id="btnMenu" title="Abrir / cerrar menú">&#9776;</button>
+  <div class="logo">
+    <div id="escudo"><img src="/imagen/epet.png" alt="Escudo EPET 20"></div>
+    <div class="txt"><b>LEGAJOS</b><span>EPET N°20</span></div>
+  </div>
 
-    <header class="topbar">
+  <div class="bienvenida-top">
+    <b>¡Bienvenido/a, Jefe!</b>
+    <span>Sistema de Gestión de Legajos</span>
+  </div>
 
-        <div class="logo">
+  <div class="buscador">
+    <input type="text" placeholder="Buscar alumno...">
+    <span class="lupa">&#128269;</span>
+  </div>
 
-            <div class="escudo">
-                <img src="imagen/epet.jpg" alt="Escudo EPET 20">
-            </div>
+  <div class="userchip">
+    <div class="av">S</div>
+    <div class="txt"><b>Jefe de Preceptores</b><span>Usuario</span></div>
+  </div>
+</header>
 
-            <div class="txt">
-                <b>LEGAJOS</b>
-                <span>EPET N°20</span>
-            </div>
-
-        </div>
-
-        <div class="bienvenida-top">
-
-            <b>¡Bienvenido/a, Secretaría!</b>
-
-            <span>Sistema de Gestión de Legajos</span>
-
-        </div>
-
-    </header>
-
-
-    <div class="layout">
+<div class="layout">
   <div class="sidebar" id="sidebar">
     <div>
       <div class="item act">
         <span class="ic"><img src="/imagen/casita.png" alt="Inicio"></span>
-        <span class="label"><a href="{{route('inicio')}}">Inicio</a></span>
+        <span class="label">Inicio</span>
       </div>
       <div class="item">
         <span class="ic"><img src="/imagen/hoja.png" alt="Cursos"></span>
-        <span class="label"><a href="{{route('curso')}}">Cursos</a></span>
+        <span class="label">Cursos</span>
       </div>
       <div class="item">
         <span class="ic"><img src="/imagen/mas.png" alt="Crear"></span>
-        <span class="label"><a href="{{route('legajos.create')}}">Crear legajo</a></span>
+        <a href="{{route('legajos.create')}}"><span class="label">Crear legajo</span></a>
       </div>
-      <div class="item">
-        <span class="ic"><img src="imagen/gorro.png" alt="Egresados"></span>
-        <span class="label">Legajos de Egresados</span>
-      </div>
-      <div class="item">
-        <span class="ic"><img src="" alt="Archivados"></span>
-        <span class="label">Legajos Archivados</span>
-      </div>
+      
       <div id="salir" class="salir">
       <span class="ic"><img src="/imagen/puerta.png" ></span>
       <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#cierre">Cerrar Sesion</button>
@@ -74,17 +55,9 @@
     </div>
   </div>
 
+<div class="contenido">
 
         <main>
-
-            <nav>
-                <a href="{{route('inicio')}}">Inicio</a>
-                >
-                <a href="{{route('curso')}}">Cursos</a>
-                >
-                <span>6° 3°</span>
-
-            </nav>
 
 
             <header>
@@ -95,7 +68,7 @@
 
             </header>
 
-            <form action="legajo.php" method="POST">
+            <form action="" method="POST">
                 <section>
 
                     <h2>Datos del alumno</h2>
@@ -214,7 +187,8 @@
                 <button type="submit">
                     Guardar Legajo
                 </button>
-                <div class="modal fade" id="cierre" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+<div class="modal fade" id="cierre" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">

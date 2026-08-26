@@ -37,7 +37,7 @@
     <div>
       <div class="item act">
         <span class="ic"><img src="imagen/casita.png" alt="Inicio"></span>
-        <span class="label">Inicio</span>
+        <span class="label"><a href="{{route('inicio3')}}">Inicio</a></span>
       </div>
       <div class="item">
         <span class="ic"><img src="imagen/hoja.png" alt="Curso"></span>
@@ -66,7 +66,7 @@
       </div>
       <div class="stat-box purple">
         <div class="ic"></div>
-        <div><div class="num">24</div><div class="lbl">Documentos subidos al sistema</div></div>
+        <div><div class="num">{{ $alumnos->sum(fn($alumno) => $alumno->documentos->count()) }}</div><div class="lbl">Documentos subidos al sistema</div></div>
       </div>
     </div>
 
@@ -75,22 +75,11 @@
 
     <div class="cursos-cols">
       <div class="curso-col" data-turno="manana">
-        <div class="titulo-col"><span class="dot manana"></span>Turno Mañana</div>
-        <div class="curso-fila"><span>1° 1°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>1° 2°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>1° 3°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>1° 4°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>1° 5°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>2° 1°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>2° 2°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>2° 3°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>2° 4°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>2° 5°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>3° 1°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>3° 2°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>3° 3°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>3° 4°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>3° 5°</span><span class="flecha">›</span></div>
+        <p>{{$curso->curso}}{{$division->division}}</p>
+        <div class="titulo-col"><span class="dot manana"></span>Turno {{$cursoDivision->turno}}</div>
+        @foreach ($alumnos as $alumno)
+          <div class="curso-fila"><span>{{ $alumno->nombre }} {{ $alumno->apellido }}</span><span class="flecha">›</span></div>
+        @endforeach
       </div>
 
     </div>

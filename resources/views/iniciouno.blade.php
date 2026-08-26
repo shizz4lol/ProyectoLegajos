@@ -76,7 +76,7 @@
       </div>
       <div class="stat-box purple">
         <div class="ic"><img src="imagen/hoja.png" alt=""></div>
-        <div><div class="num">22</div><div class="lbl">Documentos subidos al sistema</div></div>
+        <div><div class="num">{{ $alumnos->sum(fn($alumno) => $alumno->documentos->count()) }}</div><div class="lbl">Documentos subidos al sistema</div></div>
       </div>
     </div>
 

@@ -70,7 +70,7 @@
       </div>
       <div class="stat-box purple">
         <div class="ic"></div>
-        <div><div class="num">24</div><div class="lbl">Documentos subidos al sistema</div></div>
+        <div><div class="num">{{ $alumnos->sum(fn($alumno) => $alumno->documentos->count()) }}</div><div class="lbl">Documentos subidos al sistema</div></div>
       </div>
     </div>
 

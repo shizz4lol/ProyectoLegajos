@@ -466,7 +466,7 @@ body {
 
 .sidebar {
     width: 230px;
-    background: #ffffff;
+    background: var(--azul-oscuro);
     border-right: 1px solid #ddd;
 
     padding: 20px 12px;

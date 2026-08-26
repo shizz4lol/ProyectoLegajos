@@ -22,36 +22,65 @@ class ControladorLegajo extends Controller
         ])->get();
         return $legajos;
     }
+    public function curso(){
+        $alumnos = $this->def();
+        return view('curso', compact('alumnos'));
+    }
     public function prece(Request $request){
         if (!Auth::check()) {
-        return redirect('/');
+            return redirect('/');
+        }
+        $ingresoPreceptor = $request->input('prece');
+
+        $curso = Curso::where('curso', $ingresoPreceptor['curso'])->first();
+        $division = Division::where('division', $ingresoPreceptor['division'])->first();
+
+        $cursoDivision = DB::table('cursosXdivisions')
+            ->where('id_curso', $curso->id)
+            ->where('id_division', $division->id)
+            ->first();
+
+        if (!$cursoDivision) {
+            return redirect('/')
+                ->with('error', 'La combinación de curso y división no existe.');
+        }
+        session([
+            'prece_curso' => $curso->id,
+            'prece_division' => $division->id
+        ]);
+
+        return redirect()->route('inicio3');
     }
-    $ingresoPreceptor = $request->input('prece');
 
-    $curso = Curso::where('curso', $ingresoPreceptor['curso'])->first();
-    $division = Division::where('division', $ingresoPreceptor['division'])->first();
+    public function inicio3(){
+        if (!Auth::check()) {
+            return redirect('/');
+        }
 
-    $cursoDivision = DB::table('cursosXdivisions')
-        ->where('id_curso', $curso->id)
-        ->where('id_division', $division->id)
-        ->exists();
+        $id_curso = session('prece_curso');
+        $id_division = session('prece_division');
 
-    if (!$cursoDivision) {
-        return redirect('/')
-            ->with('error', 'La combinación de curso y división no existe.');
+        $curso = Curso::find($id_curso);
+        $division = Division::find($id_division);
+
+        $cursoDivision = DB::table('cursosXdivisions')
+            ->where('id_curso', $id_curso)
+            ->where('id_division', $id_division)
+            ->first();
+
+        $alumnos = Alumno::with([
+            'familiares',
+            'documentos',
+            'curso',
+            'division'
+        ])
+        ->where('id_curso', $id_curso)
+        ->where('id_division', $id_division)
+        ->get();
+
+        return view('iniciotres',compact('alumnos', 'curso', 'division', 'cursoDivision'));
     }
-    $alumnos = Alumno::with([
-        'familiares',
-        'documentos',
-        'curso',
-        'division'
-    ])
-    ->where('id_curso', $curso->id)
-    ->where('id_division', $division->id)
-    ->get();
-
-    return view('iniciotres', compact('alumnos', 'curso', 'division'));
-    }
+/*  -------------------FUNCIONES CRUD/RESOURCE-------------------  */
     public function index(){
         $alumnos = $this->def();
         $rol = session('rol');

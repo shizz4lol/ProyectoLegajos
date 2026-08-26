@@ -11,7 +11,7 @@
 
 <header class="topbar">
   <div class="logo">
-    <div class="escudo"><img src="imagen/epet.jpg" alt="Escudo EPET 20"></div>
+    <div class="escudo"><img src="/imagen/epet.png" alt="Escudo EPET 20"></div>
     <div class="txt"><b>LEGAJOS</b><span>EPET N°20</span></div>
   </div>
 
@@ -39,15 +39,11 @@
     <div>
       <div class="item">
         <span class="ic"><img src="imagen/casita.png" alt="Inicio"></span>
-        <span class="label">Inicio</span>
+        <span class="label"><a href="{{route('inicio')}}">Inicio</a></span>
       </div>
       <div class="item act">
         <span class="ic"><img src="imagen/hoja en blanco.png" alt="Cursos"></span>
         <span class="label">Cursos</span>
-      </div>
-      <div class="item">
-        <span class="ic"><img src="imagen/usuario.png" alt="Alumnos"></span>
-        <span class="label">Alumnos</span>
       </div>
       <div class="item">
         <span class="ic"><img src="imagen/hoja en blanco.png" alt="Legajos"></span>
@@ -58,10 +54,10 @@
         <span class="label">Crear Legajo</span>
       </div>
     </div>
-    <a class="salir" href="">
-      <span class="ic"><img src="imagen/puerta.png" alt="Cerrar sesión"></span>
-      <span class="label">Cerrar sesión</span>
-    </a>
+    <div id="salir" class="salir">
+      <span class="ic"><img src="imagen/puerta.png" ></span>
+      <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#cierre">Cerrar Sesion</button>
+      </div>
   </div>
 
   <div class="contenido">
@@ -103,7 +99,7 @@
           <th>Acciones</th>
         </tr>
       </thead>
-      <!-- <tbody>
+      <tbody>
     @foreach ($alumnos as $indice => $alumno)
         <tr>
             <td class="col-numero">{{ $indice + 1 }}</td>
@@ -147,7 +143,7 @@
             </td>
         </tr>
     @endforeach
-</tbody> -->
+</tbody>
     </table>
 
   </div>
