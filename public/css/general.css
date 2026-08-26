@@ -231,7 +231,7 @@ h2.section-title{color:var(--azul-oscuro);font-size:18px;margin:0 0 3px;display:
 /* ================= COLUMNAS DE CURSOS POR TURNO ================= */
 .cursos-cols{display:flex;grid-template-columns:1fr 1fr 1fr;gap:18px; justify-content: space-evenly; }
 .curso-col{
-  max-width: 400px;
+  width: 400px;
   background:#fff;
   border:2px solid var(--gris-borde);
   border-radius:12px;

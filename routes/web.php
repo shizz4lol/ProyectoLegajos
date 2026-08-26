@@ -24,7 +24,7 @@ Route::get('/inicio', [ControladorLegajo::class, 'index'])->name('inicio');
 
 Route::resource('legajos', ControladorLegajo::class);
 
-Route::post('/validarcurso', [ControladorLegajo::class, 'prece'])->name('legajos.prece');
+Route::post('/inicioprece', [ControladorLegajo::class, 'prece'])->name('legajos.prece');
 
 //RUTAS FAMILIARES:
 Route::post('/alumnos/{alumno}/familiares', [ControladorFamiliar::class, 'store'])
