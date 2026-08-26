@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>LEGAJOS - EPET N°20 - Crear Legajo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIlkxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('css/general.css')}}">
+<meta charset="UTF-8">
+<title>LEGAJOS - EPET N°20 - Secretaria</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<link rel="stylesheet" href="{{asset('css/general.css')}}">
 </head>
-
 <body>
+
 <header class="topbar">
 
   <button class="ham-btn" id="btnMenu" title="Abrir / cerrar menú">&#9776;</button>
@@ -36,39 +36,28 @@
   <div class="sidebar" id="sidebar">
     <div>
       <div class="item act">
-        <span class="ic"><img src="/imagen/casita.png" alt="Inicio"></span>
+        <span class="ic"><img src="imagen/casita.png" alt="Inicio"></span>
         <span class="label">Inicio</span>
       </div>
       <div class="item">
-        <span class="ic"><img src="/imagen/hoja.png" alt="Cursos"></span>
+        <span class="ic"><img src="imagen/hoja.png" alt="Cursos"></span>
         <span class="label">Cursos</span>
       </div>
       <div class="item">
-        <span class="ic"><img src="/imagen/mas.png" alt="Crear"></span>
+        <span class="ic"><img src="" alt="Crear"></span>
         <a href="{{route('legajos.create')}}"><span class="label">Crear legajo</span></a>
       </div>
       
       <div id="salir" class="salir">
-      <span class="ic"><img src="/imagen/puerta.png" ></span>
+      <span class="ic"><img src="imagen/puerta.png" ></span>
       <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#cierre">Cerrar Sesion</button>
       </div>
     </div>
+      
   </div>
 
-<div class="contenido">
-
-        <main>
-
-
-            <header>
-
-                <h1>Legajo del Alumno</h1>
-
-                <p>Información completa del alumno</p>
-
-            </header>
-
-            <form action="" method="POST">
+  <div class="contenido">
+  <form action="" method="POST">
                 <section>
 
                     <h2>Datos del alumno</h2>
@@ -187,7 +176,7 @@
                 <button type="submit">
                     Guardar Legajo
                 </button>
-</div>
+  </div>
 <div class="modal fade" id="cierre" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -208,6 +197,6 @@
     </div>
   </div>
 </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
