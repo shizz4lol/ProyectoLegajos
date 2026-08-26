@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-<title>LEGAJOS - EPET N°20 - Crear Legajo</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-<link rel="stylesheet" href="{{asset('css/general.css')}}">
+<html lang="es">
 
+<head>
+    <meta charset="UTF-8">
+
+    <title>LEGAJOS - EPET N°20 - Crear Legajo</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIlkxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{asset('css/general.css')}}">
 </head>
+
 <body>
-  <div class="familiar"></div>
-  
-      <header class="topbar">
+
+    <div class="familiar"></div>
+
+    <header class="topbar">
 
         <div class="logo">
+
             <div class="escudo">
                 <img src="imagen/epet.jpg" alt="Escudo EPET 20">
             </div>
@@ -21,11 +30,15 @@
                 <b>LEGAJOS</b>
                 <span>EPET N°20</span>
             </div>
+
         </div>
 
         <div class="bienvenida-top">
+
             <b>¡Bienvenido/a, Secretaría!</b>
+
             <span>Sistema de Gestión de Legajos</span>
+
         </div>
 
     </header>
@@ -61,21 +74,19 @@
     </div>
   </div>
 
-        <div class="Contenido"></div>
-        <!-- Contenido principal -->
+
         <main>
 
-            <!-- Navegación -->
             <nav>
                 <a href="{{route('inicio')}}">Inicio</a>
                 >
                 <a href="{{route('curso')}}">Cursos</a>
                 >
                 <span>6° 3°</span>
+
             </nav>
 
 
-            <!-- Título -->
             <header>
 
                 <h1>Legajo del Alumno</h1>
@@ -84,17 +95,7 @@
 
             </header>
 
-
-            <!-- FORMULARIO -->
-            <!--
-                action="legajo.php"
-                significa que cuando se envíe el formulario,
-                los datos van a legajo.php
-            -->
             <form action="legajo.php" method="POST">
-
-
-                <!-- Datos personales -->
                 <section>
 
                     <h2>Datos del alumno</h2>
@@ -197,15 +198,10 @@
                 </section>
 
 
-                <!-- Observaciones -->
                 <section>
 
                     <h2>Observaciones</h2>
 
-                    <!--
-                        TEXTAREA sirve para escribir
-                        un texto más largo
-                    -->
                     <textarea
                         id="observaciones"
                         name="observaciones"
@@ -215,7 +211,6 @@
                 </section>
 
 
-                <!-- Botón -->
                 <button type="submit">
                     Guardar Legajo
                 </button>
