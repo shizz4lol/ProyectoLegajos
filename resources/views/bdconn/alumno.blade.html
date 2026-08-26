@@ -220,52 +220,54 @@
     </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-FKyoEForCGlyvwxHj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-            crossorigin="anonymous">
-    </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwxHj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous">
+</script>
+
+<script>
+
+    // Botón hamburguesa
+    document.getElementById('btnMenu').addEventListener('click', function(){
+
+        document.getElementById('sidebar').classList.toggle('colapsada');
+
+    });
 
 
-    <script>
+    // Botones de los alumnos
+    document.querySelectorAll('.accion-btn').forEach(function(boton){
 
-        document.querySelector('form').addEventListener('submit', function(event) {
+        boton.addEventListener('click', function(){
 
-            var nombre = document.getElementById('nombre').value.trim();
-            var dni = document.getElementById('dni').value.trim();
-            var curso = document.getElementById('curso').value.trim();
+            var fila = boton.closest('tr');
 
-            if (nombre === '' || dni === '' || curso === '') {
+            var numeroAlumno = fila.querySelector('.col-numero').textContent.trim();
 
-                event.preventDefault();
+            var accion = boton.getAttribute('title');
 
-                alert('Por favor, complete el nombre, DNI y curso del alumno.');
+
+            // Ver legajo del alumno
+            if(accion === 'Ver legajo'){
+
+                window.location.href = 'legajo.html?alumno=' + numeroAlumno;
+
+            }
+
+
+            // Editar legajo
+            if(accion === 'Editar legajo'){
+
+                window.location.href = 'legajo.html?alumno=' + numeroAlumno;
 
             }
 
         });
 
+    });
 
-        document.getElementById('nombre').focus();
-
-        document.getElementById('dni').addEventListener('input', function() {
-
-            this.value = this.value.replace(/[^0-9]/g, '');
-
-        });
-
-
-        document.getElementById('observaciones').addEventListener('blur', function() {
-
-            if (this.value.trim() !== '') {
-
-                console.log('Se agregaron observaciones al legajo.');
-
-            }
-
-        });
-
-    </script>
+</script>
 
 </body>
-
 </html>
