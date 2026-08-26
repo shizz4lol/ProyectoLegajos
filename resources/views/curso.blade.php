@@ -207,102 +207,57 @@
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const btnMenu = document.getElementById("btnMenu");
-    const sidebar = document.getElementById("sidebar");
 
-    if (btnMenu && sidebar) {
-        btnMenu.addEventListener("click", function () {
-            sidebar.classList.toggle("cerrado");
-        });
-    }
 
-    const botonesAccion = document.querySelectorAll(".accion-btn");
+document.getElementById('btnMenu').addEventListener('click', function(){
+    document.getElementById('sidebar').classList.toggle('colapsada');
 
-    botonesAccion.forEach(function (boton) {
+});
 
-        boton.addEventListener("click", function () {
+document.querySelectorAll('.accion-btn').forEach(function(boton){
+    boton.addEventListener('click', function(){
 
-            const accion = boton.getAttribute("title");
-            
-            const fila = boton.closest("tr");
+        var accion = boton.getAttribute('title');
 
-            if (!fila) return;
+        if (accion === 'Ver legajo') {
+            alert('Ver legajo');
+        }
 
-            const numero = fila.querySelector(".col-numero");
+        if (accion === 'Editar legajo') {
+            alert('Editar legajo');
+        }
 
-            if (!numero) return;
-
-            const alumno = numero.textContent.trim();
-
-            if (accion === "Ver legajo") {
-                alert("Viendo el legajo del alumno N° " + alumno);
-            }
-
-            if (accion === "Editar legajo") {
-                alert("Editando el legajo del alumno N° " + alumno);
-            }
-
-            if (accion === "Descargar legajo") {
-                alert("Descargando el legajo del alumno N° " + alumno);
-            }
-
-        });
+        if (accion === 'Descargar legajo') {
+            alert('Descargar legajo');
+        }
 
     });
 
-    const buscadorCurso = document.querySelector(".buscador-curso input");
-    const botonBuscarCurso = document.querySelector(".btn-buscar-curso");
+});
+var buscador = document.querySelector('.buscador-curso input');
+var botonBuscar = document.querySelector('.btn-buscar-curso');
 
-    function buscarAlumno() {
+botonBuscar.addEventListener('click', function(){
 
-        if (!buscadorCurso) return;
+    var texto = buscador.value.toLowerCase();
 
-        const texto = buscadorCurso.value.toLowerCase().trim();
+    document.querySelectorAll('.tabla-curso tbody tr').forEach(function(fila){
 
-        const filas = document.querySelectorAll(".tabla-curso tbody tr");
+        if (fila.textContent.toLowerCase().includes(texto)) {
+            fila.style.display = '';
+        } else {
+            fila.style.display = 'none';
+        }
 
-        filas.forEach(function (fila) {
+    });
 
-            const contenido = fila.textContent.toLowerCase();
+});
+document.querySelector('.salir').addEventListener('click', function(event){
+    event.preventDefault();
 
-            if (texto === "" || contenido.includes(texto)) {
-                fila.style.display = "";
-            } else {
-                fila.style.display = "none";
-            }
+    if (confirm('¿Seguro que querés cerrar sesión?')) {
 
-        });
-
-    }
-
-    if (botonBuscarCurso) {
-        botonBuscarCurso.addEventListener("click", buscarAlumno);
-    }
-
-    if (buscadorCurso) {
-        buscadorCurso.addEventListener("keyup", function (event) {
-
-            if (event.key === "Enter") {
-                buscarAlumno();
-            }
-
-        });
-    }
-
-    const cerrarSesion = document.querySelector(".salir");
-    if (cerrarSesion) {
-
-        cerrarSesion.addEventListener("click", function (event) {
-
-            event.preventDefault();
-
-            const confirmar = confirm("¿Seguro que querés cerrar sesión?");
-
-            if (confirmar) {
-                alert("Sesión cerrada correctamente.");
-            }
-        });
+        alert('Sesión cerrada');
     }
 
 });
