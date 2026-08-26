@@ -63,5 +63,57 @@
     </a>
   </div>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+   <script>
+
+    const btnMenu = document.getElementById('btnMenu');
+    const sidebar = document.getElementById('sidebar');
+    if (btnMenu && sidebar) {
+        btnMenu.addEventListener('click', function () {
+            sidebar.classList.toggle('cerrado');
+        });
+    }
+
+    const items = document.querySelectorAll('.sidebar .item');
+    items.forEach(function (item) {
+
+        item.addEventListener('click', function () {
+
+            const texto = item.querySelector('.label').textContent.trim();
+
+            if (texto === 'Inicio') {
+                window.location.href = 'inicio.html';
+            }
+
+            if (texto === 'Cursos') {
+                window.location.href = 'cursos.html';
+            }
+
+            if (texto === 'Alumnos') {
+                window.location.href = 'alumnos.html';
+            }
+
+            if (texto === 'Legajos Egresados') {
+                window.location.href = 'legajos-egresados.html';
+            }
+
+            if (texto === 'Crear Legajo') {
+                window.location.href = 'crear-legajo.html';
+            }
+
+        });
+
+    });
+    const salir = document.querySelector('.salir');
+
+    if (salir) {
+        salir.addEventListener('click', function (event) {
+
+            event.preventDefault();
+
+            window.location.href = 'login.html';
+
+        });
+    }
+</script>
 </body>
 </html>
