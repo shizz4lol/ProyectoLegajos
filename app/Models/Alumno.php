@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\Division;
 class Alumno extends Model
 {
     protected $table = 'alumnos';
@@ -21,7 +22,8 @@ class Alumno extends Model
         'constanciaregular',
         'apto_herramientas',
         'certificado7mo',
-        'id_curso'
+        'id_curso',
+        'id_division',
     ];
     public function familiares(): BelongsToMany{
         return $this->belongsToMany(
@@ -36,5 +38,8 @@ class Alumno extends Model
     }
     public function curso(): BelongsTo{
     return $this->belongsTo(Curso::class, 'id_curso');
+    }
+    public function division(): BelongsTo{
+    return $this->belongsTo(Division::class, 'id_division');
     }
 }

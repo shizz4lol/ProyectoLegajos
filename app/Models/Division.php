@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany; 
+use Illuminate\Database\Eloquent\Relations\HasMany; 
 
 class Division extends Model
 {
@@ -15,5 +16,8 @@ class Division extends Model
             'id_division',
             'id_curso'
         )->withPivot('turno');
+    }
+    public function alumnos(): HasMany{
+    return $this->hasMany(Alumno::class,'id_division');
     }
 }

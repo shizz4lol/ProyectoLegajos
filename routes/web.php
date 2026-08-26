@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControladorAlumno;
 use App\Http\Controllers\ControladorLogin;
 use App\Http\Controllers\ControladorLegajo;
+use App\Http\Controllers\ControladorFamiliar;
+use App\Http\Controllers\ControladorDocumento;
 
 Route::get('/', function(){
     return view ('auth.login');
@@ -21,6 +23,8 @@ Route::post('/validando', [ControladorLogin::class, 'IniciarSesion'])->name('val
 Route::get('/inicio', [ControladorLegajo::class, 'index'])->name('inicio');
 
 Route::resource('legajos', ControladorLegajo::class);
+
+Route::post('/validarcurso', [ControladorLegajo::class, 'prece'])->name('legajos.prece');
 
 //RUTAS FAMILIARES:
 Route::post('/alumnos/{alumno}/familiares', [ControladorFamiliar::class, 'store'])

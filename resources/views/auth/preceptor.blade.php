@@ -15,7 +15,7 @@
 </header>
 
 <div class="login-wrap">
-  <form action="{{ route('validar') }}" method="POST">
+  <form action="{{ route('legajos.prece') }}" method="POST">
     <h2>Seleccione curso a visualizar:</h2>
     <div class="login-field">
     <label for="curso">Curso <span class="req">*</span></label>
