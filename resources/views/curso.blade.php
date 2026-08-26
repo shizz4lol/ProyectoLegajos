@@ -206,6 +206,107 @@
   </div>
 </div>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const btnMenu = document.getElementById("btnMenu");
+    const sidebar = document.getElementById("sidebar");
+
+    if (btnMenu && sidebar) {
+        btnMenu.addEventListener("click", function () {
+            sidebar.classList.toggle("cerrado");
+        });
+    }
+
+    const botonesAccion = document.querySelectorAll(".accion-btn");
+
+    botonesAccion.forEach(function (boton) {
+
+        boton.addEventListener("click", function () {
+
+            const accion = boton.getAttribute("title");
+            
+            const fila = boton.closest("tr");
+
+            if (!fila) return;
+
+            const numero = fila.querySelector(".col-numero");
+
+            if (!numero) return;
+
+            const alumno = numero.textContent.trim();
+
+            if (accion === "Ver legajo") {
+                alert("Viendo el legajo del alumno N° " + alumno);
+            }
+
+            if (accion === "Editar legajo") {
+                alert("Editando el legajo del alumno N° " + alumno);
+            }
+
+            if (accion === "Descargar legajo") {
+                alert("Descargando el legajo del alumno N° " + alumno);
+            }
+
+        });
+
+    });
+
+    const buscadorCurso = document.querySelector(".buscador-curso input");
+    const botonBuscarCurso = document.querySelector(".btn-buscar-curso");
+
+    function buscarAlumno() {
+
+        if (!buscadorCurso) return;
+
+        const texto = buscadorCurso.value.toLowerCase().trim();
+
+        const filas = document.querySelectorAll(".tabla-curso tbody tr");
+
+        filas.forEach(function (fila) {
+
+            const contenido = fila.textContent.toLowerCase();
+
+            if (texto === "" || contenido.includes(texto)) {
+                fila.style.display = "";
+            } else {
+                fila.style.display = "none";
+            }
+
+        });
+
+    }
+
+    if (botonBuscarCurso) {
+        botonBuscarCurso.addEventListener("click", buscarAlumno);
+    }
+
+    if (buscadorCurso) {
+        buscadorCurso.addEventListener("keyup", function (event) {
+
+            if (event.key === "Enter") {
+                buscarAlumno();
+            }
+
+        });
+    }
+
+    const cerrarSesion = document.querySelector(".salir");
+    if (cerrarSesion) {
+
+        cerrarSesion.addEventListener("click", function (event) {
+
+            event.preventDefault();
+
+            const confirmar = confirm("¿Seguro que querés cerrar sesión?");
+
+            if (confirmar) {
+                alert("Sesión cerrada correctamente.");
+            }
+        });
+    }
+
+});
+</script>
 </body>
 </html>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
