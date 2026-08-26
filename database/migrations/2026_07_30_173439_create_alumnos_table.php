@@ -28,6 +28,10 @@ return new class extends Migration
             ->constrained('cursos', 'id')
             ->onDelete('cascade')
             ->onUpdate('cascade');
+            $table->foreignId('id_division')
+            ->constrained('divisions', 'id')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
             $table->timestamps();
         });
     }

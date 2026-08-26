@@ -17,7 +17,7 @@
   </div>
 
   <div class="bienvenida-top">
-    <b>¡Bienvenido/a, Jefe!</b>
+    <b>¡Bienvenido/a, Preceptor!</b>
     <span>Sistema de Gestión de Legajos</span>
   </div>
 
@@ -28,7 +28,7 @@
 
   <div class="userchip">
     <div class="av">S</div>
-    <div class="txt"><b>Jefe de Preceptores</b><span>Usuario</span></div>
+    <div class="txt"><b>Preceptor/a</b><span>{{Auth::user()->nombre }}</span></div>
   </div>
 </header>
 
@@ -40,12 +40,8 @@
         <span class="label">Inicio</span>
       </div>
       <div class="item">
-        <span class="ic"><img src="imagen/hoja.png" alt="Cursos"></span>
+        <span class="ic"><img src="imagen/hoja.png" alt="Curso"></span>
         <span class="label">Cursos</span>
-      </div>
-      <div class="item">
-        <span class="ic"><img src="" alt="Crear"></span>
-        <a href="{{route('legajos.create')}}"><span class="label">Crear legajo</span></a>
       </div>
       
       <div id="salir" class="salir">
@@ -58,15 +54,15 @@
 
   <div class="contenido">
     <div class="panel-card">
-      <h3>¡Bienvenido/a! <span class="badge-rol Jefe">al panel de Jefatura</span></h3>
-      <p class="sub">Panel principal · Resumen general del sistema</p>
+      <h3>¡Bienvenido/a! <span class="badge-rol Jefe">al panel de Preceptoria</span></h3>
+      <p class="sub">Panel principal.</p>
       <p class="tip"></p>
     </div>
 
     <div class="stats-row" style="margin-bottom:22px;">
       <div class="stat-box blue">
         <div class="ic"><img src="imagen/usuario.png" alt=""></div>
-        <div><div class="num">10</div><div class="lbl">Alumnos totales</div></div>
+        <div><div class="num">{{$alumnos->count()}}</div><div class="lbl">Alumnos totales</div></div>
       </div>
       <div class="stat-box purple">
         <div class="ic"></div>
@@ -97,43 +93,6 @@
         <div class="curso-fila"><span>3° 5°</span><span class="flecha">›</span></div>
       </div>
 
-      <div class="curso-col" data-turno="tarde">
-        <div class="titulo-col"><span class="dot tarde"></span>Turno Tarde</div>
-        <div class="curso-fila"><span>1° 1°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>1° 2°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>1° 3°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>1° 4°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>1° 5°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>2° 1°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>2° 2°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>2° 3°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>2° 4°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>2° 5°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>3° 1°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>3° 2°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>3° 3°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>3° 4°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>3° 5°</span><span class="flecha">›</span></div>
-      </div>
-
-      <div class="curso-col" data-turno="vespertino">
-        <div class="titulo-col"><span class="dot vespertino"></span>Turno Vespertino</div>
-        <div class="curso-fila"><span>4° 1°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>4° 2°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>4° 3°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>4° 4°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>4° 5°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>5° 1°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>5° 2°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>5° 3°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>5° 4°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>5° 5°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>6° 1°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>6° 2°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>6° 3°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>6° 4°</span><span class="flecha">›</span></div>
-        <div class="curso-fila"><span>6° 5°</span><span class="flecha">›</span></div>
-      </div>
     </div>
   </div>
 </div>

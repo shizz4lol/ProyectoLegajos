@@ -22,6 +22,36 @@ class ControladorLegajo extends Controller
         ])->get();
         return $legajos;
     }
+    public function prece(Request $request){
+        if (!Auth::check()) {
+        return redirect('/');
+    }
+    $ingresoPreceptor = $request->input('prece');
+
+    $curso = Curso::where('curso', $ingresoPreceptor['curso'])->first();
+    $division = Division::where('division', $ingresoPreceptor['division'])->first();
+
+    $cursoDivision = DB::table('cursosXdivisions')
+        ->where('id_curso', $curso->id)
+        ->where('id_division', $division->id)
+        ->exists();
+
+    if (!$cursoDivision) {
+        return redirect('/')
+            ->with('error', 'La combinación de curso y división no existe.');
+    }
+    $alumnos = Alumno::with([
+        'familiares',
+        'documentos',
+        'curso',
+        'division'
+    ])
+    ->where('id_curso', $curso->id)
+    ->where('id_division', $division->id)
+    ->get();
+
+    return view('iniciotres', compact('alumnos', 'curso', 'division'));
+    }
     public function index(){
         $alumnos = $this->def();
         $rol = session('rol');
@@ -34,10 +64,7 @@ class ControladorLegajo extends Controller
                     return view('iniciodos', compact ('alumnos'));
                     break;
                 case 'preceptor':
-                    /* $alumnos = Alumno::whereHas('curso.divisions', function ($query) use ($codigo) {
-                  $query->wherePivot('codigo', $codigo);
-                  })->get(); */
-                  return view('prueba');
+                  return view('auth.preceptor');
                     break;
                 default:
                 return view ('login');
@@ -54,7 +81,6 @@ class ControladorLegajo extends Controller
         return view('bdconn.crear');
     }
     public function store(Request $request){
-    
     if (!Auth::check()) {
         return redirect('/');
     }
@@ -64,30 +90,42 @@ class ControladorLegajo extends Controller
     $division = $datosAlumno['division'];
 
     unset($datosAlumno['curso'], $datosAlumno['division']);
+
     $curso = Curso::where('curso', $curso)->firstOrFail();
     $division = Division::where('division', $division)->firstOrFail();
+
     $cursoDivision = DB::table('cursosXdivisions')
         ->where('id_curso', $curso->id)
         ->where('id_division', $division->id)
         ->first();
+
     if (!$cursoDivision) {
         return redirect('inicio')
             ->with('aviso', 'La combinación de curso y división no existe.');
     }
-    
+
     $datosAlumno['id_curso'] = $curso->id;
+    $datosAlumno['id_division'] = $division->id;
 
     DB::transaction(function () use ($datosAlumno, $request) {
+
         $alumno = Alumno::create($datosAlumno);
-        $madre = Familiar::create($request->input('madre'));
-        $padre = Familiar::create($request->input('padre'));
+
+        $datosMadre = $request->input('madre');
+        $datosMadre['parentezco'] = 'Madre';
+        $madre = Familiar::create($datosMadre);
+        $datosPadre = $request->input('padre');
+        $datosPadre['parentezco'] = 'Padre';
+        $padre = Familiar::create($datosPadre);
+
         $alumno->familiares()->attach([
             $madre->id,
             $padre->id
         ]);
     });
-    return redirect('inicio')->with('aviso', 'El legajo fue creado correctamente.');
-    }
+    return redirect('inicio')
+        ->with('aviso', 'El legajo fue creado correctamente.');
+}
     public function update(){
 
     }

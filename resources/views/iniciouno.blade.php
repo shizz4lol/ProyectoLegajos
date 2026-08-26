@@ -28,7 +28,7 @@
 
   <div class="userchip">
     <div class="av">S</div>
-    <div class="txt"><b>Secretaría</b><span>Usuario</span></div>
+    <div class="txt"><b>Secretaría</b><span>{{Auth::user()->nombre }}</span></div>
   </div>
 </header>
 
@@ -44,12 +44,16 @@
         <span class="label"><a href="{{route('curso')}}">Cursos</a></span>
       </div>
       <div class="item">
-        <span class="ic"><img src="imagen/usuario.png" alt="Alumnos"></span>
-        <span class="label">Alumnos</span>
-      </div>
-      <div class="item">
         <span class="ic"><img src="imagen/mas.png" alt="Crear"></span>
         <span class="label"><a href="{{route('legajos.create')}}">Crear legajo</a></span>
+      </div>
+      <div class="item">
+        <span class="ic"><img src="imagen/gorro.png" alt="Egresados"></span>
+        <span class="label">Legajos de Egresados</span>
+      </div>
+      <div class="item">
+        <span class="ic"><img src="" alt="Archivados"></span>
+        <span class="label">Legajos Archivados</span>
       </div>
       <div id="salir" class="salir">
       <span class="ic"><img src="imagen/puerta.png" ></span>
@@ -68,7 +72,7 @@
     <div class="stats-row" style="margin-bottom:22px;">
       <div class="stat-box blue">
         <div class="ic"><img src="imagen/usuario.png" alt=""></div>
-        <div><div class="num">8</div><div class="lbl">Alumnos totales</div></div>
+        <div><div class="num">{{ $alumnos->count() }}</div><div class="lbl">Alumnos totales</div></div>
       </div>
       <div class="stat-box purple">
         <div class="ic"><img src="imagen/hoja.png" alt=""></div>
