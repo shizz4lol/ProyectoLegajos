@@ -8,9 +8,9 @@ use App\Http\Controllers\ControladorLegajo;
 Route::get('/', function(){
     return view ('auth.login');
 })->name('login');
-/* Route::get('/crear', function(){
-    return view ('bdconn.crear');
-})->name('crearlegajo'); */
+Route::get('/alumno/{alumno}', function(){
+    return view ('bdconn.alumno');
+})->name('alumno');
 Route::get('/curso', function(){
     return view ('curso');
 })->name('curso');

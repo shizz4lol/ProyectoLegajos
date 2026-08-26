@@ -22,6 +22,13 @@ class ControladorLegajo extends Controller
         ])->get();
         return $legajos;
     }
+    public function prece(Request $request){
+        if (!Auth::check()) {
+        return redirect('/');
+    }
+    $ingresoPreceptor = $request->input('prece');
+    
+    }
     public function index(){
         $alumnos = $this->def();
         $rol = session('rol');
@@ -34,10 +41,7 @@ class ControladorLegajo extends Controller
                     return view('iniciodos', compact ('alumnos'));
                     break;
                 case 'preceptor':
-                    /* $alumnos = Alumno::whereHas('curso.divisions', function ($query) use ($codigo) {
-                  $query->wherePivot('codigo', $codigo);
-                  })->get(); */
-                  return view('prueba');
+                  return view('preceptor');
                     break;
                 default:
                 return view ('login');
