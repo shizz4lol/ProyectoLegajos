@@ -1086,3 +1086,174 @@ textarea {
     }
 
 }
+/* =========================================================
+   VISTA DE SELECCIÓN DE CURSOS
+   ========================================================= */
+
+.seleccion-cursos {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.seleccion-cursos h2 {
+    color: #12206b;
+    font-size: 21px;
+    margin-bottom: 20px;
+}
+
+
+/* Contenedor de los años */
+
+.años-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+
+/* Tarjeta de cada año */
+
+.año-card {
+    background: #ffffff;
+    border: 1px solid #e1e4e8;
+    border-radius: 12px;
+    padding: 20px;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.05);
+
+    transition: 0.2s ease;
+}
+
+.año-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.10);
+}
+
+
+/* Título del año */
+
+.año-titulo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.año-titulo h3 {
+    margin: 0;
+
+    color: #12206b;
+
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.año-titulo span {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #1769d1;
+    color: white;
+
+    font-size: 21px;
+}
+
+
+/* Cursos que aparecen al abrir un año */
+
+.cursos-container {
+    display: none;
+
+    margin-top: 18px;
+
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+
+/* Mostrar cursos */
+
+.año-card.abierto .cursos-container {
+    display: grid;
+}
+
+
+/* Cambiar + por - */
+
+.año-card.abierto .año-titulo span {
+    font-size: 0;
+}
+
+.año-card.abierto .año-titulo span::after {
+    content: "−";
+    font-size: 21px;
+}
+
+
+/* Tarjeta individual del curso */
+
+.curso-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 55px;
+
+    padding: 10px;
+
+    background: #f5f8fc;
+
+    border: 1px solid #dbe2ea;
+    border-radius: 8px;
+
+    color: #12206b;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: 0.2s ease;
+}
+
+.curso-card:hover {
+    background: #1769d1;
+    color: white;
+
+    border-color: #1769d1;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .años-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .años-container {
+        grid-template-columns: 1fr;
+    }
+
+    .cursos-container {
+        grid-template-columns: 1fr;
+    }
+
+}
