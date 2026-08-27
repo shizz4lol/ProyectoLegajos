@@ -41,7 +41,7 @@
       </div>
       <div class="item">
         <span class="ic"><img src="imagen/hoja.png" alt="Curso"></span>
-        <span class="label">Cursos</span>
+        <span class="label"><a href="{{route('curso')}}">Ver curso</a></span>
       </div>
       
       <div id="salir" class="salir">

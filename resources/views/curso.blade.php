@@ -115,13 +115,17 @@
             <td class="col-acciones">
                 <div class="acciones-grupo">
 
-                    <button class="accion-btn" title="Ver legajo">
+                    
+                    <a href="{{ route('alumnos', $alumno) }}">
+                      <button class="accion-btn" title="Ver legajo">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"></path>
                             <circle cx="12" cy="12" r="3"></circle>
                         </svg>
                     </button>
+                    </a>
+                        
 
                     <button class="accion-btn" title="Editar legajo">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -157,7 +161,7 @@ document.getElementById('btnMenu').addEventListener('click', function(){
 
 });
 
-document.querySelectorAll('.accion-btn').forEach(function(boton){
+/* document.querySelectorAll('.accion-btn').forEach(function(boton){
     boton.addEventListener('click', function(){
 
         var accion = boton.getAttribute('title');
@@ -176,7 +180,7 @@ document.querySelectorAll('.accion-btn').forEach(function(boton){
 
     });
 
-});
+}); */
 var buscador = document.querySelector('.buscador-curso input');
 var botonBuscar = document.querySelector('.btn-buscar-curso');
 
@@ -193,15 +197,6 @@ botonBuscar.addEventListener('click', function(){
         }
 
     });
-
-});
-document.querySelector('.salir').addEventListener('click', function(event){
-    event.preventDefault();
-
-    if (confirm('¿Seguro que querés cerrar sesión?')) {
-
-        alert('Sesión cerrada');
-    }
 
 });
 </script>

@@ -53,129 +53,36 @@
       <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#cierre">Cerrar Sesion</button>
       </div>
     </div>
-      
-  </div>
+</div>
 
   <div class="contenido">
-  <form action="" method="POST">
-                <section>
+      <section>
+          <h2>Datos del alumno</h2>
 
-                    <h2>Datos del alumno</h2>
+          <label for="nombre">Nombre y apellido</label>
+          <p id="nombre">{{$alumno->nombre}} {{$alumno->apellido}}</p>
 
+          <label for="dni">DNI</label>
+          <p id="dni">{{$alumno->dni}}</p>
 
-                    <label for="nombre">
-                        Nombre y apellido
-                    </label>
+          <label for="curso">Curso</label>
+          <p id="curso">{{$alumno->curso->curso}} {{$alumno->division->division}}</p>
 
-                    <input
-                        type="text"
-                        id="nombre"
-                        name="nombre"
-                        placeholder="Nombre y apellido"
-                    >
+          <label for="fecha">Fecha de nacimiento</label>
+          <p id="">{{$alumno->fecha_nacimiento}}</p>
 
+          <label for="telefono">Teléfono</label>
+          <p id="">{{$alumno->telefono}}</p>
 
-                    <label for="dni">
-                        DNI
-                    </label>
-
-                    <input
-                        type="text"
-                        id="dni"
-                        name="dni"
-                        placeholder="DNI"
-                    >
+          <label for="email">Email</label>
+          <p id="">{{$alumno->email}}</p>
+      </section>
 
 
-                    <label for="curso">
-                        Curso
-                    </label>
-
-                    <input
-                        type="text"
-                        id="curso"
-                        name="curso"
-                        placeholder="Curso"
-                    >
-
-
-                    <label for="fecha">
-                        Fecha de nacimiento
-                    </label>
-
-                    <input
-                        type="date"
-                        id="fecha"
-                        name="fecha"
-                    >
-
-
-                    <label for="domicilio">
-                        Domicilio
-                    </label>
-
-                    <input
-                        type="text"
-                        id="domicilio"
-                        name="domicilio"
-                        placeholder="Domicilio"
-                    >
-
-
-                    <label for="telefono">
-                        Teléfono
-                    </label>
-
-                    <input
-                        type="text"
-                        id="telefono"
-                        name="telefono"
-                        placeholder="Teléfono"
-                    >
-
-
-                    <label for="tutor">
-                        Tutor
-                    </label>
-
-                    <input
-                        type="text"
-                        id="tutor"
-                        name="tutor"
-                        placeholder="Nombre del tutor"
-                    >
-
-
-                    <label for="email">
-                        Email
-                    </label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Correo electrónico"
-                    >
-
-                </section>
-
-
-                <section>
-
-                    <h2>Observaciones</h2>
-
-                    <textarea
-                        id="observaciones"
-                        name="observaciones"
-                        placeholder="Escriba las observaciones..."
-                    ></textarea>
-
-                </section>
-
-
-                <button type="submit">
-                    Guardar Legajo
-                </button>
+      <section>
+          <h2>Observaciones</h2>
+          <textarea id="observaciones" name="observaciones" placeholder="Escriba las observaciones..."></textarea>
+      </section>
   </div>
 <div class="modal fade" id="cierre" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">

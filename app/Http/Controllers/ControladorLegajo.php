@@ -22,6 +22,19 @@ class ControladorLegajo extends Controller
         ])->get();
         return $legajos;
     }
+    public function alumno(Alumno $alumno){
+        if (!Auth::check()) {
+            return redirect('/');
+        }
+        $alumno->load([
+            'familiares',
+            'documentos',
+            'curso',
+            'division'
+        ]);
+
+        return view('bdconn.alumno', compact('alumno'));
+    }
     public function curso(){
         $alumnos = $this->def();
         return view('curso', compact('alumnos'));

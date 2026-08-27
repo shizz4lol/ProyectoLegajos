@@ -24,6 +24,9 @@ Route::resource('legajos', ControladorLegajo::class);
 Route::get('/curso', [ControladorLegajo::class, 'curso'])->name('curso');
 Route::post('/validarcurso', [ControladorLegajo::class, 'prece'])->name('legajos.prece');
 Route::get('/inicio3', [ControladorLegajo::class, 'inicio3'])->name('inicio3');
+
+Route::get('/alumnos/{alumno}', [ControladorLegajo::class, 'alumno'])
+    ->name('alumnos');
 //RUTAS FAMILIARES:
 Route::post('/alumnos/{alumno}/familiares', [ControladorFamiliar::class, 'store'])
     ->name('alumnos.familiares.store');
