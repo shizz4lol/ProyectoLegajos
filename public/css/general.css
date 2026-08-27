@@ -792,3 +792,297 @@ textarea {
     }
 
 }
+/* =========================================================
+   VISTA DEL LEGAJO DEL ALUMNO
+   ========================================================= */
+
+.legajo-vista {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* Encabezado del legajo */
+
+.legajo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.legajo-titulo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.legajo-icono {
+    width: 56px;
+    height: 56px;
+    background: #1769d1;
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: 25px;
+}
+
+.legajo-titulo h1 {
+    margin: 0;
+    color: #12206b;
+    font-size: 28px;
+}
+
+.legajo-titulo p {
+    margin: 4px 0 0;
+    color: #777;
+    font-size: 15px;
+}
+
+
+/* Botón volver */
+
+.btn-volver-lista {
+    background: white;
+    border: 1px solid #d4d8dd;
+    color: #334;
+
+    padding: 11px 18px;
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.btn-volver-lista:hover {
+    background: #f4f6f9;
+}
+
+
+/* Contenedor de las dos tarjetas */
+
+.legajo-contenedor {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 30px;
+}
+
+
+/* Tarjetas */
+
+.legajo-card {
+    background: white;
+    border: 1px solid #e1e4e8;
+    border-radius: 12px;
+    padding: 25px;
+
+    min-height: 360px;
+
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.04);
+}
+
+
+/* Información del alumno */
+
+.alumno-datos {
+    display: flex;
+    gap: 25px;
+}
+
+
+/* Foto / avatar */
+
+.alumno-avatar {
+    width: 105px;
+    height: 105px;
+
+    border-radius: 50%;
+    background: #eef0f4;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    font-size: 50px;
+    color: #4b5563;
+}
+
+
+/* Nombre y estado */
+
+.alumno-nombre {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+    margin-bottom: 18px;
+}
+
+.alumno-nombre h2 {
+    margin: 0;
+    color: #12206b;
+    font-size: 23px;
+}
+
+
+/* Estado */
+
+.estado-activo {
+    background: #e1f7e9;
+    color: #269653;
+
+    padding: 7px 12px;
+    border-radius: 6px;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* Datos */
+
+.dato-alumno {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+    margin-bottom: 13px;
+
+    font-size: 15px;
+    color: #334;
+}
+
+.dato-alumno .icono {
+    width: 20px;
+    color: #12206b;
+}
+
+.dato-alumno strong {
+    margin-right: 5px;
+}
+
+
+/* Documentación */
+
+.documentacion h2 {
+    margin: 0 0 22px;
+
+    color: #12206b;
+    font-size: 20px;
+}
+
+
+.documento {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+    margin-bottom: 16px;
+
+    font-size: 15px;
+    color: #334;
+}
+
+
+/* Check verde */
+
+.documento-check {
+    width: 20px;
+    height: 20px;
+
+    border-radius: 50%;
+
+    background: #43b978;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/* Botones inferiores */
+
+.acciones-legajo {
+    display: flex;
+    justify-content: center;
+    gap: 75px;
+
+    margin-top: 32px;
+}
+
+
+.btn-editar {
+    background: #1769d1;
+    color: white;
+
+    border: none;
+
+    padding: 12px 24px;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.btn-editar:hover {
+    background: #1258b1;
+}
+
+
+.btn-pdf {
+    background: white;
+    color: #334;
+
+    border: 1px solid #d4d8dd;
+
+    padding: 12px 24px;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.btn-pdf:hover {
+    background: #f4f6f9;
+}
+
+
+/* Responsive */
+
+@media (max-width: 800px) {
+
+    .legajo-contenedor {
+        grid-template-columns: 1fr;
+    }
+
+    .legajo-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .acciones-legajo {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+}
