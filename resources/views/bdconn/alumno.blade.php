@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>LEGAJOS - EPET N°20 - Crear Legajo</title>
+    <title>LEGAJOS - EPET N°20 - </title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
           rel="stylesheet"
