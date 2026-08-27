@@ -35,9 +35,22 @@ class ControladorLegajo extends Controller
 
         return view('bdconn.alumno', compact('alumno'));
     }
-    public function curso(){
-        $alumnos = $this->def();
-        return view('curso', compact('alumnos'));
+    public function curso($id_curso, $id_division){
+        if (!Auth::check()) {
+            return redirect('/');
+        }
+
+        $curso = Curso::findOrFail($id_curso);
+        $division = Division::findOrFail($id_division);
+
+        $alumnos = Alumno::with([
+            'familiares',
+            'documentos',
+            'curso',
+            'division'
+        ])->where('id_curso', $id_curso)->where('id_division', $id_division)->get();
+
+        return view('curso', compact('alumnos', 'curso', 'division'));
     }
     public function prece(Request $request){
         if (!Auth::check()) {

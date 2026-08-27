@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
    <meta charset="UTF-8">
-<title>LEGAJOS - EPET N°20 - Crear Legajo</title>
+<title>LEGAJOS - EPET N°20</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <link rel="stylesheet" href="{{asset('css/general.css')}}">
 
@@ -18,18 +18,20 @@
   <button class="ham-btn" id="btnMenu" title="Abrir / cerrar menú">&#9776;</button>
 
   <div class="bienvenida-top">
-    <b>¡Bienvenido/a, Secretaría!</b>
+    <b>¡Bienvenido/a, {{Auth::user()->tipo_rol}}!</b>
     <span>Sistema de Gestión de Legajos</span>
   </div>
 
   <div class="buscador">
-    <input type="text" placeholder="Buscar alumno...">
-    <span class="lupa">&#128269;</span>
+    <form action="{{route('buscar')}}" method="post" name="buscador">
+      <input type="text"  placeholder="Buscar alumno...">
+      <input class="lupa" type="submit" value="&#128269;">
+    </form>
   </div>
 
   <div class="userchip">
     <div class="av">S</div>
-    <div class="txt"><b>Secretaría</b><span>Usuario</span></div>
+    <div class="txt"><b>{{Auth::user()->tipo_rol }}</b><span>{{Auth::user()->nombre }}</span></div>
     <span class="chevron">&#8964;</span>
   </div>
 </header>
@@ -56,29 +58,10 @@
 
     <div class="curso-header">
       <div class="curso-header-left">
-        <div class="icono-circular">
-          <!-- Ícono de personas (SVG), se recolorea solo con "color: ..." en CSS gracias a stroke="currentColor" -->
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-          </svg>
-        </div>
         <div>
-          <h2>Curso: {{$curso->curso}} {{$division->division}}</h2>
+          <h2>Resultado de busqueda</h2>
           <p>Listado de alumnos</p>
         </div>
-      </div>
-
-      <div class="buscador-curso">
-        <input type="text" placeholder="Buscar en este curso...">
-        <button class="btn-buscar-curso" type="button">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </button>
       </div>
     </div>
 
@@ -92,7 +75,7 @@
         </tr>
       </thead>
       <tbody>
-    @foreach ($alumnos as $indice => $alumno)
+    @foreach ($resultados as $indice => $alumno)
         <tr>
             <td class="col-numero">{{ $indice + 1 }}</td>
 
@@ -104,7 +87,7 @@
                 {{ $alumno->dni }}
             </td>
 
-            <td class="col-acciones">
+            <!-- <td class="col-acciones">
                 <div class="acciones-grupo">
 
                     
@@ -136,7 +119,7 @@
                     </button>
 
                 </div>
-            </td>
+            </td> -->
         </tr>
     @endforeach
 </tbody>
@@ -173,8 +156,6 @@ document.getElementById('btnMenu').addEventListener('click', function(){
     });
 
 }); */
-var buscador = document.querySelector('.buscador-curso input');
-var botonBuscar = document.querySelector('.btn-buscar-curso');
 
 botonBuscar.addEventListener('click', function(){
 
@@ -212,8 +193,6 @@ botonBuscar.addEventListener('click', function(){
     </div>
   </div>
 </div>
-</body>
-</html>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

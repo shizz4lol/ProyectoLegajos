@@ -22,8 +22,10 @@
   </div>
 
   <div class="buscador">
-    <input type="text" placeholder="Buscar alumno...">
-    <span class="lupa">&#128269;</span>
+    <form action="{{route('buscar')}}" method="post" name="buscador">
+      <input type="text"  placeholder="Buscar alumno...">
+      <input class="lupa" type="submit" value="&#128269;">
+    </form>
   </div>
 
   <div class="userchip">
@@ -41,7 +43,7 @@
       </div>
       <div class="item">
         <span class="ic"><img src="imagen/hoja.png" alt="Cursos"></span>
-        <span class="label"><a href="{{route('curso')}}">Cursos</a></span>
+        <span class="label"><a href="">Cursos</a></span>
       </div>
       <div class="item">
         <span class="ic"><img src="imagen/mas.png" alt="Crear"></span>

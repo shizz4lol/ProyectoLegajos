@@ -41,7 +41,8 @@
       </div>
       <div class="item">
         <span class="ic"><img src="imagen/hoja.png" alt="Cursos"></span>
-        <span class="label">Cursos</span>
+        <span class="label"><a href="">Cursos</a></span>
+      </div>
       </div>
       <div class="item">
         <span class="ic"><img src="" alt="Crear"></span>

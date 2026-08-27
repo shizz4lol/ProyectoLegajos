@@ -40,7 +40,7 @@
     <div>
       <div class="item act">
         <span class="ic"><img src="../imagen/casita.png" alt="Inicio"></span>
-        <span class="label">Inicio</span>
+        <span class="label"><a href="{{route('inicio')}}">Inicio</a></span>
       </div>
       <div class="item">
         <span class="ic"><img src="../imagen/hoja.png" alt="Cursos"></span>

@@ -405,9 +405,14 @@ body {
     background: #f4f6f9;
     color: #222;
 }
-
-
-
+.btn-volver{
+    background-color: var(--azul-oscuro);
+    color: var(--azul-claro)
+  }
+.btn-volver:hover{
+    background-color: var(--azul-medio);
+    color: var(--azul-claro)
+  }
 
 
 .logo {

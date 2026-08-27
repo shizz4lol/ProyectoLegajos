@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>LEGAJOS - EPET N°20 - Secretaria</title>
+<title>LEGAJOS - EPET N°20</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <link rel="stylesheet" href="{{asset('css/general.css')}}">
 </head>
@@ -17,7 +17,7 @@
   </div>
 
   <div class="bienvenida-top">
-    <b>¡Bienvenido/a, Jefe!</b>
+    <b>¡Bienvenido/a!</b>
     <span>Sistema de Gestión de Legajos</span>
   </div>
 
@@ -27,8 +27,8 @@
   </div>
 
   <div class="userchip">
-    <div class="av">S</div>
-    <div class="txt"><b>Jefe de Preceptores</b><span>Usuario</span></div>
+    <div class="av">U</div>
+    <div class="txt"><b></b><span>Usuario</span></div>
   </div>
 </header>
 
@@ -36,26 +36,31 @@
   <div class="sidebar" id="sidebar">
     <div>
       <div class="item act">
-        <span class="ic"><img src="imagen/casita.png" alt="Inicio"></span>
-        <span class="label">Inicio</span>
+        <span class="ic"><img src="/imagen/casita.png" alt="Inicio"></span>
+        <span class="label"><a href="{{ route(session('rol') === 'preceptor' ? 'inicio3' : 'inicio') }}">Inicio</a></span>
       </div>
       <div class="item">
-        <span class="ic"><img src="imagen/hoja.png" alt="Cursos"></span>
-        <span class="label">Cursos</span>
-      </div>
-      <div class="item">
-        <span class="ic"><img src="" alt="Crear"></span>
-        <a href="{{route('legajos.create')}}"><span class="label">Crear legajo</span></a>
+        <span class="ic"><img src="/imagen/hoja.png" alt="Cursos"></span>
+        <span class="label"><a href="{{route('curso', ['id_curso' => session('prece_curso'),'id_division' => session('prece_division')])}}">
+          @if (session('rol')==='preceptor')
+          Ver curso
+          @else
+          Cursos
+          @endif
+        </a></span>
       </div>
       
       <div id="salir" class="salir">
-      <span class="ic"><img src="imagen/puerta.png" ></span>
+      <span class="ic"><img src="/imagen/puerta.png" ></span>
       <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#cierre">Cerrar Sesion</button>
       </div>
     </div>
 </div>
 
   <div class="contenido">
+        <button type="button" class="btn-volver" onclick="window.history.back()">
+             Volver
+        </button>
       <section>
           <h2>Datos del alumno</h2>
 
@@ -76,12 +81,6 @@
 
           <label for="email">Email</label>
           <p id="">{{$alumno->email}}</p>
-      </section>
-
-
-      <section>
-          <h2>Observaciones</h2>
-          <textarea id="observaciones" name="observaciones" placeholder="Escriba las observaciones..."></textarea>
       </section>
   </div>
 <div class="modal fade" id="cierre" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
