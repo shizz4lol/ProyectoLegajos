@@ -257,15 +257,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
-    <!-- JavaScript propio -->
     <script>
-
-        // Seleccionar un año para mostrar u ocultar sus cursos
 
         document.querySelectorAll('.año-card').forEach(function(año) {
             año.addEventListener('click', function(event) {
-                // Si se hizo clic directamente sobre un curso,
-                // no ejecutamos la apertura/cierre del año
                 if (event.target.classList.contains('curso-card')) {
                     return;
                 }
@@ -273,21 +268,6 @@
             });
 
         });
-
-<<<<<<<< HEAD:resources/views/vistacursos.blade.php
-
-        // Botón hamburguesa
-
-        var btnMenu = document.getElementById('btnMenu');
-        var sidebar = document.getElementById('sidebar');
-        if (btnMenu && sidebar) {
-
-            btnMenu.addEventListener('click', function() {
-                sidebar.classList.toggle('colapsada');
-            });
-        }
-========
->>>>>>>> 265dab2ef7639f96aff1c8d1e71597cfe9a9f87b:resources/views/bdconn/vistacursos.blade.php
     </script>
 
 </body>
