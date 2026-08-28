@@ -5,6 +5,7 @@
 <title>LEGAJOS - EPET N°20</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <link rel="stylesheet" href="{{asset('css/general.css')}}">
+<link rel="stylesheet" href="{{asset('css/formulario.css')}}">
 </head>
 <body>
 
@@ -67,6 +68,7 @@
         </button>
       <section>
           <h2>Datos del alumno</h2>
+          <div class="legajo-vista">
 
           <label for="nombre">Nombre y apellido</label>
           <p id="nombre">{{$alumno->nombre}} {{$alumno->apellido}}</p>
@@ -85,6 +87,23 @@
 
           <label for="email">Email</label>
           <p id="">{{$alumno->email}}</p>
+          <div class="legajo-header">
+    </div>
+
+    <div class="legajo-contenedor">
+
+        <div class="legajo-card">
+        </div>
+
+        <div class="legajo-card documentacion">
+        </div>
+
+    </div>
+
+    <div class="acciones-legajo">
+    </div>
+
+</div>
       </section>
   </div>
 <div class="modal fade" id="cierre" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
