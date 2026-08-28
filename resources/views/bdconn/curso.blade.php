@@ -43,7 +43,7 @@
       </div>
       <div class="item act">
         <span class="ic"><img src="/imagen/hoja.png" alt="Cursos"></span>
-        <span class="label"><a href="{{route('curso', ['id_curso' => session('prece_curso'),'id_division' => session('prece_division')])}}">Ver curso</a></span>
+        <span class="label"><a href="">Ver curso</a></span>
       </div>
     </div>
     <div id="salir" class="salir">

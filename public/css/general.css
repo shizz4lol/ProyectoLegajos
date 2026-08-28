@@ -99,7 +99,7 @@ header.topbar{
 .bienvenida-top span{font-size:11px;color:#c7d2fe;}
 
 .topbar .buscador{flex:1;max-width:420px;margin-left:0;position:relative;}
-.topbar .buscador input{width:100%;padding:9px 38px 9px 14px;border:none;border-radius:8px;font-size:13.5px;outline:none;font-family:inherit;background:#fff;color:var(--gris-texto);}
+.topbar .buscador input[type="text"]{width:100%;padding:9px 38px 9px 14px;border:none;border-radius:8px;font-size:13.5px;outline:none;font-family:inherit;background:#fff;color:var(--gris-texto);}
 .topbar .buscador .lupa{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--gris-sub);}
 
 .topbar .userchip{margin-left:auto;display:flex;align-items:center;gap:10px;}

@@ -23,14 +23,15 @@
   </div>
 
   <div class="buscador">
-    <form action="{{route('buscar')}}" method="post" name="buscador">
-      <input type="text"  placeholder="Buscar alumno...">
+    <form action="{{route('buscar')}}" method="post" >
+    @csrf
+      <input type="text"  placeholder="Buscar alumno..." name="buscador">
       <input class="lupa" type="submit" value="&#128269;">
     </form>
   </div>
 
   <div class="userchip">
-    <div class="av">S</div>
+    <div class="av">{{ strtoupper(substr(Auth::user()->nombre, 0, 1)) }}</div>
     <div class="txt"><b>{{Auth::user()->tipo_rol }}</b><span>{{Auth::user()->nombre }}</span></div>
     <span class="chevron">&#8964;</span>
   </div>
@@ -41,11 +42,11 @@
     <div>
       <div class="item">
         <span class="ic"><img src="/imagen/casita.png" alt="Inicio"></span>
-        <span class="label"><a href="{{ route(session('rol') === 'preceptor' ? 'inicio3' : 'inicio') }}">Inicio</a></span>
+        <span class="label"><a href="">Inicio</a></span>
       </div>
       <div class="item act">
         <span class="ic"><img src="/imagen/hoja.png" alt="Cursos"></span>
-        <span class="label"><a href="{{route('curso', ['id_curso' => session('prece_curso'),'id_division' => session('prece_division')])}}">Ver curso</a></span>
+        <span class="label"><a href="">Ver curso</a></span>
       </div>
     </div>
     <div id="salir" class="salir">
@@ -64,14 +65,15 @@
         </div>
       </div>
     </div>
-
+@if ($resultados->isEmpty())
+<h2>No hay coincidencias</h2>
+@else
     <table class="tabla-curso">
       <thead>
         <tr>
           <th>N°</th>
           <th>Alumno</th>
           <th>DNI</th>
-          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -85,8 +87,18 @@
 
             <td>
                 {{ $alumno->dni }}
-            </td>
-
+           </td>
+           <td>
+           <a href="{{ route('alumnos', $alumno) }}">
+                      <button class="accion-btn" title="Ver legajo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </button>
+                    </a>
+           </td>
             <!-- <td class="col-acciones">
                 <div class="acciones-grupo">
 
@@ -122,6 +134,7 @@
             </td> -->
         </tr>
     @endforeach
+  @endif
 </tbody>
     </table>
 
@@ -157,21 +170,6 @@ document.getElementById('btnMenu').addEventListener('click', function(){
 
 }); */
 
-botonBuscar.addEventListener('click', function(){
-
-    var texto = buscador.value.toLowerCase();
-
-    document.querySelectorAll('.tabla-curso tbody tr').forEach(function(fila){
-
-        if (fila.textContent.toLowerCase().includes(texto)) {
-            fila.style.display = '';
-        } else {
-            fila.style.display = 'none';
-        }
-
-    });
-
-});
 </script>
 <div class="modal fade" id="cierre" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">

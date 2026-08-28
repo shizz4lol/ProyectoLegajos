@@ -22,12 +22,16 @@
   </div>
 
   <div class="buscador">
-    <input type="text" placeholder="Buscar alumno...">
-    <span class="lupa">&#128269;</span>
+    <form action="{{route('buscar')}}" method="post" >
+    @csrf
+      <input type="text"  placeholder="Buscar alumno..." name="buscador">
+      <input class="lupa" type="submit" value="&#128269;">
+    </form>
   </div>
 
+
   <div class="userchip">
-    <div class="av">U</div>
+    <div class="av">{{ strtoupper(substr(Auth::user()->nombre, 0, 1)) }}</div>
     <div class="txt"><b></b><span>Usuario</span></div>
   </div>
 </header>
@@ -41,7 +45,7 @@
       </div>
       <div class="item">
         <span class="ic"><img src="/imagen/hoja.png" alt="Cursos"></span>
-        <span class="label"><a href="{{route('curso', ['id_curso' => session('prece_curso'),'id_division' => session('prece_division')])}}">
+        <span class="label"><a href="">
           @if (session('rol')==='preceptor')
           Ver curso
           @else

@@ -41,7 +41,7 @@
       </div>
       <div class="item">
         <span class="ic"><img src="imagen/hoja.png" alt="Cursos"></span>
-        <span class="label"><a href="">Cursos</a></span>
+        <span class="label"><a href="{{route('cursosfull')}}">Cursos</a></span>
       </div>
       </div>
       <div class="item">

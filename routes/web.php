@@ -6,6 +6,7 @@ use App\Http\Controllers\ControladorLogin;
 use App\Http\Controllers\ControladorLegajo;
 use App\Http\Controllers\ControladorFamiliar;
 use App\Http\Controllers\ControladorDocumento;
+use App\Http\Controllers\ControladorBusqueda;
 
 Route::get('/', function(){
     return view ('auth.login');
@@ -13,7 +14,9 @@ Route::get('/', function(){
 Route::get('/alumno', function(){
     return view ('bdconn.alumno');
 })->name('alumno');
-
+Route::get('/cursos', function(){
+    return view ('vistacursos');
+})->name('cursosfull');
 Route::post('/salir', [ControladorLogin::class, 'CerrarSesion'])->name('logout');
 
 Route::post('/validando', [ControladorLogin::class, 'IniciarSesion'])->name('validar'); 

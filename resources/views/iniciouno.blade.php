@@ -22,14 +22,14 @@
   </div>
 
   <div class="buscador">
-    <form action="{{route('buscar')}}" method="post" name="buscador">
-      <input type="text"  placeholder="Buscar alumno...">
+    <form action="{{route('buscar')}}" method="post" >
+      <input type="text"  placeholder="Buscar alumno..."name="buscador" autocomplete="off">
       <input class="lupa" type="submit" value="&#128269;">
     </form>
-  </div>
+  </div> 
 
   <div class="userchip">
-    <div class="av">S</div>
+    <div class="av">{{ strtoupper(substr(Auth::user()->nombre, 0, 1)) }}</div>
     <div class="txt"><b>Secretaría</b><span>{{Auth::user()->nombre }}</span></div>
   </div>
 </header>
@@ -43,7 +43,7 @@
       </div>
       <div class="item">
         <span class="ic"><img src="imagen/hoja.png" alt="Cursos"></span>
-        <span class="label"><a href="">Cursos</a></span>
+        <span class="label"><a href="{{route('cursosfull')}}">Cursos</a></span>
       </div>
       <div class="item">
         <span class="ic"><img src="imagen/mas.png" alt="Crear"></span>
