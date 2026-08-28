@@ -246,7 +246,7 @@
                                 6° 2°
                             </a>
 
-                            <a href="cursos.html">
+                           <a href="cursos.html" class="curso-card">
                                 6° 3°
                             </a>
 
@@ -286,23 +286,6 @@
             });
 
         });
-
-
-        // Botón hamburguesa
-
-        var btnMenu = document.getElementById('btnMenu');
-
-        var sidebar = document.getElementById('sidebar');
-
-        if (btnMenu && sidebar) {
-
-            btnMenu.addEventListener('click', function() {
-
-                sidebar.classList.toggle('colapsada');
-
-            });
-
-        }
 
     </script>
 
