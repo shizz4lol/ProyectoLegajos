@@ -238,7 +238,7 @@
                                 6° 2°
                             </a>
 
-                            <a href="cursos.html">
+                           <a href="cursos.html" class="curso-card">
                                 6° 3°
                             </a>
 
@@ -274,6 +274,7 @@
 
         });
 
+<<<<<<<< HEAD:resources/views/vistacursos.blade.php
 
         // Botón hamburguesa
 
@@ -285,6 +286,8 @@
                 sidebar.classList.toggle('colapsada');
             });
         }
+========
+>>>>>>>> 265dab2ef7639f96aff1c8d1e71597cfe9a9f87b:resources/views/bdconn/vistacursos.blade.php
     </script>
 
 </body>
