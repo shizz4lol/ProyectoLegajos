@@ -1,59 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-   <meta charset="UTF-8">
-<title>LEGAJOS - EPET N°20 - Crear Legajo</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-<link rel="stylesheet" href="{{asset('css/general.css')}}">
-
-</head>
-<body>
-
-<header class="topbar">
-  <div class="logo">
-    <div class="escudo"><img src="/imagen/epet.png" alt="Escudo EPET 20"></div>
-    <div class="txt"><b>LEGAJOS</b><span>EPET N°20</span></div>
-  </div>
-
-  <button class="ham-btn" id="btnMenu" title="Abrir / cerrar menú">&#9776;</button>
-
-  <div class="bienvenida-top">
-    <b>¡Bienvenido/a, Secretaría!</b>
-    <span>Sistema de Gestión de Legajos</span>
-  </div>
-
-  <div class="buscador">
-    <input type="text" placeholder="Buscar alumno...">
-    <span class="lupa">&#128269;</span>
-  </div>
-
-  <div class="userchip">
-    <div class="av">S</div>
-    <div class="txt"><b>Secretaría</b><span>Usuario</span></div>
-    <span class="chevron">&#8964;</span>
-  </div>
-</header>
-
-<div class="layout">
-  <div class="sidebar" id="sidebar">
-    <div>
-      <div class="item">
-        <span class="ic"><img src="/imagen/casita.png" alt="Inicio"></span>
-        <span class="label"><a href="{{ route(session('rol') === 'preceptor' ? 'inicio3' : 'inicio') }}">Inicio</a></span>
-      </div>
-      <div class="item act">
-        <span class="ic"><img src="/imagen/hoja.png" alt="Cursos"></span>
-        <span class="label"><a href="">Ver curso</a></span>
-      </div>
-    </div>
-    <div id="salir" class="salir">
-      <span class="ic"><img src="/imagen/puerta.png" ></span>
-      <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#cierre">Cerrar Sesion</button>
-      </div>
-  </div>
-
-  <div class="contenido">
-
+@extends ('layouts.app')
+@section ('contenido') 
     <div class="curso-header">
       <div class="curso-header-left">
         <div class="icono-circular">
@@ -71,16 +17,20 @@
         </div>
       </div>
 
-      <div class="buscador-curso">
-        <input type="text" placeholder="Buscar en este curso...">
-        <button class="btn-buscar-curso" type="button">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </button>
+      <div class="buscador" id="buscador-curso">
+          <form action="{{route('buscar')}}" method="post" >
+            <input type="hidden" name="id_curso" value="{{ $curso->id}}">
+            <input type="hidden" name="id_division" value="{{ $division->id }}">
+            <input type="text"  placeholder="Buscar alumno de este curso..."name="buscador" autocomplete="off">
+            <button class="lupa" type="submit">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </button>
+          </form>
       </div>
-    </div>
+</div>
 
     <table class="tabla-curso">
       <thead>
@@ -109,12 +59,15 @@
 
                     <td class="col-acciones">
                         <div class="acciones-grupo">
-                            <button class="accion-btn" title="Ver legajo">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"></path>
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                </svg>
-                            </button>
+                        <a href="{{ route('alumnos', $alumno) }}">
+                                <button class="accion-btn" title="Ver legajo">
+                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"></path>
+                                      <circle cx="12" cy="12" r="3"></circle>
+                                  </svg>
+                              </button>
+                        </a>
 
                             <button class="accion-btn" title="Editar legajo">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -139,77 +92,4 @@
     </table>
 
   </div>
-</div>
-
-<script>
-
-
-document.getElementById('btnMenu').addEventListener('click', function(){
-    document.getElementById('sidebar').classList.toggle('colapsada');
-
-});
-
-/* document.querySelectorAll('.accion-btn').forEach(function(boton){
-    boton.addEventListener('click', function(){
-
-        var accion = boton.getAttribute('title');
-
-        if (accion === 'Ver legajo') {
-            alert('Ver legajo');
-        }
-
-        if (accion === 'Editar legajo') {
-            alert('Editar legajo');
-        }
-
-        if (accion === 'Descargar legajo') {
-            alert('Descargar legajo');
-        }
-
-    });
-
-}); */
-var buscador = document.querySelector('.buscador-curso input');
-var botonBuscar = document.querySelector('.btn-buscar-curso');
-
-botonBuscar.addEventListener('click', function(){
-
-    var texto = buscador.value.toLowerCase();
-
-    document.querySelectorAll('.tabla-curso tbody tr').forEach(function(fila){
-
-        if (fila.textContent.toLowerCase().includes(texto)) {
-            fila.style.display = '';
-        } else {
-            fila.style.display = 'none';
-        }
-
-    });
-
-});
-</script>
-<div class="modal fade" id="cierre" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" >¿Desea salir?</h1>
-        <button type="button" class="btn-close" id="eliminar" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-          <p>Los cambios hechos seran permanentes pero debera ingresar nuevamente.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <form action="{{route('logout')}}" method="POST">
-        @csrf
-            <button type="submit" class="btn btn-primary">Cerrar Sesion</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-</body>
-</html>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-</body>
-</html>
+@endsection
