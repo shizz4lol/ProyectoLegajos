@@ -1137,8 +1137,6 @@ textarea {
 }
 
 
-/* Título del año */
-
 .año-titulo {
     display: flex;
     align-items: center;
@@ -1171,8 +1169,6 @@ textarea {
 }
 
 
-/* Cursos que aparecen al abrir un año */
-
 .cursos-container {
     display: none;
 
@@ -1183,14 +1179,11 @@ textarea {
 }
 
 
-/* Mostrar cursos */
-
 .año-card.abierto .cursos-container {
     display: grid;
 }
 
 
-/* Cambiar + por - */
 
 .año-card.abierto .año-titulo span {
     font-size: 0;
@@ -1201,8 +1194,6 @@ textarea {
     font-size: 21px;
 }
 
-
-/* Tarjeta individual del curso */
 
 .curso-card {
     display: flex;
@@ -1238,10 +1229,6 @@ textarea {
 }
 
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
 @media (max-width: 900px) {
 
     .años-container {
@@ -1261,4 +1248,20 @@ textarea {
         grid-template-columns: 1fr;
     }
 
+}
+.campo-oculto{
+  display:none;
+}
+.toggle-vacios{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:12.5px;
+  color:var(--gris-sub);
+  margin:-6px 0 16px 30px;
+  cursor:pointer;
+}
+.toggle-vacios input{
+  width:auto;
+  cursor:pointer;
 }
