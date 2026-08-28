@@ -14,6 +14,11 @@
     <div class="txt"><b>LEGAJOS</b><span>EPET N°20</span></div>
   </div>
 
+<label class="toggle-vacios">
+  <input type="checkbox" id="toggleCamposVacios">
+  Mostrar campos vacíos
+</label>
+
   <button class="ham-btn" id="btnMenu" title="Abrir / cerrar menú">&#9776;</button>
 
   <div class="bienvenida-top">
@@ -114,6 +119,32 @@
 
         });
     }
+function actualizarCamposVacios(mostrarVacios) {
+  document.querySelectorAll('.campo-icono-form').forEach(function (campo) {
+    const control = campo.querySelector('input, select, textarea');
+    if (!control) return;
+
+    const valor = (control.value || '').trim();
+    const estaVacio = valor === '';
+
+    if (estaVacio && !mostrarVacios) {
+      campo.classList.add('campo-oculto');
+    } else {
+      campo.classList.remove('campo-oculto');
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  actualizarCamposVacios(false);
+
+  const toggleVacios = document.getElementById('toggleCamposVacios');
+  if (toggleVacios) {
+    toggleVacios.addEventListener('change', function () {
+      actualizarCamposVacios(toggleVacios.checked);
+    });
+  }
+});
 </script>
 </body>
 </html>
