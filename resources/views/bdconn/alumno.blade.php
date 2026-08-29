@@ -11,6 +11,7 @@
         </a>
       <section>
           <h2>Datos del alumno</h2>
+          <div class="legajo-vista">
 
           <label for="nombre">Nombre y apellido</label>
           <p id="nombre">{{$alumno->nombre}} {{$alumno->apellido}}</p>
@@ -29,6 +30,23 @@
 
           <label for="email">Email</label>
           <p id="">{{$alumno->email}}</p>
+          <div class="legajo-header">
+    </div>
+
+    <div class="legajo-contenedor">
+
+        <div class="legajo-card">
+        </div>
+
+        <div class="legajo-card documentacion">
+        </div>
+
+    </div>
+
+    <div class="acciones-legajo">
+    </div>
+
+</div>
       </section>
         <button type="submit" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#eliminar">Eliminar</button>
 <div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
