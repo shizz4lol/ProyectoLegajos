@@ -19,43 +19,36 @@
                 <div class="año-card" data-año="primero">
                     <div class="año-titulo">
                         <h3>1° Año</h3>
-                        <span>+</span>
                     </div>
                 </div>
 
                 <div class="año-card" data-año="segundo">
                     <div class="año-titulo">
                         <h3>2° Año</h3>
-                        <span>+</span>
                     </div>
                 </div>
 
                 <div class="año-card" data-año="tercero">
                     <div class="año-titulo">
                         <h3>3° Año</h3>
-                        <span>+</span>
                     </div>
-                    
                 </div>
 
                 <div class="año-card" data-año="cuarto">
                     <div class="año-titulo">
                         <h3>4° Año</h3>
-                        <span>+</span>
                     </div>
                 </div>
 
                 <div class="año-card" data-año="quinto">
                     <div class="año-titulo">
                         <h3>5° Año</h3>
-                        <span>+</span>
                     </div>
                 </div>
 
                 <div class="año-card" data-año="sexto">
                         <div class="año-titulo">
                         <h3>6° Año</h3>
-                        <span>+</span>
                     </div>
                 </div>
             </div>

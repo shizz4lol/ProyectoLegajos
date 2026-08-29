@@ -5,17 +5,15 @@
             <div>
                 <h2>Crear nuevo Legajo</h2>
                 <p>Complete los datos correspondientes para dar de alta al alumno en el sistema.</p>
-                
+                <p id="aviso">{{ session('aviso') }}</p>
             </div>
         </div>
         <button type="button" class="btn-volver" onclick="window.history.back()">
              Volver
         </button>
     </div>
-
-    <!-- Tarjeta Principal del Formulario -->
     
-    <form action="{{route('legajos.store')}}" method="POST" id="crear">
+    <form action="{{route('legajos.store')}}" method="POST" id="crear" autocomplete="off">
     @csrf
         <div class="legajo-card">
             <h2>Datos del Alumno/a</h2>
@@ -25,9 +23,9 @@
                 </div>
                 <div class="nombre-wrap">
                     <label for="nombre">Nombre/s<span class="req">*</span></label>
-                    <input type="text" id="nombre" name="alumno[nombre]" class="input-nombre" required autocomplete="off">
+                    <input type="text" id="nombre" name="alumno[nombre]" class="input-nombre" required  >
                     <label for="apellido">Apellido/s<span class="req">*</span></label>
-                    <input type="text" id="apellido" name="alumno[apellido]" class="input-nombre" required autocomplete="off">
+                    <input type="text" id="apellido" name="alumno[apellido]" class="input-nombre" required  >
                 </div>
             </div>
 
@@ -36,8 +34,8 @@
             <!-- DNI -->
             <div class="campo-icono-form">
                 <span class="ic"><i class="fa-solid fa-address-card"></i></span>
-                <label for="dni">DNI <span class="req">*</span></label>
-                <input type="text" id="dni" name="alumno[dni]" placeholder="Sin puntos o espacios" required>
+                <label for="dni">DNI <span class="req"  >*</span></label>
+                <input type="text" id="dni" maxlength="8" name="alumno[dni]" placeholder="Sin puntos o espacios" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
             </div>
 
             <div class="campo-icono-form">
@@ -110,15 +108,15 @@
                 </div>
                 <div class="nombre-wrap">
                     <label for="m_nombre">Nombre/s<span class="req">*</span></label>
-                    <input type="text" id="m_nombre" name="madre[nombre]" class="input-nombre" required autocomplete="off">
+                    <input type="text" id="m_nombre" name="madre[nombre]" class="input-nombre" required  >
                     <label for="m_apellido">Apellido/s<span class="req">*</span></label>
-                    <input type="text" id="m_apellido" name="madre[apellido]" class="input-nombre" required autocomplete="off">
+                    <input type="text" id="m_apellido" name="madre[apellido]" class="input-nombre" required  >
                 </div>
             </div>
             <div class="campo-icono-form">
                 <span class="ic"><i class="fa-solid fa-address-card"></i></span>
                 <label for="m_dni">DNI <span class="req">*</span></label>
-                <input type="text" id="m_dni" name="madre[dni]" placeholder="Sin puntos o espacios" required>
+                <input type="text" id="m_dni" maxlength="8" name="madre[dni]" placeholder="Sin puntos o espacios" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
             </div>
             <div class="campo-icono-form">
                 <span class="ic"><i class="fa-solid fa-location-dot"></i></span>
@@ -145,15 +143,15 @@
                 </div>
                 <div class="nombre-wrap">
                     <label for="p_nombre">Nombre/s<span class="req">*</span></label>
-                    <input type="text" id="p_nombre" name="padre[nombre]" class="input-nombre" required autocomplete="off">
+                    <input type="text" id="p_nombre" name="padre[nombre]" class="input-nombre" required  >
                     <label for="p_apellido">Apellido/s<span class="req">*</span></label>
-                    <input type="text" id="p_apellido" name="padre[apellido]" class="input-nombre" required autocomplete="off">
+                    <input type="text" id="p_apellido" name="padre[apellido]" class="input-nombre" required  >
                 </div>
             </div>
             <div class="campo-icono-form">
                 <span class="ic"><i class="fa-solid fa-address-card"></i></span>
                 <label for="p_dni">DNI <span class="req">*</span></label>
-                <input type="text" id="p_dni" name="padre[dni]" placeholder="Sin puntos o espacios" required>
+                <input type="text" id="p_dni" maxlength="8" name="padre[dni]" placeholder="Sin puntos o espacios" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
             </div>
             <div class="campo-icono-form">
                 <span class="ic"><i class="fa-solid fa-location-dot"></i></span>

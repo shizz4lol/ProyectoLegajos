@@ -42,7 +42,7 @@
 
   <div class="userchip">
     <div class="av">{{ strtoupper(substr(Auth::user()->nombre, 0, 1)) }}</div>
-    <div class="txt"><b>{{Auth::user()->tipo_rol }}</b><span>{{Auth::user()->nombre }}</span></div>
+    <div class="txt"><b>{{ucfirst(Auth::user()->tipo_rol) }}</b><span>{{Auth::user()->nombre }}</span></div>
   </div>
 </header>
 
@@ -89,7 +89,9 @@
       </div>
     </div>
   </div>
+  <p id="aviso">{{ session('aviso') }}</p>
 <div class="contenido">
+
     @yield('contenido')
 </div>
   

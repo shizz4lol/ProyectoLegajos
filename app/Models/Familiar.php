@@ -19,7 +19,7 @@ class Familiar extends Model
     public function alumnos():BelongsToMany{
         return $this->belongsToMany(
             Alumno::class,
-            'alumnoXfamiliars',
+            'alumnosXfamiliars',
             'id_familiar',
             'id_alumno'
         );

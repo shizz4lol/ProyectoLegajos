@@ -22,6 +22,7 @@ class Alumno extends Model
         'constanciaregular',
         'apto_herramientas',
         'certificado7mo',
+        'archivado',
         'id_curso',
         'id_division',
     ];

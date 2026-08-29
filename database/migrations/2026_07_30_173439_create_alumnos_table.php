@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('constanciaregular')->nullable();
             $table->string('apto_herramientas')->nullable();
             $table->string('certificado7mo')->nullable();
+            $table->boolean('archivado')->default(false);
             $table->foreignId('id_curso')
             ->constrained('cursos', 'id')
             ->onDelete('cascade')

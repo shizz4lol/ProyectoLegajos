@@ -189,6 +189,9 @@ select{
   height: 100px;
   font-size: large;
 }
+.modal-content svg{
+    margin-left: 10px;
+}
 .modal-footer .btn-primary{
   background-color: #a30b0b !important;
   border-color: #a30b0b !important;
@@ -267,9 +270,9 @@ h2.section-title{color:var(--azul-oscuro);font-size:18px;margin:0 0 3px;display:
 .curso-fila .flecha{color:#c3c7d8;}
 
 .badge-rol{font-size:10.5px;font-weight:800;padding:3px 10px;border-radius:20px;color:#fff;text-transform:uppercase;letter-spacing:.4px;}
-.badge-rol.Secretaria{background:#0d9488;}
-.badge-rol.JefePreceptores{background:#a16207;}
-.badge-rol.Preceptor{background:#c2410c;}
+.badge-rol.Secretaria{background:#c51d33;}
+.badge-rol.JefePreceptores{background:#0d9488;}
+.badge-rol.Preceptor{background:#4d850d;}
 
 .empty{text-align:center;padding:16px 0;color:var(--gris-sub);font-size:13px;}
 

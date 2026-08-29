@@ -17,6 +17,7 @@
           <th>N°</th>
           <th>Alumno</th>
           <th>DNI</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>

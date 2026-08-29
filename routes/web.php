@@ -17,6 +17,9 @@ Route::get('/alumno', function(){
 Route::get('/cursos', function(){
     return view ('vistacursos');
 })->name('cursosfull');
+Route::get('/editar', function(){
+    return view ('bdconn.modificar');
+})->name('modificar');
 Route::post('/salir', [ControladorLogin::class, 'CerrarSesion'])->name('logout');
 
 Route::post('/validando', [ControladorLogin::class, 'IniciarSesion'])->name('validar'); 
@@ -34,6 +37,7 @@ Route::get('/alumnos/{alumno}', [ControladorLegajo::class, 'alumno'])
 Route::post('/buscar', [ControladorBusqueda::class, 'buscar'])->name('buscar');
 
 //RUTAS FAMILIARES:
+Route::get('/crearfamiliar', [ControladorFamiliar::class, 'create'])->name('crearfamiliar');
 Route::post('/alumnos/{alumno}/familiares', [ControladorFamiliar::class, 'store'])
     ->name('alumnos.familiares.store');
 
@@ -43,6 +47,7 @@ Route::put('/alumnos/{alumno}/familiares/{familiar}', [ControladorFamiliar::clas
 Route::delete('/alumnos/{alumno}/familiares/{familiar}', [ControladorFamiliar::class, 'destroy'])
     ->name('alumnos.familiares.destroy');
 //RUTAS DOCUMENTOS:
+Route::get('/creardocumento', [ControladorDocumento::class, 'create'])->name('creardocumento');
 Route::post('/alumnos/{alumno}/documentos', [ControladorDocumento::class, 'store'])
     ->name('alumnos.documentos.store');
 

@@ -104,3 +104,34 @@
   margin-top:6px;
 }
 .btn-guardar-legajo:hover{background:var(--azul-oscuro);}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.btn-seleccionar{
+  background-color: var(--gris-suave);
+  color:black;
+  border:none;
+  padding:5px;
+  border-radius:8px;
+  font-weight:700;
+  font-size:17px !important;
+  cursor:pointer;
+  margin-left: 40px;
+  margin-top:6px;
+}
+
+#archivoadj{
+  display:none;
+}
+#copia{
+  padding: 0;
+}
+#checkboxsi{
+  margin:0;
+}
+#año{
+  width: 200px !important;
+}

@@ -127,66 +127,92 @@ class ControladorLegajo extends Controller
             
            /*  return redirect('inicio')->with ($alumnos);  */
         }
+        else{
+            return redirect('/');
+        }
     }
     public function create(){
         if (!Auth::check()) {
             return redirect('/');
         }
-        return view('bdconn.crear');
+        return view('bdconn.crearalumno');
     }
     public function store(Request $request){
-    if (!Auth::check()) {
-        return redirect('/');
-    }
+        if (!Auth::check()) {
+            return redirect('/');
+        }
 
-    $datosAlumno = $request->input('alumno');
-    $curso = $datosAlumno['curso'];
-    $division = $datosAlumno['division'];
+        $datosAlumno = $request->input('alumno');
+        $curso = $datosAlumno['curso'];
+        $division = $datosAlumno['division'];
+        unset($datosAlumno['curso'], $datosAlumno['division']);
 
-    unset($datosAlumno['curso'], $datosAlumno['division']);
+        $curso = Curso::where('curso', $curso)->firstOrFail();
+        $division = Division::where('division', $division)->firstOrFail();
 
-    $curso = Curso::where('curso', $curso)->firstOrFail();
-    $division = Division::where('division', $division)->firstOrFail();
+        $cursoDivision = DB::table('cursosXdivisions')
+            ->where('id_curso', $curso->id)
+            ->where('id_division', $division->id)
+            ->first();
 
-    $cursoDivision = DB::table('cursosXdivisions')
-        ->where('id_curso', $curso->id)
-        ->where('id_division', $division->id)
-        ->first();
+        if (!$cursoDivision) {
+            return redirect('legajos.create')->with('aviso', 'La combinación de curso y división no existe.');
+        }
 
-    if (!$cursoDivision) {
-        return redirect('inicio')
-            ->with('aviso', 'La combinación de curso y división no existe.');
-    }
+        $datosAlumno['id_curso'] = $curso->id;
+        $datosAlumno['id_division'] = $division->id;
 
-    $datosAlumno['id_curso'] = $curso->id;
-    $datosAlumno['id_division'] = $division->id;
+        DB::transaction(function () use ($datosAlumno, $request) {
 
-    DB::transaction(function () use ($datosAlumno, $request) {
+            $alumno = Alumno::create($datosAlumno);
+            $datosMadre = $request->input('madre');
+            $datosMadre['parentezco'] = 'Madre';
+            $madre = Familiar::where('dni', $datosMadre['dni'])->first();
+            if (!$madre) {
+                $madre = Familiar::create($datosMadre);
+            }
 
-        $alumno = Alumno::create($datosAlumno);
+            $datosPadre = $request->input('padre');
+            $datosPadre['parentezco'] = 'Padre';
+            $padre = Familiar::where('dni', $datosPadre['dni'])->first();
+            if (!$padre) {
+                $padre = Familiar::create($datosPadre);
+            }
 
-        $datosMadre = $request->input('madre');
-        $datosMadre['parentezco'] = 'Madre';
-        $madre = Familiar::create($datosMadre);
-        $datosPadre = $request->input('padre');
-        $datosPadre['parentezco'] = 'Padre';
-        $padre = Familiar::create($datosPadre);
-
-        $alumno->familiares()->attach([
-            $madre->id,
-            $padre->id
-        ]);
-    });
-    return redirect('inicio')
-        ->with('aviso', 'El legajo fue creado correctamente.');
+            $alumno->familiares()->attach([
+                $madre->id,
+                $padre->id
+            ]);
+        });
+        return redirect('inicio')->with('aviso', 'El legajo fue creado correctamente.');
 }
     public function update(){
-
+        if (!Auth::check()) {
+          return redirect('/');
+        }
+        
     }
     public function edit(){
         
     }    
-    public function delete(){
+    public function destroy($id_alumno){
+        $alumno = Alumno::findOrFail($id_alumno);
+
+        DB::transaction(function () use ($alumno) {
+            foreach ($alumno->familiares as $familiar) {
+                $alumno->familiares()->detach($familiar->id);
+                if ($familiar->alumnos()->count() === 0) {
+                    $familiar->delete();
+                }
+            }
+            $alumno->documentos()->delete();
+            $alumno->delete();
+        });
+
+        return redirect('inicio')->with('aviso', 'El legajo fue eliminado correctamente.');
+    }
+
+    public function archive(){
 
     }
 }
