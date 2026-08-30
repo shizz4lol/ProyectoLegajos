@@ -795,17 +795,12 @@ textarea {
     }
 
 }
-/* =========================================================
-   VISTA DEL LEGAJO DEL ALUMNO
-   ========================================================= */
 
 .legajo-vista {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-
-/* Encabezado del legajo */
 
 .legajo-header {
     display: flex;
@@ -847,8 +842,6 @@ textarea {
 }
 
 
-/* Botón volver */
-
 .btn-volver-lista {
     background: white;
     border: 1px solid #d4d8dd;
@@ -868,16 +861,11 @@ textarea {
 }
 
 
-/* Contenedor de las dos tarjetas */
-
 .legajo-contenedor {
     display: grid;
     grid-template-columns: 1.1fr 1fr;
     gap: 30px;
 }
-
-
-/* Tarjetas */
 
 .legajo-card {
     background: white;
@@ -891,15 +879,11 @@ textarea {
 }
 
 
-/* Información del alumno */
-
 .alumno-datos {
     display: flex;
     gap: 25px;
 }
 
-
-/* Foto / avatar */
 
 .alumno-avatar {
     width: 105px;
@@ -919,8 +903,6 @@ textarea {
 }
 
 
-/* Nombre y estado */
-
 .alumno-nombre {
     display: flex;
     justify-content: space-between;
@@ -937,7 +919,6 @@ textarea {
 }
 
 
-/* Estado */
 
 .estado-activo {
     background: #e1f7e9;
@@ -950,8 +931,6 @@ textarea {
     font-weight: 600;
 }
 
-
-/* Datos */
 
 .dato-alumno {
     display: flex;
@@ -974,8 +953,6 @@ textarea {
 }
 
 
-/* Documentación */
-
 .documentacion h2 {
     margin: 0 0 22px;
 
@@ -996,8 +973,6 @@ textarea {
 }
 
 
-/* Check verde */
-
 .documento-check {
     width: 20px;
     height: 20px;
@@ -1015,8 +990,6 @@ textarea {
     font-weight: bold;
 }
 
-
-/* Botones inferiores */
 
 .acciones-legajo {
     display: flex;
@@ -1089,9 +1062,6 @@ textarea {
     }
 
 }
-/* =========================================================
-   VISTA DE SELECCIÓN DE CURSOS
-   ========================================================= */
 
 .seleccion-cursos {
     width: 100%;
@@ -1262,4 +1232,260 @@ textarea {
 .toggle-vacios input{
   width:auto;
   cursor:pointer;
+}
+
+.legajo-secciones {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+
+
+.legajo-secciones .legajo-card {
+    background: #ffffff;
+    border: 1px solid var(--gris-borde);
+    border-radius: 14px;
+    padding: 24px;
+    min-height: auto;
+
+    box-shadow: 0 3px 10px rgba(18, 32, 107, 0.05);
+
+    transition: transform .2s ease,
+                box-shadow .2s ease;
+}
+
+.legajo-secciones .legajo-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(18, 32, 107, 0.09);
+}
+
+
+.seccion-alumno {
+    grid-column: 1 / -1;
+}
+
+
+.seccion-card-header {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 22px;
+}
+
+.seccion-card-header h2 {
+    margin: 0;
+    color: var(--azul-oscuro);
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.seccion-card-header p {
+    margin: 4px 0 0;
+    color: var(--gris-sub);
+    font-size: 13px;
+}
+
+
+
+.seccion-icono {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 11px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+
+    flex-shrink: 0;
+}
+
+.seccion-icono.azul {
+    background: #e8edfc;
+    color: var(--azul-medio);
+}
+
+.seccion-icono.verde {
+    background: #e4f8ec;
+    color: #269653;
+}
+
+.seccion-icono.naranja {
+    background: #fff1df;
+    color: #d97706;
+}
+
+
+
+.datos-alumno-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 25px;
+}
+
+.datos-alumno-grid .dato-alumno {
+    background: #f8f9fc;
+    border-radius: 9px;
+    padding: 12px 14px;
+    margin: 0;
+
+    font-size: 14px;
+}
+
+.datos-alumno-grid .dato-alumno .icono {
+    color: var(--azul-medio);
+}
+
+
+.lista-resumen {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+.resumen-item {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    padding: 10px 12px;
+
+    background: #f8f9fc;
+
+    border-radius: 8px;
+
+    font-size: 13.5px;
+}
+
+.resumen-item strong {
+    display: block;
+    color: var(--gris-texto);
+}
+
+.resumen-item small {
+    display: block;
+    color: var(--gris-sub);
+    margin-top: 2px;
+}
+
+
+.resumen-icono {
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+
+    background: #e4f8ec;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+
+.sin-datos {
+    color: var(--gris-sub);
+    font-size: 13px;
+
+    background: #f8f9fc;
+
+    padding: 14px;
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    margin: 0 0 20px;
+}
+
+
+.btn-seccion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    padding: 10px 15px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition: .2s ease;
+}
+
+
+.verde-btn {
+    background: #e4f8ec;
+    color: #269653;
+}
+
+.verde-btn:hover {
+    background: #269653;
+    color: white;
+}
+
+.naranja-btn {
+    background: #fff1df;
+    color: #d97706;
+}
+
+.naranja-btn:hover {
+    background: #d97706;
+    color: white;
+}
+
+
+.resumen-item .documento-check {
+    width: 30px;
+    height: 30px;
+
+    flex-shrink: 0;
+}
+
+
+.acciones-legajo {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+}
+
+
+@media (max-width: 900px) {
+
+    .legajo-secciones {
+        grid-template-columns: 1fr;
+    }
+
+    .seccion-alumno {
+        grid-column: auto;
+    }
+
+    .datos-alumno-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .legajo-secciones .legajo-card {
+        padding: 18px;
+    }
+
+    .legajo-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
 }
