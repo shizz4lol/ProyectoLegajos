@@ -117,7 +117,7 @@
 
                 <span class="label">
 
-                    <a href="">
+                    <a href="{{route('legajos.create')}}">
                         Egresados
                     </a>
 
@@ -160,7 +160,10 @@
                 <div>
 
                     <h1>
-                        🎓 Legajos Egresados
+                        <div class="item">
+        <span class="ic"><img src="../imagen/gorro.png" alt="Alumnos"></span>
+        <span class="label"></span>
+      </div>
                     </h1>
 
                     <p>
@@ -194,7 +197,6 @@
                             <div class="año-info">
 
                                 <div class="año-icono">
-                                    📅
                                 </div>
 
                                 <div>
@@ -233,8 +235,10 @@
 
 
                                     <div class="egresado-avatar">
-                                        👤
+                                        <span class="ic"><img src="../imagen/usuario.png" alt="Alumnos"></span>
+                                    <span class="label"></span>
                                     </div>
+                                    
 
 
                                     <div class="egresado-datos">
