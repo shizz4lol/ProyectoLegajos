@@ -9,6 +9,10 @@
 </head>
 <body>
 
+@if(session('aviso'))
+    <p id="aviso">{{ session('aviso') }}</p>
+@endif
+
 <header class="topbar">
 
   <button class="ham-btn" id="btnMenu" title="Abrir / cerrar menú">&#9776;</button>
@@ -38,7 +42,6 @@
     <div class="txt"><b>{{ucfirst(Auth::user()->tipo_rol) }}</b><span>{{Auth::user()->nombre }}</span></div>
   </div>
 </header>
-
 <div class="layout">
   <div class="sidebar" id="sidebar">
     <div>
@@ -81,8 +84,8 @@
       <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#cierre">Cerrar Sesion</button>
       </div>
     </div>
-  </div>
- <p id="aviso">{{ session('aviso') }}</p>
+</div>
+
 <div class="contenido">
 
     @yield('contenido')

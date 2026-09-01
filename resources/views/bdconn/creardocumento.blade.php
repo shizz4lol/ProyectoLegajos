@@ -3,9 +3,8 @@
   <div class="form-header">
         <div class="titulo-wrap">
             <div>
-                <h2>Crear nuevo Documento</h2>
+                <h2>Cargar nuevo Documento</h2>
                 <p>Complete la informacion para dar de alta el documento en el sistema.</p>
-                <p id="aviso">{{ session('aviso') }}</p>
             </div>
         </div>
         <button type="button" class="btn-volver" onclick="window.history.back()">

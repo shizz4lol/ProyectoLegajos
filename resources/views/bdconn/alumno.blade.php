@@ -46,6 +46,31 @@
     <div class="legajo-contenedor">
         <div class="legajo-card">
         <h2>Familiares</h2>
+        @forelse($alumno->familiares as $familiar)
+
+                        <div class="resumen-item">
+                            <div>
+
+                                <p>
+                                    {{ $familiar->nombre }}
+                                    {{ $familiar->apellido }}
+                                </p>
+
+                                <small>
+                                    {{ $familiar->parentezco }}
+                                </small>
+
+                            </div>
+
+                        </div>
+
+          @empty
+
+                        <p class="sin-datos">
+                            No hay familiares registrados.
+                        </p>
+
+          @endforelse
         </div>
         <div class="legajo-card documentacion">
           <h2>Documentos del alumno</h2>
@@ -57,6 +82,7 @@
                       <th>Tipo</th>
                       <th>Año</th>
                       <th>Imagen</th>
+                      <th>Acciones</th>
                   </tr>
               </thead>
 
@@ -67,8 +93,37 @@
                           <td>{{ $documento->nombre }}</td>
                           <td>{{ $documento->tipo }}</td>
                           <td>{{ $documento->año }}</td>
-                          <td>
-                              <img src="{{ asset($documento->archivo_adj) }}" alt="{{ $documento->nombre }}">
+                          <td >
+                              <a href="{{ asset($documento->archivo_adj) }}" target="_blank"><img class="imagendocumento" src="{{ asset($documento->archivo_adj) }}" alt="{{ $documento->nombre }}"></a>
+                          </td>
+                          <td class="col-acciones">
+                          <div class="acciones-grupo">
+                            <a href="">
+                                <button class="accion-btn" title="Editar documento">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 20h9"></path>
+                                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                                    </svg>
+                                </button>
+                            </a>
+                            @if (session('rol') === 'secretaria')
+                            <form action="{{ route('alumnos.documentos.destroy', [$alumno->id_alumno, $documento->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                              <button type="submit" class="accion-btn" title="Eliminar documento">
+                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                      <path d="M3 6h18"></path>
+                                      <path d="M8 6V4h8v2"></path>
+                                      <path d="M19 6l-1 14H6L5 6"></path>
+                                      <path d="M10 11v5"></path>
+                                      <path d="M14 11v5"></path>
+                                  </svg>
+                              </button>
+                            </form>
+                            @endif
+                          </div>
                           </td>
                       </tr>
                   @endforeach

@@ -9,7 +9,7 @@
   --gris-sub:#8a8fa3;
 }
 *{box-sizing:border-box;}
-body{margin:0;font-family:'Segoe UI', Arial, sans-serif;background:var(--gris-suave);color:var(--gris-texto);}
+body{margin:0;font-family:'Segoe UI', Arial, sans-serif;background:var(--gris-suave);color:var(--gris-texto); }
 a{color:inherit;text-decoration:none;}
 
 .login-rol{text-align:left;margin-bottom:20px;}
@@ -365,7 +365,6 @@ h2.section-title{color:var(--azul-oscuro);font-size:18px;margin:0 0 3px;display:
 .tabla td.col-numero{color:var(--gris-sub);font-weight:600;width:40px;}
 .tabla td.col-acciones{white-space:nowrap;}
 
-.tabla td #nombrealumno
 
 
 /* ------------------------------------------------------------
@@ -959,9 +958,8 @@ textarea {
 }
 
 
-.documentacion h2 {
+.legajo-card h2 {
     margin: 0 0 22px;
-
     color: #12206b;
     font-size: 20px;
 }
@@ -983,6 +981,11 @@ textarea {
     
 }
 
+.imagendocumento{
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
 /* Check verde */
 
 .documento-check {
@@ -1356,33 +1359,21 @@ textarea {
     display: flex;
     flex-direction: column;
     gap: 10px;
-
     margin-bottom: 20px;
 }
 
-.resumen-item {
-    display: flex;
-    align-items: center;
-    gap: 11px;
 
-    padding: 10px 12px;
-
-    background: #f8f9fc;
-
-    border-radius: 8px;
-
-    font-size: 13.5px;
-}
-
-.resumen-item strong {
+.resumen-item p {
     display: block;
     color: var(--gris-texto);
+    margin-bottom: 2px;
+    margin-top:4px;
 }
 
 .resumen-item small {
+    margin-top: 2px;
     display: block;
     color: var(--gris-sub);
-    margin-top: 2px;
 }
 
 
@@ -1907,11 +1898,11 @@ textarea {
     }
 
 }
-#aviso{
-    display: flex;
-    
-    height: 50px;
-    justify-self: center;
-    color:black;
-    font-weight: 500;
+#aviso {
+   padding-top: 20px;
+   height: 20px;
+   display: flex !important;
+   align-items: center !important;
+   justify-content: center !important;
+   font-weight: 700;
 }

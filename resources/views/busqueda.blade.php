@@ -11,7 +11,7 @@
   @if ($resultados->isEmpty())
   <h2>No hay coincidencias</h2>
   @else
-    <table class="tabla-curso">
+    <table class="tabla">
       <thead>
         <tr>
           <th>N°</th>
