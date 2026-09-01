@@ -277,7 +277,7 @@
 
                     <div class="sin-egresados">
 
-                        <span>🎓</span>
+                        <span><img src="../imagen/gorro.png" alt="Alumnos"></span>
 
                         <h3>
                             No hay egresados registrados
