@@ -21,13 +21,6 @@
     <b>¡Bienvenido/a, {{Auth::user()->tipo_rol }}!</b>
     <span>Sistema de Gestión de Legajos</span>
   </div>
-<!-- 
-  <div class="buscador">
-    <form action="{{route('buscar')}}" method="post" >
-      <input type="text"  placeholder="Buscar alumno..."name="buscador" autocomplete="off">
-      <input class="lupa" type="submit" value="&#128269;">
-    </form>
-  </div>  -->
   <div class="buscador">
   <form action="{{route('buscar')}}" method="post" >
       <input type="text"  placeholder="Buscar alumno..."name="buscador" autocomplete="off">
@@ -89,7 +82,7 @@
       </div>
     </div>
   </div>
-  <p id="aviso">{{ session('aviso') }}</p>
+ <p id="aviso">{{ session('aviso') }}</p>
 <div class="contenido">
 
     @yield('contenido')

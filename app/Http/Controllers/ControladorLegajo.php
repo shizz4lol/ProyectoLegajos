@@ -23,9 +23,6 @@ class ControladorLegajo extends Controller
         return $legajos;
     }
     public function alumno(Alumno $alumno){
-        if (!Auth::check()) {
-            return redirect('/');
-        }
         $alumno->load([
             'familiares',
             'documentos',
@@ -36,10 +33,6 @@ class ControladorLegajo extends Controller
         return view('bdconn.alumno', compact('alumno'));
     }
     public function curso($id_curso, $id_division){
-        if (!Auth::check()) {
-            return redirect('/');
-        }
-
         $curso = Curso::findOrFail($id_curso);
         $division = Division::findOrFail($id_division);
         $alumnos = Alumno::with([
@@ -52,9 +45,6 @@ class ControladorLegajo extends Controller
         return view('bdconn.curso', compact('alumnos', 'curso', 'division'));
     }
     public function prece(Request $request){
-        if (!Auth::check()) {
-            return redirect('/');
-        }
         $ingresoPreceptor = $request->input('prece');
 
         $curso = Curso::where('curso', $ingresoPreceptor['curso'])->first();
@@ -78,9 +68,6 @@ class ControladorLegajo extends Controller
     }
 
     public function inicio3(){
-        if (!Auth::check()) {
-            return redirect('/');
-        }
 
         $id_curso = session('prece_curso');
         $id_division = session('prece_division');
@@ -132,15 +119,9 @@ class ControladorLegajo extends Controller
         }
     }
     public function create(){
-        if (!Auth::check()) {
-            return redirect('/');
-        }
         return view('bdconn.crearalumno');
     }
     public function store(Request $request){
-        if (!Auth::check()) {
-            return redirect('/');
-        }
 
         $datosAlumno = $request->input('alumno');
         $curso = $datosAlumno['curso'];
@@ -197,12 +178,18 @@ class ControladorLegajo extends Controller
     }    
     public function destroy($id_alumno){
         $alumno = Alumno::findOrFail($id_alumno);
-
         DB::transaction(function () use ($alumno) {
             foreach ($alumno->familiares as $familiar) {
                 $alumno->familiares()->detach($familiar->id);
                 if ($familiar->alumnos()->count() === 0) {
                     $familiar->delete();
+                }
+            }
+            foreach ($alumno->documentos as $documento) {
+                $ruta = public_path($documento->archivo_adj);
+
+                if (file_exists($ruta)) {
+                    unlink($ruta);
                 }
             }
             $alumno->documentos()->delete();

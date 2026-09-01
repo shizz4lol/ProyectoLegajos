@@ -35,9 +35,6 @@ class ControladorBusqueda extends Controller{
         return view('busqueda', compact('resultados'));
     }
     public function buscar(Request $request){
-        if (!Auth::check()) {
-            return redirect('/');
-        }
         if (session('rol') == 'preceptor') {
             $request->merge([
                 'id_curso' => session('prece_curso'),

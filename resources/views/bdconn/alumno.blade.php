@@ -1,54 +1,99 @@
 @extends ('layouts.app')
 @section ('contenido')
   <div class="contenido">
+  <div class="form-header">
+        <div class="titulo-wrap">
+            <div>
+                <h2>Datos del alumno</h2>
+            </div>
+        </div>
         <button type="button" class="btn-volver" onclick="window.history.back()">
              Volver
         </button>
-        <a href="{{route('creardocumento')}}">
-          <button type="button" class="btn-volver" >
-            Crear documento
-          </button>
-        </a>
-      <section>
-          <h2>Datos del alumno</h2>
+    </div>
+  <div class="alumno-legajo">
+          <table class="tabla">
+            <thead>
+              <tr>
+                <th id="thnombrealumno">Nombre completo</th>
+                <th>DNI</th>
+                <th>Fecha de nacimiento</th>
+                <th>Curso</th>
+                <th>Telefono</th>
+                <th>Email</th>
+                <th>Documentos cargados</th>
+                <th>Familiares cargados</th>
+                <th>Editar</th>
+              </tr>
+            </thead>
+            <tbody>
+                <td>{{ $alumno->apellido }}, {{ $alumno->nombre }} </td>
+                <td>{{ $alumno->dni }}</td>
+                <td>{{$alumno->fecha_nacimiento}}</td>
+                <td>{{$alumno->curso->curso}} {{$alumno->division->division}}</td>
+                <td>{{$alumno->telefono}}</td>
+                <td>{{$alumno->email}}</td>
+                <td>{{ $alumno->documentos->count() }}</td>
+                <td>{{ $alumno->familiares->count() }}</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
           <div class="legajo-vista">
 
-          <label for="nombre">Nombre y apellido</label>
-          <p id="nombre">{{$alumno->nombre}} {{$alumno->apellido}}</p>
-
-          <label for="dni">DNI</label>
-          <p id="dni">{{$alumno->dni}}</p>
-
-          <label for="curso">Curso</label>
-          <p id="curso">{{$alumno->curso->curso}} {{$alumno->division->division}}</p>
-
-          <label for="fecha">Fecha de nacimiento</label>
-          <p id="">{{$alumno->fecha_nacimiento}}</p>
-
-          <label for="telefono">Teléfono</label>
-          <p id="">{{$alumno->telefono}}</p>
-
-          <label for="email">Email</label>
-          <p id="">{{$alumno->email}}</p>
-          <div class="legajo-header">
-    </div>
-
+  </div>
+        
     <div class="legajo-contenedor">
-
         <div class="legajo-card">
+        <h2>Familiares</h2>
         </div>
-
         <div class="legajo-card documentacion">
-        </div>
+          <h2>Documentos del alumno</h2>
+          <table class="tabla">
+              <thead>
+                  <tr>
+                      <th>N°</th>
+                      <th>Nombre</th>
+                      <th>Tipo</th>
+                      <th>Año</th>
+                      <th>Imagen</th>
+                  </tr>
+              </thead>
 
+              <tbody>
+                  @foreach($alumno->documentos as $indice => $documento)
+                      <tr>
+                          <td class="col-numero">{{ $indice + 1 }}</td>
+                          <td>{{ $documento->nombre }}</td>
+                          <td>{{ $documento->tipo }}</td>
+                          <td>{{ $documento->año }}</td>
+                          <td>
+                              <img src="{{ asset($documento->archivo_adj) }}" alt="{{ $documento->nombre }}">
+                          </td>
+                      </tr>
+                  @endforeach
+              </tbody>
+          </table>
+    </div></br>
+        
     </div>
-
+    <div class="botones-legajo">
+        <a href="">
+          <button type="button" class="btn-volver" >
+            Cargar familiar
+          </button>
+        </a>
+        <a href="{{route('creardocumento', $alumno->id_alumno)}}">
+          <button type="button" class="btn-volver" >
+            Cargar documento
+          </button>
+        </a>
+        </div>
     <div class="acciones-legajo">
     </div>
 
 </div>
-      </section>
-        <button type="submit" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#eliminar">Eliminar</button>
+<button type="submit" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#eliminar">Eliminar</button>
 <div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">

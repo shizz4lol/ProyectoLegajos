@@ -12,7 +12,8 @@ class Documento extends Model
         'tipo',
         'archivo_adj',
         'año',
-        'copia'
+        'copia',
+        'id_alumno'
     ];
     public function alumno(){
         return $this->belongsTo(Alumno::class, 'id_alumno');
