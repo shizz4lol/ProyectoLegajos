@@ -221,7 +221,7 @@ select{
 .sidebar.colapsada .salir{justify-content:center;padding-left:0;padding-right:0;}
 .sidebar.colapsada .label, .sidebar.colapsada .btn-outline-info{display:none;}
 
-.contenido{flex:1;min-width:0;padding:26px 32px 60px;}
+.contenido{flex:1;min-width:0;padding:26px 32px 60px; max-width: 100%;}
 
 /* ================= PANEL PRINCIPAL ================= */
 .panel-card{background:#fff;border:1px solid var(--gris-borde);border-radius:12px;padding:18px 22px;margin-bottom:22px; width:fit-content;}
@@ -335,7 +335,7 @@ h2.section-title{color:var(--azul-oscuro);font-size:18px;margin:0 0 3px;display:
   }
 
 /* Tabla de alumnos del curso */
-.tabla-curso{
+.tabla{
   width:100%;
   border-collapse:collapse;
   background:#fff;
@@ -343,7 +343,7 @@ h2.section-title{color:var(--azul-oscuro);font-size:18px;margin:0 0 3px;display:
   border-radius:12px;
   overflow:hidden;
 }
-.tabla-curso thead th{
+.tabla thead th{
   text-align:left;
   font-size:11.5px;
   text-transform:uppercase;
@@ -353,17 +353,20 @@ h2.section-title{color:var(--azul-oscuro);font-size:18px;margin:0 0 3px;display:
   padding:14px 20px;
   border-bottom:1px solid var(--gris-borde);
 }
-.tabla-curso tbody td{
+.tabla tbody td{
   padding:14px 20px;
   font-size:14px;
   color:var(--gris-texto);
   border-bottom:1px solid #f0f1f6;
 }
-.tabla-curso tbody tr:last-child td{border-bottom:none;}
-.tabla-curso tbody tr:hover{background:var(--gris-suave);}
+.tabla tbody tr:last-child td{border-bottom:none;}
+.tabla tbody tr:hover{background:var(--gris-suave);}
 
-.tabla-curso td.col-numero{color:var(--gris-sub);font-weight:600;width:40px;}
-.tabla-curso td.col-acciones{white-space:nowrap;}
+.tabla td.col-numero{color:var(--gris-sub);font-weight:600;width:40px;}
+.tabla td.col-acciones{white-space:nowrap;}
+
+.tabla td #nombrealumno
+
 
 /* ------------------------------------------------------------
    Botones de acción (ver / editar / legajo).
@@ -872,8 +875,11 @@ textarea {
 
 .legajo-contenedor {
     display: grid;
+    justify-content: space-evenly;
+    align-content: center;
     grid-template-columns: 1.1fr 1fr;
     gap: 30px;
+    max-width: 100%;
 }
 
 
@@ -890,7 +896,12 @@ textarea {
     box-shadow: 0 2px 7px rgba(0, 0, 0, 0.04);
 }
 
-
+#alumno-card{
+    display: block;
+    justify-self: left;
+    width: fit-content;
+    margin:20px;
+}
 /* Información del alumno */
 
 .alumno-datos {
@@ -987,14 +998,18 @@ textarea {
 .documento {
     display: flex;
     align-items: center;
-
+    justify-content: space-between;
     gap: 12px;
     margin-bottom: 16px;
-
     font-size: 15px;
     color: #334;
 }
 
+.botones-legajo{
+    display:flex;
+    justify-content: space-around;
+    
+}
 
 /* Check verde */
 
@@ -1262,4 +1277,12 @@ textarea {
 .toggle-vacios input{
   width:auto;
   cursor:pointer;
+}
+#aviso{
+    display: flex;
+    
+    height: 50px;
+    justify-self: center;
+    color:black;
+    font-weight: 500;
 }
