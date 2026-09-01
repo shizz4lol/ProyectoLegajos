@@ -89,7 +89,7 @@
             <div class="item">
 
                 <span class="ic">
-                    📦
+                    
                 </span>
 
                 <span class="label">
@@ -136,7 +136,7 @@
                 <div>
 
                     <h1>
-                        📦 Legajos Archivados
+                        Legajos Archivados
                     </h1>
 
                     <p>
@@ -167,7 +167,7 @@
 
 
                         <div class="archivado-avatar">
-                            👤
+                            <img src="../imagen/usuario.png" alt="Alumnos">
                         </div>
 
 
