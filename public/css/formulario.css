@@ -92,7 +92,8 @@
 
 .btn-guardar-legajo{
   display:block;
-  width:100%;
+  justify-self: center;
+  width:500px;
   background:var(--azul-medio);
   color:#fff;
   border:none;
@@ -127,12 +128,6 @@ input[type="number"]::-webkit-outer-spin-button {
   display:none;
 }
 
-#copia{
-  padding: 0;
-}
-#checkboxsi{
-  margin:0;
-}
 #año{
   width: 200px !important;
 }

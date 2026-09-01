@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section ('contenido')
-    <!-- CONTENIDO -->
-    <main class="contenido">
+
 
         <div class="titulo">
 
@@ -16,14 +15,10 @@
 
         <!-- FORMULARIO -->
 
-        <form action="{{ route('alumno.update', $alumno->id) }}"
-              method="POST">
+        <form action="{{ route('legajos.update', ['legajo' => $alumno->id_alumno]) }}" method="POST">
 
             @csrf
             @method('PUT')
-
-
-            <!-- DATOS DEL ALUMNO -->
 
             <div class="tarjeta">
 
@@ -128,84 +123,12 @@
 
                     <!-- CURSO -->
 
-                    <div class="campo">
-
-                        <label for="curso">
-                            Curso
-                        </label>
-
-                        <select id="curso" name="curso_id" required>
-
-                            @foreach($cursos as $curso)
-
-                                <option value="{{ $curso->id }}"
-                                    {{ $alumno->curso_id == $curso->id ? 'selected' : '' }}>
-
-                                    {{ $curso->curso }}
-
-                                </option>
-
-                            @endforeach
-
-                        </select>
-
-                    </div>
-
-
-                    <!-- DIVISIÓN -->
-
-                    <div class="campo">
-
-                        <label for="division">
-                            División
-                        </label>
-
-                        <select id="division" name="division_id" required>
-
-                            @foreach($divisiones as $division)
-
-                                <option value="{{ $division->id }}"
-                                    {{ $alumno->division_id == $division->id ? 'selected' : '' }}>
-
-                                    {{ $division->division }}
-
-                                </option>
-
-                            @endforeach
-
-                        </select>
-
-                    </div>
+                    
 
 
                 </div>
 
             </div>
-
-
-            <!-- OBSERVACIONES -->
-
-            <div class="tarjeta">
-
-                <h2>Observaciones</h2>
-
-                <div class="campo">
-
-                    <label for="observaciones">
-                        Observaciones del alumno
-                    </label>
-
-                    <textarea
-                        id="observaciones"
-                        name="observaciones"
-                        placeholder="Ingrese alguna observación...">{{ old('observaciones', $alumno->observaciones ?? '') }}</textarea>
-
-                </div>
-
-            </div>
-
-
-            <!-- BOTONES -->
 
             <div class="acciones">
 

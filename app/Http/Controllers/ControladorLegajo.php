@@ -166,16 +166,35 @@ class ControladorLegajo extends Controller
             ]);
         });
         return redirect('inicio')->with('aviso', 'El legajo fue creado correctamente.');
-}
-    public function update(){
-        if (!Auth::check()) {
-          return redirect('/');
-        }
-        
     }
-    public function edit(){
-        
+    
+    public function edit($id){
+        $alumno = Alumno::findOrFail($id);
+        return view('bdconn.modificar-alumno', compact('alumno'));
     }    
+    public function update(Request $request, $id){
+        $alumno = Alumno::findOrFail($id);
+
+        $datos = $request->validate([
+            'nombre' => 'nullable|string|max:255',
+            'apellido' => 'nullable|string|max:255',
+            'dni' => 'nullable|integer',
+            'email' => 'nullable|email|max:255',
+            'telefono' => 'nullable|string|max:255',
+            'fecha_nacimiento' => 'nullable|date',
+        ]);
+
+        foreach ($datos as $campo => $valor) {
+            if ($valor !== null && $valor !== '') {
+                $alumno->$campo = $valor;
+            }
+        }
+
+        $alumno->save();
+
+        return redirect()->route('alumnos', $alumno->id_alumno)
+        ->with('aviso', 'Datos personales modificados correctamente.');
+    }
     public function destroy($id_alumno){
         $alumno = Alumno::findOrFail($id_alumno);
         DB::transaction(function () use ($alumno) {

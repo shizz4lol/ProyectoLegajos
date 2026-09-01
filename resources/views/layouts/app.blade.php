@@ -74,7 +74,7 @@
         </div>
         <div class="item">
             <a>
-            <span class="ic"><img src="" alt="Archivados"></span>
+            <span class="ic"><img src="/imagen/flecha.png" alt="Archivados"></span>
             <span class="label">Legajos Archivados</span>
             </a>
         </div>

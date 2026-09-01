@@ -27,11 +27,12 @@
                 <label for="tipo">Tipo <span class="req">*</span></label>
                 <select id="tipo" name="documento[tipo]" required>
                     <option value="" disabled selected>Seleccione un tipo de documento:</option>
+                    <option value="inscripcion">Inscripcion</option>
+                    <option value="matricula">Matricula</option>
                     <option value="certificacion">Certificacion</option>
                     <option value="autorizacion">Autorizacion</option>
-                    <option value="inscripcion">Inscripcion</option>
                     <option value="constancia/apto">Constancia/Apto</option>
-                    <option value="matricula">Matricula</option>
+                    <option value="matricula">Diploma</option>
                 </select>
             </div>
             <div class="campo-icono-form">

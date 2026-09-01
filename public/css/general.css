@@ -156,6 +156,7 @@ select{
   padding:16px 0;
   transition:width .2s ease;
   overflow:hidden;
+  z-index: 4000;
 }
 .sidebar.colapsada{width:64px;}
 
@@ -335,13 +336,13 @@ h2.section-title{color:var(--azul-oscuro);font-size:18px;margin:0 0 3px;display:
   }
 
 /* Tabla de alumnos del curso */
-.tabla{
-  width:100%;
-  border-collapse:collapse;
-  background:#fff;
-  border:1px solid var(--gris-borde);
-  border-radius:12px;
-  overflow:hidden;
+.contenido .tabla{
+    justify-self: center;
+    border-collapse:collapse;
+    background:#fff;
+    border:1px solid var(--gris-borde);
+    border-radius:12px;
+    overflow:hidden;
 }
 .tabla thead th{
   text-align:left;
@@ -364,7 +365,10 @@ h2.section-title{color:var(--azul-oscuro);font-size:18px;margin:0 0 3px;display:
 
 .tabla td.col-numero{color:var(--gris-sub);font-weight:600;width:40px;}
 .tabla td.col-acciones{white-space:nowrap;}
-
+.tabla #thnombrealumno{
+    width: 350px !important;
+    min-width: 200px;
+  }
 
 
 /* ------------------------------------------------------------
@@ -884,7 +888,7 @@ textarea {
 }
 
 
-.alumno-datos {
+.gdatos {
     display: flex;
     gap: 25px;
 }

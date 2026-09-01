@@ -1,6 +1,5 @@
 @extends ('layouts.app')
 @section ('contenido')
-  <div class="contenido">
   <div class="form-header">
         <div class="titulo-wrap">
             <div>
@@ -11,7 +10,7 @@
              Volver
         </button>
     </div>
-  <div class="alumno-legajo">
+  <div>
           <table class="tabla">
             <thead>
               <tr>
@@ -27,7 +26,8 @@
               </tr>
             </thead>
             <tbody>
-                <td>{{ $alumno->apellido }}, {{ $alumno->nombre }} </td>
+              <tr>
+                <td id="nombrea">{{ $alumno->apellido }}, {{ $alumno->nombre }} </td>
                 <td>{{ $alumno->dni }}</td>
                 <td>{{$alumno->fecha_nacimiento}}</td>
                 <td>{{$alumno->curso->curso}} {{$alumno->division->division}}</td>
@@ -35,7 +35,17 @@
                 <td>{{$alumno->email}}</td>
                 <td>{{ $alumno->documentos->count() }}</td>
                 <td>{{ $alumno->familiares->count() }}</td>
-                <td></td>
+                <td>
+                  <a href="{{route('legajos.edit', $alumno->id_alumno)}}">
+                      <button class="accion-btn" title="Editar documento">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                              <path d="M12 20h9"></path>
+                              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                          </svg>
+                      </button>
+                  </a>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -143,11 +153,7 @@
             Cargar documento
           </button>
         </a>
-        </div>
-    <div class="acciones-legajo">
     </div>
-
-</div>
 <button type="submit" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#eliminar">Eliminar</button>
 <div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
