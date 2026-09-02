@@ -32,6 +32,7 @@
                     <option value="certificacion">Certificacion</option>
                     <option value="autorizacion">Autorizacion</option>
                     <option value="constancia/apto">Constancia/Apto</option>
+                    <option value="constancia/apto">Acta</option>
                     <option value="matricula">Diploma</option>
                 </select>
             </div>

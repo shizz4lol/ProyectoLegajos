@@ -5,7 +5,6 @@
             <div>
                 <h2>Crear nuevo Legajo</h2>
                 <p>Complete los datos correspondientes para dar de alta al alumno en el sistema.</p>
-                <p id="aviso">{{ session('aviso') }}</p>
             </div>
         </div>
         <button type="button" class="btn-volver" onclick="window.history.back()">
@@ -119,6 +118,11 @@
                 <input type="text" id="m_dni" maxlength="8" name="madre[dni]" placeholder="Sin puntos o espacios" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
             </div>
             <div class="campo-icono-form">
+                <span class="ic"><i class="fa-solid fa-calendar-days"></i></span>
+                <label for="mfecha_nacimiento">F. Nacimiento <span class="req">*</span></label>
+                <input type="date" id="mfecha_nacimiento" name="madre[fecha_nacimiento]" required>
+            </div>
+            <div class="campo-icono-form">
                 <span class="ic"><i class="fa-solid fa-location-dot"></i></span>
                 <label for="m_domicilio">Domicilio <span class="req">*</span></label>
                 <input type="text" id="m_domicilio" name="madre[domicilio]" placeholder="Ej: Av. Argentina 123, Neuquén" required>
@@ -152,6 +156,11 @@
                 <span class="ic"><i class="fa-solid fa-address-card"></i></span>
                 <label for="p_dni">DNI <span class="req">*</span></label>
                 <input type="text" id="p_dni" maxlength="8" name="padre[dni]" placeholder="Sin puntos o espacios" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+            </div>
+            <div class="campo-icono-form">
+                <span class="ic"><i class="fa-solid fa-calendar-days"></i></span>
+                <label for="pfecha_nacimiento">F. Nacimiento <span class="req">*</span></label>
+                <input type="date" id="pfecha_nacimiento" name="padre[fecha_nacimiento]" required>
             </div>
             <div class="campo-icono-form">
                 <span class="ic"><i class="fa-solid fa-location-dot"></i></span>

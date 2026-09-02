@@ -41,7 +41,6 @@ class ControladorLegajo extends Controller
             'curso',
             'division'
         ])->where('id_curso', $id_curso)->where('id_division', $id_division)->get();
-
         return view('bdconn.curso', compact('alumnos', 'curso', 'division'));
     }
     public function prece(Request $request){
@@ -91,6 +90,32 @@ class ControladorLegajo extends Controller
         ->get();
 
         return view('iniciotres',compact('alumnos', 'curso', 'division', 'cursoDivision'));
+    }
+    public function archive(){
+
+    }
+    public function editcurso(Alumno $alumno){
+        $curso = $alumno->curso;
+        $division = $alumno->division;
+
+        return view('bdconn.modificar-curso', compact('alumno', 'curso', 'division'));
+    }
+    public function updatecurso(Request $request, Alumno $alumno)    {
+        $request->validate([
+            'curso' => 'required|exists:cursos,curso',
+            'division' => 'required|exists:divisions,division',
+        ]);
+
+        $curso = Curso::where('curso', $request->curso)->firstOrFail();
+        $division = Division::where('division', $request->division)->firstOrFail();
+
+        $alumno->id_curso = $curso->id;
+        $alumno->id_division = $division->id;
+
+        $alumno->save();
+
+        return redirect()->route('alumnos', $alumno)
+        ->with('aviso', 'Curso actualizado correctamente.');
     }
 /*  -------------------FUNCIONES CRUD/RESOURCE-------------------  */
     public function index(){
@@ -147,14 +172,14 @@ class ControladorLegajo extends Controller
 
             $alumno = Alumno::create($datosAlumno);
             $datosMadre = $request->input('madre');
-            $datosMadre['parentezco'] = 'Madre';
+            $datosMadre['parentesco'] = 'Madre';
             $madre = Familiar::where('dni', $datosMadre['dni'])->first();
             if (!$madre) {
                 $madre = Familiar::create($datosMadre);
             }
 
             $datosPadre = $request->input('padre');
-            $datosPadre['parentezco'] = 'Padre';
+            $datosPadre['parentesco'] = 'Padre';
             $padre = Familiar::where('dni', $datosPadre['dni'])->first();
             if (!$padre) {
                 $padre = Familiar::create($datosPadre);
@@ -218,7 +243,5 @@ class ControladorLegajo extends Controller
         return redirect('inicio')->with('aviso', 'El legajo fue eliminado correctamente.');
     }
 
-    public function archive(){
-
-    }
+    
 }

@@ -67,13 +67,13 @@
             </a>
         </div>
         <div class="item">
-            <a>
+            <a href="{{route('egresados')}}">
             <span class="ic"><img src="/imagen/gorro.png" alt="Egresados"></span>
             <span class="label">Legajos de Egresados</span>
             </a>
         </div>
         <div class="item">
-            <a>
+            <a href="{{route('archivados')}}">
             <span class="ic"><img src="/imagen/flecha.png" alt="Archivados"></span>
             <span class="label">Legajos Archivados</span>
             </a>

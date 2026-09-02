@@ -42,23 +42,34 @@ Route::middleware(['auth', 'rol:secretaria,jefe'])->group(function () {
     Route::get('/editar', function(){
             return view ('bdconn.modificar');
     })->name('modificar'); 
-
+    Route::get('/archivados', function(){
+            return view ('bdconn.archivados');
+    })->name('archivados');
     //RUTAS DOCUMENTOS:
     Route::get('/alumnos/{alumno}/documentos/crear', [ControladorDocumento::class, 'create'])
         ->name('creardocumento');
     Route::post('/alumnos/{alumno}/documentos', [ControladorDocumento::class, 'store'])
         ->name('alumnos.documentos.store');
+    Route::get('/alumnos/{alumno}/documentos/editar', [ControladorDocumento::class, 'edit'])
+        ->name('editardocumento');
     Route::put('/alumnos/{alumno}/documentos/{documento}', [ControladorDocumento::class, 'update'])
         ->name('alumnos.documentos.update');
     //RUTAS FAMILIARES:
-    Route::get('/crearfamiliar', [ControladorFamiliar::class, 'create'])->name('crearfamiliar');
+
+    Route::get('/alumnos/{alumno}/familiares/crear', [ControladorFamiliar::class, 'create'])->name('crearfamiliar');
     Route::post('/alumnos/{alumno}/familiares', [ControladorFamiliar::class, 'store'])
         ->name('alumnos.familiares.store');
-
+    Route::get('/alumnos/{alumno}/familiares/{familiar}/editar', [ControladorFamiliar::class, 'edit'])
+        ->name('editarfamiliar');
+    
     Route::put('/alumnos/{alumno}/familiares/{familiar}', [ControladorFamiliar::class, 'update'])
         ->name('alumnos.familiares.update');
-
-    
+    //RUTAS MODIFICACION DE CURSO MANUAL
+    Route::get('/alumnos/{alumno}/editar-curso', [ControladorLegajo::class, 'editcurso'])
+        ->name('editarcurso');
+    Route::put('/alumnos/{alumno}/editar-curso', [ControladorLegajo::class, 'updatecurso'])
+    ->name('updatecurso');
+   
 });
 Route::middleware(['auth','rol:secretaria'])->group(function(){
     Route::delete('/alumnos/{alumno}/familiares/{familiar}', [ControladorFamiliar::class, 'destroy'])
@@ -66,6 +77,8 @@ Route::middleware(['auth','rol:secretaria'])->group(function(){
 
     Route::delete('/alumnos/{alumno}/documentos/{documento}', [ControladorDocumento::class, 'destroy'])
         ->name('alumnos.documentos.destroy');
-
+    Route::get('/egresados', function(){
+            return view ('egresados');
+        })->name('egresados');
 });
 

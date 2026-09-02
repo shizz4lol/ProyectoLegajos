@@ -11,10 +11,11 @@ class Familiar extends Model
         'nombre',
         'apellido',
         'dni',
+        'fecha_nacimiento',
         'email',
         'telefono',
         'domicilio',
-        'parentezco',
+        'parentesco',
     ];
     public function alumnos():BelongsToMany{
         return $this->belongsToMany(

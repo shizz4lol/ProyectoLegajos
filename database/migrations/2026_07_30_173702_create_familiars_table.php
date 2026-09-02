@@ -16,9 +16,10 @@ return new class extends Migration
             $table->integer('dni')->unique();
             $table->string('nombre');
             $table->string('apellido');
+            $table->date('fecha_nacimiento');
             $table->string('telefono');
             $table->string('domicilio');
-            $table->string('parentezco');
+            $table->string('parentesco');
             $table->string('email')->nullable();
             $table->timestamps();
         });

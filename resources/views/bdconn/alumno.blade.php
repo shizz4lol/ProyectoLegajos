@@ -10,19 +10,32 @@
              Volver
         </button>
     </div>
-  <div>
+  <div class="tabla-contenedor">
           <table class="tabla">
             <thead>
               <tr>
                 <th id="thnombrealumno">Nombre completo</th>
                 <th>DNI</th>
                 <th>Fecha de nacimiento</th>
-                <th>Curso</th>
+                <th id="thcurso">
+                  Curso
+                @if (session('rol')==='secretaria' || session('rol')==='jefe')
+                <a href="{{route('editarcurso', ['alumno' => $alumno->id_alumno])}}">
+                      <button class="accion-btn" title="Editar curso">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                              <path d="M12 20h9"></path>
+                              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                          </svg>
+                      </button>
+                  </a>
+                @endif
+                </th>
                 <th>Telefono</th>
                 <th>Email</th>
                 <th>Documentos cargados</th>
                 <th>Familiares cargados</th>
-                <th>Editar</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -36,8 +49,9 @@
                 <td>{{ $alumno->documentos->count() }}</td>
                 <td>{{ $alumno->familiares->count() }}</td>
                 <td>
+                  @if (session('rol')==='secretaria' || session('rol')==='jefe')
                   <a href="{{route('legajos.edit', $alumno->id_alumno)}}">
-                      <button class="accion-btn" title="Editar documento">
+                      <button class="accion-btn" title="Editar alumno">
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                               <path d="M12 20h9"></path>
@@ -45,42 +59,81 @@
                           </svg>
                       </button>
                   </a>
+                  @endif
+                  <button class="accion-btn" title="Descargar legajo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                    </button>
                 </td>
               </tr>
             </tbody>
           </table>
-          <div class="legajo-vista">
-
   </div>
         
     <div class="legajo-contenedor">
-        <div class="legajo-card">
+    <div class="legajo-card">
         <h2>Familiares</h2>
-        @forelse($alumno->familiares as $familiar)
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>Familiar</th>
+                    <th>DNI</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($alumno->familiares as $familiar)
+                    <tr class="fila-familiar" data-id="{{ $familiar->id }}">
+                        <td>
+                            {{ $familiar->nombre }} {{ $familiar->apellido }}
+                            <br>
+                            <small>{{ $familiar->parentesco }}</small>
+                        </td>
 
-                        <div class="resumen-item">
-                            <div>
+                        <td>
+                            {{ $familiar->dni }}
+                        </td>
 
-                                <p>
-                                    {{ $familiar->nombre }}
-                                    {{ $familiar->apellido }}
-                                </p>
+                        <td class="col-acciones">
+                            <div class="acciones-grupo">
+                                <a href="{{ route('editarfamiliar', ['alumno' => $alumno->id_alumno, 'familiar' => $familiar->id]) }}">
+                                    <button type="button" class="accion-btn" title="Editar familiar">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M12 20h9"></path>
+                                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                                        </svg>
+                                    </button>
+                                </a>
 
-                                <small>
-                                    {{ $familiar->parentezco }}
-                                </small>
+                                {{-- Eliminar --}}
+                                @if (session('rol') === 'secretaria')
+                                    <form action="{{ route('alumnos.familiares.destroy', ['alumno' => $alumno->id_alumno, 'familiar' => $familiar->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button type="submit" class="accion-btn" title="Eliminar familiar">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M3 6h18"></path>
+                                                <path d="M8 6V4h8v2"></path>
+                                                <path d="M19 6l-1 14H6L5 6"></path>
+                                                <path d="M10 11v5"></path>
+                                                <path d="M14 11v5"></path>
+                                            </svg>
+                                        </button>
+                                    </form>
+                                @endif
 
                             </div>
-
-                        </div>
-
-          @empty
-
-                        <p class="sin-datos">
-                            No hay familiares registrados.
-                        </p>
-
-          @endforelse
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
         </div>
         <div class="legajo-card documentacion">
           <h2>Documentos del alumno</h2>
@@ -140,12 +193,12 @@
               </tbody>
           </table>
     </div></br>
-        
+  
     </div>
     <div class="botones-legajo">
-        <a href="">
+        <a href="{{route('crearfamiliar', $alumno->id_alumno)}}">
           <button type="button" class="btn-volver" >
-            Cargar familiar
+            Cargar Familiar
           </button>
         </a>
         <a href="{{route('creardocumento', $alumno->id_alumno)}}">
@@ -153,7 +206,22 @@
             Cargar documento
           </button>
         </a>
-    </div>
+    </div></br>
+
+    <div class="tabla-contenedor" id="tablafamiliar" style="display: none;">
+          <table class="tabla">
+            <thead id="encabezado-familiar">
+            </thead>
+            <tbody id="datos-familiar">
+            </tbody>
+          </table><br>
+
+          <button type="button" class="btn-volver" id="cerrar-detalle">
+            Cerrar detalle
+          </button>
+    </div></br>
+
+
 <button type="submit" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#eliminar">Eliminar</button>
 <div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -181,4 +249,135 @@
     </div>
   </div>
 </div>
+@endsection
+@section ('script')
+<script>
+
+const familiares = @json($alumno->familiares);
+
+const filasFamiliares = document.querySelectorAll('.fila-familiar');
+const tablaFamiliar = document.getElementById('tablafamiliar');
+const encabezadoFamiliar = document.getElementById('encabezado-familiar');
+const datosFamiliar = document.getElementById('datos-familiar');
+const cerrarDetalle = document.getElementById('cerrar-detalle');
+
+
+filasFamiliares.forEach(fila => {
+
+    fila.addEventListener('click', function(event) {
+
+        // Si se hizo click en los botones de acciones,
+        // no se abre el detalle.
+        if (event.target.closest('.col-acciones')) {
+            return;
+        }
+
+
+        const id = this.dataset.id;
+
+        const familiar = familiares.find(f => f.id == id);
+
+
+        if (!familiar) {
+            return;
+        }
+
+
+        encabezadoFamiliar.innerHTML = '';
+        datosFamiliar.innerHTML = '';
+
+
+        const filaEncabezado = document.createElement('tr');
+        const filaDatos = document.createElement('tr');
+
+
+        // Nombre completo
+        const thNombre = document.createElement('th');
+        thNombre.textContent = 'Nombre completo';
+
+        const tdNombre = document.createElement('td');
+        tdNombre.textContent = familiar.nombre + ' ' + familiar.apellido;
+
+
+        filaEncabezado.appendChild(thNombre);
+        filaDatos.appendChild(tdNombre);
+
+
+        // DNI
+        const thDni = document.createElement('th');
+        thDni.textContent = 'DNI';
+
+        const tdDni = document.createElement('td');
+        tdDni.textContent = familiar.dni ?? '';
+
+
+        filaEncabezado.appendChild(thDni);
+        filaDatos.appendChild(tdDni);
+
+
+        // Resto de atributos
+        Object.entries(familiar).forEach(([atributo, valor]) => {
+
+        if (
+          atributo === 'id' ||
+          atributo === 'nombre' ||
+          atributo === 'apellido' ||
+          atributo === 'dni' ||
+          atributo === 'created_at' ||
+          atributo === 'updated_at' ||
+          atributo === 'pivot'
+        ) {
+          return;
+        }
+
+
+            const th = document.createElement('th');
+            const td = document.createElement('td');
+
+
+            if (atributo === 'fecha_nacimiento') {
+                th.textContent = 'Fecha de nacimiento';
+            } else if (atributo === 'telefono') {
+                th.textContent = 'Telefono';
+            } else if (atributo === 'domicilio') {
+                th.textContent = 'Domicilio';
+            } else if (atributo === 'email') {
+                th.textContent = 'Email';
+            } else if (atributo === 'parentezco') {
+                th.textContent = 'Parentesco';
+            } else {
+                th.textContent = atributo;
+            }
+
+
+            td.textContent = valor ?? '';
+
+
+            filaEncabezado.appendChild(th);
+            filaDatos.appendChild(td);
+
+        });
+
+
+        encabezadoFamiliar.appendChild(filaEncabezado);
+        datosFamiliar.appendChild(filaDatos);
+
+
+        tablaFamiliar.style.display = 'block';
+
+    });
+
+});
+
+
+cerrarDetalle.addEventListener('click', function() {
+
+    tablaFamiliar.style.display = 'none';
+
+    encabezadoFamiliar.innerHTML = '';
+    datosFamiliar.innerHTML = '';
+
+});
+
+</script>
 @endsection

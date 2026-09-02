@@ -19,6 +19,7 @@
     <p class="section-sub">Todos los cursos disponibles</p>
 
     <div class="cursos-cols">
+      <a href="{{route('curso', ['id_curso' => session('prece_curso'),'id_division' => session('prece_division')])}}">
       <div class="curso-col" data-turno="manana">
         <p>{{$curso->curso}}{{$division->division}}</p>
         <div class="titulo-col"><span class="dot manana"></span>Turno {{$cursoDivision->turno}}</div>
@@ -26,6 +27,7 @@
           <div class="curso-fila"><span>{{ $alumno->nombre }} {{ $alumno->apellido }}</span><span class="flecha">›</span></div>
         @endforeach
       </div>
+      </a>
 
     </div>
   </div>

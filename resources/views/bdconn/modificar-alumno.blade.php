@@ -69,8 +69,10 @@
                             type="text"
                             id="dni"
                             name="dni"
+                            maxlength="8"
                             value="{{ old('dni', $alumno->dni) }}"
-                            required>
+                            required
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
 
                     </div>
 
@@ -119,11 +121,6 @@
                             value="{{ old('email', $alumno->email) }}">
 
                     </div>
-
-
-                    <!-- CURSO -->
-
-                    
 
 
                 </div>

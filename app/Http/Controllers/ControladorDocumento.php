@@ -40,7 +40,9 @@ class ControladorDocumento extends Controller
 
         return redirect()->route('alumnos', $alumno->id_alumno)->with('aviso', 'Documento guardado correctamente.');
     }
-
+    public function edit(Alumno $alumno, Documento $documento){
+        return view('bdconn.modificar', compact('alumno', 'documento'));
+    }
     public function update(){
 
     }
