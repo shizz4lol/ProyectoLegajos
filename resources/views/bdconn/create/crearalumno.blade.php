@@ -27,10 +27,6 @@
                     <input type="text" id="apellido" name="alumno[apellido]" class="input-nombre" required  >
                 </div>
             </div>
-
-            <!-- Filas del formulario con íconos estilo ficha de alumno -->
-            
-            <!-- DNI -->
             <div class="campo-icono-form">
                 <span class="ic"><i class="fa-solid fa-address-card"></i></span>
                 <label for="dni">DNI <span class="req"  >*</span></label>
@@ -64,30 +60,23 @@
                     <option value="6°">6°</option>
                 </select>
             </div>
-            <!-- Fecha de Nacimiento -->
             <div class="campo-icono-form">
                 <span class="ic"><i class="fa-solid fa-calendar-days"></i></span>
                 <label for="fecha_nacimiento">F. Nacimiento <span class="req">*</span></label>
                 <input type="date" id="fecha_nacimiento" name="alumno[fecha_nacimiento]" required>
             </div>
 
-
-            <!-- Teléfono -->
             <div class="campo-icono-form">
                 <span class="ic"><i class="fa-solid fa-phone"></i></span>
                 <label for="telefono">Teléfono <span class="req">*</span></label>
                 <input type="tel" id="telefono" name="alumno[telefono]" placeholder="Ej: 299 123-4567" required>
             </div>
 
-
-            <!-- Email -->
             <div class="campo-icono-form">
                 <span class="ic"><i class="fa-solid fa-envelope"></i></span>
                 <label for="email">Email <span class="req">*</span></label>
                 <input type="email" id="email" name="alumno[email]" placeholder="Ej: alumno@example.com" required>
             </div>
-
-            <!-- Opción: Viene de otra escuela -->
             <div class="otra-escuela-row">
                 <div class="check-row">
                     <input type="checkbox" id="check_otra_escuela" name="check_otra_escuela" onchange="toggleOtraEscuela(this)">
@@ -180,7 +169,6 @@
             <p class="form-hint">Los campos marcados con (<span class="req">*</span>) son obligatorios.</p>
         </div>
         </div>
-        <!-- Botón para guardar -->
             <button type="submit" class="btn-guardar-legajo">
                 <i class="fa-solid fa-floppy-disk"></i> Guardar Datos
             </button>
