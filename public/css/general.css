@@ -2196,3 +2196,34 @@ textarea {
     }
 
 }
+.password-field {
+    position: relative;
+}
+
+.password-field input {
+    padding-right: 45px;
+}
+
+.btn-mostrar-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    border: none;
+    background: transparent;
+
+    color: var(--gris-sub);
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 4px;
+}
+
+.btn-mostrar-password:hover {
+    color: var(--azul-medio);
+}
