@@ -44,9 +44,15 @@
 
             <div class="campo-icono-form">
                 <span class="ic"><i class="fa-solid fa-calendar-days"></i></span>
-                <label>¿Es copia? (puede dejarlo vacio)</label>
-                <input type="checkbox" id="copia" name="documento[copia]" value="1" required>
-                <label for="copia" id="checkboxsi" >Si</label>
+                <label>¿Es copia?</label>
+                <label>
+                    <input type="radio" name="documento[copia]" value="1">
+                    Si
+                </label>
+                <label>
+                    <input type="radio" name="documento[copia]" value="0">
+                    No
+                </label>
             </div>
 
             <div class="campo-icono-form">

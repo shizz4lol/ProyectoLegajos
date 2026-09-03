@@ -43,6 +43,11 @@ class ControladorLegajo extends Controller
         ])->where('id_curso', $id_curso)->where('id_division', $id_division)->get();
         return view('bdconn.curso', compact('alumnos', 'curso', 'division'));
     }
+    public function todoscursos(){
+        $cursos = Curso::with('divisiones')->get();
+
+        return view('vistacursos', compact('cursos'));
+    }
     public function prece(Request $request){
         $ingresoPreceptor = $request->input('prece');
 

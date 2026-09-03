@@ -45,13 +45,13 @@
 <div class="layout">
   <div class="sidebar" id="sidebar">
     <div>
-      <div class="item act">
+      <div class="item {{ request()->routeIs('inicio') ? 'act' : '' }}">
         <a href="{{ (session('rol') === 'secretaria' || session('rol') === 'jefe') ? route('inicio') : route('inicio3') }}">
             <span class="ic"><img src="/imagen/casita.png" alt="Inicio"></span>
             <span class="label">Inicio</span>
         </a>
       </div>
-      <div class="item">
+      <div class="item {{ request()->routeIs('curso*') ? 'act' : '' }}">
         <a href="{{ session('rol') === 'preceptor' ? route('curso', ['id_curso' => session('prece_curso'),
             'id_division' => session('prece_division')
              ]): route('cursosfull') }}">
@@ -60,19 +60,19 @@
         </a>
       </div>
       @if (session('rol') === 'secretaria')
-        <div class="item">
+        <div class="item {{ request()->routeIs('legajos.create') ? 'act' : '' }}">
             <a href="{{ route('legajos.create') }}">
                 <span class="ic"><img src="/imagen/mas.png" alt="Crear"></span>
                 <span class="label">Crear legajo</span>
             </a>
         </div>
-        <div class="item">
+        <div class="item {{ request()->routeIs('egresados') ? 'act' : '' }}">
             <a href="{{route('egresados')}}">
             <span class="ic"><img src="/imagen/gorro.png" alt="Egresados"></span>
             <span class="label">Legajos de Egresados</span>
             </a>
         </div>
-        <div class="item">
+        <div class="item {{ request()->routeIs('archivados') ? 'act' : '' }}">
             <a href="{{route('archivados')}}">
             <span class="ic"><img src="/imagen/flecha.png" alt="Archivados"></span>
             <span class="label">Legajos Archivados</span>

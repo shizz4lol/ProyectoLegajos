@@ -36,9 +36,7 @@ Route::middleware(['auth','rol:preceptor'])->group(function(){
 
 
 Route::middleware(['auth', 'rol:secretaria,jefe'])->group(function () {
-    Route::get('/cursos', function(){
-            return view ('vistacursos');
-    })->name('cursosfull');
+    Route::get('/cursos', [ControladorLegajo::class, 'todoscursos'])->name('cursosfull');
     Route::get('/editar', function(){
             return view ('bdconn.modificar');
     })->name('modificar'); 
@@ -47,13 +45,16 @@ Route::middleware(['auth', 'rol:secretaria,jefe'])->group(function () {
     })->name('archivados');
     //RUTAS DOCUMENTOS:
     Route::get('/alumnos/{alumno}/documentos/crear', [ControladorDocumento::class, 'create'])
-        ->name('creardocumento');
-    Route::post('/alumnos/{alumno}/documentos', [ControladorDocumento::class, 'store'])
-        ->name('alumnos.documentos.store');
-    Route::get('/alumnos/{alumno}/documentos/editar', [ControladorDocumento::class, 'edit'])
-        ->name('editardocumento');
-    Route::put('/alumnos/{alumno}/documentos/{documento}', [ControladorDocumento::class, 'update'])
-        ->name('alumnos.documentos.update');
+    ->name('creardocumento');
+
+Route::post('/alumnos/{alumno}/documentos', [ControladorDocumento::class, 'store'])
+    ->name('alumnos.documentos.store');
+
+Route::get('/alumnos/{alumno}/documentos/{documento}/editar', [ControladorDocumento::class, 'edit'])
+    ->name('editardocumento');
+
+Route::put('/alumnos/{alumno}/documentos/{documento}', [ControladorDocumento::class, 'update'])
+    ->name('alumnos.documentos.update');
     //RUTAS FAMILIARES:
 
     Route::get('/alumnos/{alumno}/familiares/crear', [ControladorFamiliar::class, 'create'])->name('crearfamiliar');

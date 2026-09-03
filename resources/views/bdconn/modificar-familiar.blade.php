@@ -24,42 +24,26 @@
 
 
                     <div class="campo">
+                        <label for="nombre">Nombre</label>
 
-                        <label for="nombre">
-                            Nombre
-                        </label>
-
-                        <input
-                            type="text"
-                            id="nombre"
-                            name="nombre"
-                            value="{{ old('nombre', $familiar->nombre) }}"
-                            required>
+                        <input type="text" id="nombre" name="nombre" 
+                        value="{{ old('nombre', $familiar->nombre) }}"required>
 
                     </div>
 
 
                     <div class="campo">
 
-                        <label for="apellido">
-                            Apellido
-                        </label>
+                        <label for="apellido">Apellido</label>
 
-                        <input
-                            type="text"
-                            id="apellido"
-                            name="apellido"
-                            value="{{ old('apellido', $familiar->apellido) }}"
-                            required>
-
+                        <input type="text" id="apellido" name="apellido"
+                            value="{{ old('apellido', $familiar->apellido) }}" required>
                     </div>
 
 
                     <div class="campo">
 
-                        <label for="dni">
-                            DNI
-                        </label>
+                        <label for="dni">DNI</label>
 
                         <input
                             type="text"
@@ -72,9 +56,7 @@
 
                     <div class="campo">
 
-                        <label for="parentesco">
-                            Parentesco
-                        </label>
+                        <label for="parentesco">Parentesco</label>
                         <input
                             type="text"
                             id="parentesco"
@@ -85,9 +67,7 @@
 
                     <div class="campo">
 
-                        <label for="telefono">
-                            Teléfono
-                        </label>
+                        <label for="telefono">Teléfono</label>
 
                         <input
                             type="text"
@@ -100,9 +80,7 @@
 
                     <div class="campo">
 
-                        <label for="email">
-                            Email
-                        </label>
+                        <label for="email">Email</label>
 
                         <input
                             type="email"
@@ -115,9 +93,7 @@
 
                     <div class="campo">
 
-                        <label for="direccion">
-                            Domicilio
-                        </label>
+                        <label for="direccion">Domicilio</label>
 
                         <input
                             type="text"

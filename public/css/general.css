@@ -116,7 +116,12 @@ header.topbar{
   .buscador input[type="text"]:focus{border-color:var(--azul-cielo);}
   .buscador .lupa{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none; border:none;color:var(--gris-sub);cursor:pointer;display:flex;align-items:center;justify-content:center;width:26px;height:26p}
   
-
+  #buscador-curso{
+    max-width:280px !important;
+  }
+#muestrabusqueda{
+    width: 900px;
+}
 .topbar .userchip{margin-left:auto;display:flex;align-items:center;gap:10px;}
 .topbar .userchip .av{width:34px;height:34px;border-radius:50%;background:#ffffff26;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;}
 .topbar .userchip .txt b{display:block;font-size:13px;color:#fff;}
@@ -338,9 +343,6 @@ h2.section-title{color:var(--azul-oscuro);font-size:18px;margin:0 0 3px;display:
 .curso-header-left p{margin:2px 0 0;color:var(--gris-sub);font-size:13px;}
 
 
-#buscador-curso{
-    max-width:280px !important;
-  }
 
 /* Tabla de alumnos del curso */
 .contenido .tabla{
@@ -350,6 +352,7 @@ h2.section-title{color:var(--azul-oscuro);font-size:18px;margin:0 0 3px;display:
     border-radius: 12px;
     overflow: hidden;
     max-width: 100%;
+    justify-self: center;
 }
 .tabla thead th{
   text-align:left;
@@ -358,11 +361,11 @@ h2.section-title{color:var(--azul-oscuro);font-size:18px;margin:0 0 3px;display:
   letter-spacing:.4px;
   color:var(--gris-sub);
   font-weight:800;
-  padding:14px 20px;
+  padding:10px;
   border-bottom:1px solid var(--gris-borde);
 }
 .tabla tbody td{
-  padding:14px 20px;
+  padding:10px;
   font-size:14px;
   color:var(--gris-texto);
   border-bottom:1px solid #f0f1f6;
@@ -380,6 +383,9 @@ h2.section-title{color:var(--azul-oscuro);font-size:18px;margin:0 0 3px;display:
     min-width: 130px !important;
   }
 
+  #tablafamiliar thead th, #tablafamiliar tbody td{
+    padding: 14px 20px;
+  }
 /* ------------------------------------------------------------
    Botones de acción (ver / editar / legajo).
    El "movimiento" es puro CSS con :hover — no hace falta JS
@@ -639,10 +645,30 @@ textarea {
 
 .campo input:focus,
 .campo select:focus,
-textarea:focus {
-    border-color: #1769d1;
+.radio-opciones {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    gap: 25px;
+    margin-top: 10px;
+    margin-left: 40px;
+}
 
-    box-shadow: 0 0 0 2px rgba(23, 105, 209, 0.1);
+.radio-opcion {
+    display: flex !important;
+    align-items: center;
+    gap: 7px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.radio-opcion input[type="radio"] {
+    margin: 0;
+    width: auto;
+}
+
+.radio-opcion span {
+    margin: 0;
 }
 
 
@@ -886,7 +912,7 @@ textarea:focus {
     background: white;
     border: 1px solid #e1e4e8;
     border-radius: 12px;
-    padding: 25px;
+    padding: 10px;
 
     min-height: 360px;
 
@@ -1276,7 +1302,7 @@ textarea:focus {
     background: #ffffff;
     border: 1px solid var(--gris-borde);
     border-radius: 14px;
-    padding: 24px;
+    padding: 18px;
     min-height: auto;
 
     box-shadow: 0 3px 10px rgba(18, 32, 107, 0.05);
@@ -2008,16 +2034,16 @@ textarea:focus {
 
 .archivado-avatar {
 
-    width: 52px;
+    width: 18px;
 
-    height: 52px;
+    height: 18px;
 
     border-radius: 50%;
 
     background: #eef0f4;
 
     display: flex;
-
+    object-fit:contain;
     align-items: center;
 
     justify-content: center;
@@ -2527,7 +2553,7 @@ textarea:focus {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    gap: 22px;
+    gap: 18px;
     width: 100%;
     max-width: 1200px;
     margin-left: auto;
@@ -2538,6 +2564,6 @@ textarea:focus {
     width: 40%;
 }
 .documentacion{
-    width: 70%;
+    width: 65%;
     justify-self: center;
 }
