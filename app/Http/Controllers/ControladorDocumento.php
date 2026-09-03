@@ -9,7 +9,7 @@ use App\Models\Alumno;
 class ControladorDocumento extends Controller
 {
     public function create(Alumno $alumno){
-        return view('bdconn.creardocumento',compact('alumno'));
+        return view('bdconn.create.creardocumento',compact('alumno'));
     }
     public function store(Request $request, Alumno $alumno){
         $request->validate([
@@ -42,7 +42,7 @@ class ControladorDocumento extends Controller
         return redirect()->route('alumnos', $alumno->id_alumno)->with('aviso', 'Documento guardado correctamente.');
     }
     public function edit(Alumno $alumno, Documento $documento){
-        return view('bdconn.modificar-documento', compact('alumno', 'documento'));
+        return view('bdconn.edit.modificar-documento', compact('alumno', 'documento'));
     }
     public function update(Request $request, Alumno $alumno, Documento $documento){
 

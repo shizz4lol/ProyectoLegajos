@@ -36,10 +36,7 @@ Route::middleware(['auth','rol:preceptor'])->group(function(){
 
 
 Route::middleware(['auth', 'rol:secretaria,jefe'])->group(function () {
-    Route::get('/cursos', [ControladorLegajo::class, 'todoscursos'])->name('cursosfull');
-    Route::get('/editar', function(){
-            return view ('bdconn.modificar');
-    })->name('modificar'); 
+    Route::get('/cursos', [ControladorLegajo::class, 'todoscursos'])->name('cursosfull'); 
     Route::get('/archivados', function(){
             return view ('bdconn.archivados');
     })->name('archivados');

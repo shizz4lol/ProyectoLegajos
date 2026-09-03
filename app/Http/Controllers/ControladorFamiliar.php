@@ -7,7 +7,7 @@ use App\Models\Familiar;
 use App\Models\Alumno;
 class ControladorFamiliar extends Controller{
     public function create(Alumno $alumno){
-        return view('bdconn.crearfamiliar',compact('alumno'));
+        return view('bdconn.create.crearfamiliar',compact('alumno'));
     }
     public function store(Request $request, Alumno $alumno){
         $request->validate([
@@ -30,7 +30,7 @@ class ControladorFamiliar extends Controller{
         return redirect()->route('alumnos', $alumno->id_alumno)->with('aviso', 'Familiar cargado correctamente.');
     }
     public function edit(Alumno $alumno, Familiar $familiar){
-        return view('bdconn.modificar-familiar', compact('alumno', 'familiar'));
+        return view('bdconn.edit.modificar-familiar', compact('alumno', 'familiar'));
     }
     public function update(Request $request, Alumno $alumno, Familiar $familiar){
         $request->validate([

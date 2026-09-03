@@ -7,11 +7,14 @@
         <p>Listado de alumnos</p>
       </div>
     </div>
+    <button type="button" class="btn-volver" onclick="window.history.back()">
+             Volver
+        </button>
   </div>
   @if ($resultados->isEmpty())
   <h2>No hay coincidencias</h2>
   @else
-    <table class="tabla" id="muestrabusqueda">
+    <table class="tabla" id="muestratabla">
       <thead>
         <tr>
           <th>N°</th>

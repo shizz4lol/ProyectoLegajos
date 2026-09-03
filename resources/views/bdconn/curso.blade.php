@@ -15,6 +15,7 @@
           <h2>Curso: {{$curso->curso}} {{$division->division}}</h2>
           <p>Listado de alumnos</p>
         </div>
+        
       </div>
 
       <div class="buscador" id="buscador-curso">
@@ -30,9 +31,12 @@
               </button>
           </form>
       </div>
+      <button type="button" class="btn-volver" onclick="window.history.back()">
+             Volver
+        </button>
 </div>
 
-    <table class="tabla">
+    <table class="tabla" id="muestratabla">
       <thead>
         <tr>
           <th>N°</th>
@@ -75,6 +79,7 @@
                         </div>
                     </td>
                 </tr>
+                
             @endforeach
         </tbody>
     </table>

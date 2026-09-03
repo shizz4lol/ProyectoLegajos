@@ -103,7 +103,7 @@ class ControladorLegajo extends Controller
         $curso = $alumno->curso;
         $division = $alumno->division;
 
-        return view('bdconn.modificar-curso', compact('alumno', 'curso', 'division'));
+        return view('bdconn.edit.modificar-curso', compact('alumno', 'curso', 'division'));
     }
     public function updatecurso(Request $request, Alumno $alumno)    {
         $request->validate([
@@ -149,7 +149,7 @@ class ControladorLegajo extends Controller
         }
     }
     public function create(){
-        return view('bdconn.crearalumno');
+        return view('bdconn.create.crearalumno');
     }
     public function store(Request $request){
 
@@ -200,7 +200,7 @@ class ControladorLegajo extends Controller
     
     public function edit($id){
         $alumno = Alumno::findOrFail($id);
-        return view('bdconn.modificar-alumno', compact('alumno'));
+        return view('bdconn.edit.modificar-alumno', compact('alumno'));
     }    
     public function update(Request $request, $id){
         $alumno = Alumno::findOrFail($id);

@@ -14,21 +14,18 @@
 
         
     <section class="seleccion-cursos">
-        <h2>Años</h2>
             <div class="años-container">
 
                 @foreach ($cursos as $curso)
                     <div class="año-card">
-                        
-                        <div class="año-titulo">
-                            <h3>{{ $curso->curso }}</h3>
-                        </div>
-
+                        <h3>{{$curso->curso}}</h3>
                         <div class="divisiones-container">
                             @foreach ($curso->divisiones as $division)
+                                <a href="{{route('curso', ['id_curso' => $curso->id,'id_division' => $division->id])}}">
                                 <div class="division-card">
-                                    <h4>{{ $division->division }}</h4>
+                                    <h4>{{$curso->curso}}{{ $division->division }}</h4>
                                 </div>
+                                </a>
                             @endforeach
                         </div>
                     </div>
@@ -37,6 +34,5 @@
             </div>
 
     </section>
-</main>
 
 @endsection
