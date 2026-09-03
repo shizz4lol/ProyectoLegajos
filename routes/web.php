@@ -13,7 +13,7 @@ Route::get('/', function(){
 Route::post('/validando', [ControladorLogin::class, 'IniciarSesion'])->name('validar');
 
 Route::middleware('auth')->group(function () {
-    
+    Route::post('/buscar-live', [ControladorBusqueda::class, 'buscarlive'])->name('buscar.live');
     
     Route::post('/salir', [ControladorLogin::class, 'CerrarSesion'])->name('logout');
     Route::get('/inicio', [ControladorLegajo::class, 'index'])->name('inicio');

@@ -111,17 +111,64 @@ header.topbar{
     max-width:420px;
     margin-left:0;
   }
-  
   .buscador input[type="text"]{width:100%;box-sizing:border-box;padding:9px 38px 9px 14px;border:1.5px solid var(--gris-borde);border-radius:8px;font-size:13.5px;font-family:inherit;outline:none;background:#fff;color:var(--gris-texto);}
-  .buscador input[type="text"]:focus{border-color:var(--azul-cielo);}
+
   .buscador .lupa{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none; border:none;color:var(--gris-sub);cursor:pointer;display:flex;align-items:center;justify-content:center;width:26px;height:26p}
   
   #buscador-curso{
     max-width:280px !important;
   }
-#muestratabla{
-    width: 900px;
+
+  #resultados-live {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    overflow: hidden;
 }
+
+.resultado-alumno {
+    display: block;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    background: white;
+}
+
+.resultado-alumno:hover {
+    background: #f2f2f2;
+}
+
+.resultado-alumno span {
+    display: flex;
+    flex-direction: column;
+}
+
+.resultado-alumno strong {
+    font-size: 14px;
+}
+
+.resultado-alumno small {
+    font-size: 12px;
+    color: #777;
+    margin-top: 2px;
+}
+
+.resultado-vacio {
+    padding: 12px 14px;
+    background: white;
+    color: #777;
+    font-size: 14px;
+}
+
+
 .topbar .userchip{margin-left:auto;display:flex;align-items:center;gap:10px;}
 .topbar .userchip .av{width:34px;height:34px;border-radius:50%;background:#ffffff26;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;}
 .topbar .userchip .txt b{display:block;font-size:13px;color:#fff;}
@@ -234,7 +281,7 @@ select{
 .sidebar.colapsada .salir{justify-content:center;padding-left:0;padding-right:0;}
 .sidebar.colapsada .label, .sidebar.colapsada .btn-outline-info{display:none;}
 
-.contenido{flex:1;min-width:0;padding:26px 32px 60px; max-width: 100%;}
+.contenido{flex:1;min-width:0;padding:26px 32px 60px; max-width: 100%; justify-content: center;}
 
 /* ================= PANEL PRINCIPAL ================= */
 .panel-card{background:#fff;border:1px solid var(--gris-borde);border-radius:12px;padding:18px 22px;margin-bottom:22px; width:fit-content;}
@@ -257,6 +304,7 @@ h2.section-title{color:var(--azul-oscuro);font-size:18px;margin:0 0 3px;display:
 .cursos-cols{display:flex;grid-template-columns:1fr 1fr 1fr;gap:18px; justify-content: space-evenly; }
 .curso-col{
   width: 400px;
+  height: fit-content;
   background:#fff;
   border:2px solid var(--gris-borde);
   border-radius:12px;
@@ -387,6 +435,9 @@ h2.section-title{color:var(--azul-oscuro);font-size:18px;margin:0 0 3px;display:
   #tablafamiliar thead th, #tablafamiliar tbody td{
     padding: 14px 20px;
   }
+  #muestratabla{
+    width: 900px;
+}
 /* ------------------------------------------------------------
    Botones de acción (ver / editar / legajo).
    El "movimiento" es puro CSS con :hover — no hace falta JS

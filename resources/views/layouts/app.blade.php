@@ -26,9 +26,9 @@
     <b>¡Bienvenido/a, {{Auth::user()->tipo_rol }}!</b>
     <span>Sistema de Gestión de Legajos</span>
   </div>
-  <div class="buscador">
+  <div class="buscador" >
   <form action="{{route('buscar')}}" method="post" >
-      <input type="text"  placeholder="Buscar alumno..."name="buscador" autocomplete="off">
+      <input type="text"  placeholder="Buscar alumno..."name="buscador" autocomplete="off" id="buscador">
       <button class="lupa" type="button">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
@@ -36,6 +36,7 @@
           </svg>
         </button>
     </form>
+    <div id="resultados-live"></div>
 </div>
 
   <div class="userchip">
@@ -114,10 +115,6 @@
 </div>
 
 <script>
-  /* // Botón hamburguesa: colapsa/expande el sidebar (rectángulo de la izquierda)
-  document.getElementById('btnMenu').addEventListener('click', function(){
-    document.getElementById('sidebar').classList.toggle('colapsada');
-  }); */
   var sidebar = document.getElementById('sidebar');
         var btnMenu = document.getElementById('btnMenu');
         sidebar.classList.add('colapsada');
@@ -156,6 +153,103 @@
       }
     });
 @endif
+/* const buscador = document.getElementById('buscador');
+
+if (buscador) {
+
+    buscador.addEventListener('input', function () {
+
+        console.log('Escribiste:', this.value);
+
+        fetch("{{ route('buscar.live') }}", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                buscador: this.value
+            })
+        })
+        .then(response => {
+            console.log('Respuesta Laravel:', response.status);
+            return response.json();
+        })
+        .then(resultados => {
+            console.log('Resultados:', resultados);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+    });
+
+} */
+const buscador = document.getElementById('buscador');
+const resultadosLive = document.getElementById('resultados-live');
+let tiempoBusqueda;
+if (buscador) {
+    buscador.addEventListener('input', function () {
+        clearTimeout(tiempoBusqueda);
+        const texto = this.value.trim();
+
+        if (texto === '') {
+            resultadosLive.innerHTML = '';
+            resultadosLive.style.display = 'none';
+            return;
+        }
+        tiempoBusqueda = setTimeout(function () {
+
+            fetch("{{ route('buscar.live') }}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    buscador: texto
+                })
+            })
+            .then(response => response.json())
+            .then(resultados => {
+                resultadosLive.innerHTML = '';
+
+                resultadosLive.style.display = 'none';
+                if (resultados.length === 0) {
+                    resultadosLive.innerHTML = `
+                        <div class="resultado-vacio">
+                            No se encontraron alumnos
+                        </div>
+                    `;
+                    return;
+                }
+                resultadosLive.style.display = 'block';
+                resultados.forEach(alumno => {
+
+                    const resultado = document.createElement('a');
+
+                    resultado.href = "{{ url('/alumnos') }}/" + alumno.id_alumno;
+                    resultado.classList.add('resultado-alumno');
+
+                    resultado.innerHTML = `
+                        <span>
+                            <strong>${alumno.apellido}, ${alumno.nombre}</strong>
+                            <small>DNI: ${alumno.dni}</small>
+                        </span>
+                    `;
+
+                    resultadosLive.appendChild(resultado);
+                });
+
+            })
+            .catch(error => {
+                console.error('Error en la búsqueda:', error);
+            });
+        }, 200);
+    });
+}
 </script>
 @yield('script')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

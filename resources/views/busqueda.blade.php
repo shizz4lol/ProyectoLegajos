@@ -25,7 +25,7 @@
       </thead>
       <tbody>
     @foreach ($resultados as $indice => $alumno)
-        <tr>
+        <tr class="fila-alumno">
           <td class="col-numero">{{ $indice + 1 }}</td>
 
           <td>{{ $alumno->apellido }}, {{ $alumno->nombre }}</td>

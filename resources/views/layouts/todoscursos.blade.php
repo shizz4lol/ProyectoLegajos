@@ -1,21 +1,69 @@
-
 <h2 class="section-title">Cursos</h2>
-    <p class="section-sub">Todos los cursos disponibles</p>
+<p class="section-sub">Todos los cursos disponibles</p>
 
-    <div class="cursos-cols">
-      <div class="curso-col" data-turno="manana">
-        <div class="titulo-col"><span class="dot manana"></span>Turno Mañana</div>
-      </div>
+<div class="cursos-cols">
 
-      <div class="curso-col" data-turno="tarde">
-        <div class="titulo-col"><span class="dot tarde"></span>Turno Tarde</div>
-      </div>
+    <div class="curso-col" data-turno="manana">
+        <div class="titulo-col">
+            <span class="dot manana"></span>Turno Mañana
+        </div>
 
-      <div class="curso-col" data-turno="vespertino">
-        <div class="titulo-col"><span class="dot vespertino"></span>Turno Vespertino</div>
-      </div>
+        @foreach ($cursos as $curso)
+            @foreach ($curso->divisiones as $division)
+                @if ($division->pivot->turno == 'Mañana')
+                    <div class="curso-fila">
+                        <a href="{{route('curso', ['id_curso' => $curso->id,'id_division' => $division->id])}}">
+                        <span>{{ $curso->curso }} {{ $division->division }}</span>
+                        <span class="flecha">›</span>
+                        </a>
+                    </div>
+                @endif
+            @endforeach
+        @endforeach
+
     </div>
-  </div>
+
+    <div class="curso-col" data-turno="tarde">
+        <div class="titulo-col">
+            <span class="dot tarde"></span>Turno Tarde
+        </div>
+
+        @foreach ($cursos as $curso)
+            @foreach ($curso->divisiones as $division)
+                @if ($division->pivot->turno == 'Tarde')
+                    <div class="curso-fila">
+                        <a href="{{route('curso', ['id_curso' => $curso->id,'id_division' => $division->id])}}">
+                        <span>{{ $curso->curso }} {{ $division->division }}</span>
+                        <span class="flecha">›</span>
+                        </a>
+                    </div>
+                @endif
+            @endforeach
+        @endforeach
+
+    </div>
+
+    <div class="curso-col" data-turno="vespertino">
+        <div class="titulo-col">
+            <span class="dot vespertino"></span>Turno Vespertino/Noche
+        </div>
+
+        @foreach ($cursos as $curso)
+            @foreach ($curso->divisiones as $division)
+                @if ($division->pivot->turno == 'Noche')
+                    <div class="curso-fila">
+                        <a href="{{route('curso', ['id_curso' => $curso->id,'id_division' => $division->id])}}">
+                        <span>{{ $curso->curso }} {{ $division->division }}</span>
+                        <span class="flecha">›</span>
+                        </a>
+                    </div>
+                @endif
+            @endforeach
+        @endforeach
+
+    </div>
+
+</div>
 <script>
   var clasesPorTurno = {
   manana: 'sel-manana',

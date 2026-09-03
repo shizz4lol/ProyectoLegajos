@@ -18,7 +18,7 @@ class ControladorLegajo extends Controller
     public function def(){
         $legajos = Alumno::with([
             'familiares',
-            'documentos'
+            'documentos',
         ])->get();
         return $legajos;
     }
@@ -125,14 +125,15 @@ class ControladorLegajo extends Controller
 /*  -------------------FUNCIONES CRUD/RESOURCE-------------------  */
     public function index(){
         $alumnos = $this->def();
+        $cursos = Curso::with('divisiones')->get();
         $rol = session('rol');
         if (Auth::check()) {
             switch($rol){
                 case 'secretaria':
-                    return view('iniciouno', compact ('alumnos'));
+                    return view('iniciouno', compact ('alumnos', 'cursos'));
                     break;
                 case 'jefe':
-                    return view('iniciodos', compact ('alumnos'));
+                    return view('iniciodos', compact ('alumnos', 'cursos'));
                     break;
                 case 'preceptor':
                   return view('auth.preceptor');
@@ -173,7 +174,7 @@ class ControladorLegajo extends Controller
         $datosAlumno['id_curso'] = $curso->id;
         $datosAlumno['id_division'] = $division->id;
 
-        DB::transaction(function () use ($datosAlumno, $request) {
+        $alumno = DB::transaction(function () use ($datosAlumno, $request) {
 
             $alumno = Alumno::create($datosAlumno);
             $datosMadre = $request->input('madre');
@@ -194,8 +195,9 @@ class ControladorLegajo extends Controller
                 $madre->id,
                 $padre->id
             ]);
+            return $alumno;
         });
-        return redirect('inicio')->with('aviso', 'El legajo fue creado correctamente.');
+        return redirect()->route('alumnos', $alumno->id_alumno)->with('aviso', 'El legajo fue creado correctamente.');
     }
     
     public function edit($id){

@@ -48,4 +48,35 @@ class ControladorBusqueda extends Controller{
         }
         return $this->busquedaescuela($request);
     }
+    public function buscarlive(Request $request){
+        $buscar = trim($request->input('buscador'));
+
+        if ($buscar === '') {
+            return response()->json([]);
+        }
+
+        $query = Alumno::query();
+
+        if (session('rol') === 'preceptor') {
+
+            $query->where('id_curso', session('prece_curso'))
+                  ->where('id_division', session('prece_division'));
+        }
+
+        $resultados = $query
+            ->where(function ($query) use ($buscar) {
+                $query->where('nombre', 'like', "$buscar%")
+                      ->orWhere('apellido', 'like', "$buscar%")
+                      ->orWhere('dni', 'like', "$buscar%");
+            })
+            ->limit(8)
+            ->get([
+                'id_alumno',
+                'nombre',
+                'apellido',
+                'dni'
+            ]);
+
+        return response()->json($resultados);
+    }
 }

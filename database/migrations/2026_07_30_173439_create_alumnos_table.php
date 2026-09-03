@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->integer('dni')->unique();
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->string('telefono')->nullable();
             $table->date('fecha_nacimiento');
             $table->boolean('archivado')->default(false);
