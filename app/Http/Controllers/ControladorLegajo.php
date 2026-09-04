@@ -60,8 +60,7 @@ class ControladorLegajo extends Controller
             ->first();
 
         if (!$cursoDivision) {
-            return redirect('/')
-                ->with('error', 'La combinación de curso y división no existe.');
+            return redirect()->back()->with('error', 'La combinación de curso y división no existe.');
         }
         session([
             'prece_curso' => $curso->id,

@@ -6,6 +6,7 @@ use App\Http\Controllers\ControladorLegajo;
 use App\Http\Controllers\ControladorFamiliar;
 use App\Http\Controllers\ControladorDocumento;
 use App\Http\Controllers\ControladorBusqueda;
+use App\Http\Controllers\ControladorPDF;
 
 Route::get('/', function(){
         return view ('auth.login');
@@ -26,6 +27,10 @@ Route::middleware('auth')->group(function () {
     ->name('alumnos');
     Route::resource('legajos', ControladorLegajo::class)
     ->middlewareFor(['create', 'store', 'edit', 'update', 'destroy'], 'rol:secretaria,jefe');
+
+    //RUTA PDF
+    Route::get('/alumnos/{alumno}/pdf', [ControladorPDF::class, 'legajo'])
+    ->name('alumno.pdf');
 });
 
 Route::middleware(['auth','rol:preceptor'])->group(function(){

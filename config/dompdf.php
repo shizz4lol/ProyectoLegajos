@@ -196,7 +196,7 @@ return [
          *
          * @var string
          */
-        'default_font' => 'serif',
+        'default_font' => 'times',
 
         /**
          * Image DPI setting

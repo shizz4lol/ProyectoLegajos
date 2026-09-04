@@ -56,11 +56,16 @@ class ControladorBusqueda extends Controller{
         }
 
         $query = Alumno::query();
-
         if (session('rol') === 'preceptor') {
 
             $query->where('id_curso', session('prece_curso'))
                   ->where('id_division', session('prece_division'));
+
+        } 
+        elseif ($request->filled('id_curso') && $request->filled('id_division')) {
+
+            $query->where('id_curso', $request->input('id_curso'))
+                  ->where('id_division', $request->input('id_division'));
         }
 
         $resultados = $query

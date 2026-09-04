@@ -42,7 +42,7 @@
               <tr>
                 <td id="nombrea">{{ $alumno->apellido }}, {{ $alumno->nombre }} </td>
                 <td>{{ $alumno->dni }}</td>
-                <td>{{$alumno->fecha_nacimiento}}</td>
+                <td>{{ \Carbon\Carbon::parse($alumno->fecha_nacimiento)->format('d/m/Y') }}</td>
                 <td>{{$alumno->curso->curso}} {{$alumno->division->division}}</td>
                 <td>{{$alumno->telefono}}</td>
                 <td>{{$alumno->email}}</td>
@@ -60,13 +60,15 @@
                       </button>
                   </a>
                   @endif
-                    <button class="accion-btn" title="Descargar legajo">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <polyline points="14 2 14 8 20 8"></polyline>
-                        </svg>
-                    </button>
+                    <a href="{{route('alumno.pdf', $alumno->id_alumno)}}">
+                        <button class="accion-btn" title="Descargar legajo">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                        </button>
+                    </a>
                 </td>
               </tr>
             </tbody>
@@ -350,7 +352,16 @@ filasFamiliares.forEach(fila => {
             }
 
 
-            td.textContent = valor ?? '';
+            if (atributo === 'fecha_nacimiento' && valor) {
+                const fecha = new Date(valor + 'T00:00:00');
+
+                td.textContent =
+                    String(fecha.getDate()).padStart(2, '0') + '/' +
+                    String(fecha.getMonth() + 1).padStart(2, '0') + '/' +
+                    fecha.getFullYear();
+            } else {
+                td.textContent = valor ?? '';
+            }
 
 
             filaEncabezado.appendChild(th);
