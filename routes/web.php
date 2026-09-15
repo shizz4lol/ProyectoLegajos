@@ -7,6 +7,7 @@ use App\Http\Controllers\ControladorFamiliar;
 use App\Http\Controllers\ControladorDocumento;
 use App\Http\Controllers\ControladorBusqueda;
 use App\Http\Controllers\ControladorPDF;
+use App\Http\Controllers\ControladorUser;
 
 Route::get('/', function(){
         return view ('auth.login');
@@ -80,8 +81,11 @@ Route::middleware(['auth','rol:secretaria'])->group(function(){
 
     Route::delete('/alumnos/{alumno}/documentos/{documento}', [ControladorDocumento::class, 'destroy'])
         ->name('alumnos.documentos.destroy');
-    Route::get('/egresados', function(){
-            return view ('egresados');
-        })->name('egresados');
+    Route::get('/egresados', [ControladorLegajo::class, 'egresados'])->name('egresados');
+    Route::get('/registrar', [ControladorUser::class, 'create'])
+        ->name('registrarusuario');
+    Route::post('/registrar', [ControladorUser::class, 'store'])
+        ->name('crearusuario');
+    Route::post('/pasar', [ControladorLegajo::class, 'pasar'])->name('pasar');
 });
 

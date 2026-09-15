@@ -26,7 +26,7 @@ class CursoPorDivisionSeeder extends Seeder
     $div4 = Division::where('division', '4°')->first();
     $div5 = Division::where('division', '5°')->first();
     $div6 = Division::where('division', '6°')->first();
-
+    $div7 = Division::where('division', '7°')->first();
     DB::table('cursosXdivisions')->insert([
 
         // 1° curso
@@ -90,6 +90,11 @@ class CursoPorDivisionSeeder extends Seeder
         [
             'id_curso' => $curso2->id,
             'id_division' => $div6->id,
+            'turno' => 'Tarde'
+        ],
+        [
+            'id_curso' => $curso2->id,
+            'id_division' => $div7->id,
             'turno' => 'Tarde'
         ],
 

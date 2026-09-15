@@ -250,7 +250,7 @@ select{
   justify-content: space-between;
 }
 .modal-body{
-  height: 100px;
+  height: fit-content;
   font-size: large;
 }
 .modal-content svg{
@@ -688,9 +688,7 @@ body {
     color: #444;
 }
 
-.campo input,
-.campo select,
-textarea {
+.campo input, select{
     width: 100%;
 
     padding: 11px 13px;
@@ -711,10 +709,6 @@ textarea {
 .radio-opciones {
     display: flex;
     align-items: center;
-    justify-items: center;
-    gap: 25px;
-    margin-top: 10px;
-    margin-left: 40px;
 }
 
 .radio-opcion {
@@ -1019,27 +1013,25 @@ textarea {
 
 
 
-.estado-activo {
+.estado{
+    display: block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    height: fit-content;
+    width: fit-content;
+    font-size: 13px;
+    font-weight: 800;
+}
+.activo{
     background: #e1f7e9;
     color: #269653;
-
-    padding: 7px 12px;
-    border-radius: 6px;
-
-    font-size: 13px;
-    font-weight: 600;
+    border: 1px #269653 solid;
 }
-.estado-archivado{
-    background: #e1f7e9;
+.archivado{
+    background: #f1f7e1;
     color: #d3b610;
-
-    padding: 7px 12px;
-    border-radius: 6px;
-
-    font-size: 13px;
-    font-weight: 600;
+    border: 1px #d3b610 solid;
 }
-
 
 .dato-alumno {
     display: flex;
@@ -1203,12 +1195,13 @@ textarea {
 .divisiones-container{
     display:flex;
     flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
 }
 .division-card{
     display:flex;
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     background-color: var(--gris-suave);
     border: 1px var(--gris-borde) solid;
     border-radius: 20px;
@@ -1225,7 +1218,10 @@ textarea {
     font-weight: 600;
 }
 
-
+#pasara{
+    display: block;
+    align-self: right;
+}
 /* Tarjeta de cada año */
 
 .cursos-container {
@@ -1453,25 +1449,6 @@ textarea {
 }
 
 
-.verde-btn {
-    background: #e4f8ec;
-    color: #269653;
-}
-
-.verde-btn:hover {
-    background: #269653;
-    color: white;
-}
-
-.naranja-btn {
-    background: #fff1df;
-    color: #d97706;
-}
-
-.naranja-btn:hover {
-    background: #d97706;
-    color: white;
-}
 
 
 .resumen-item .documento-check {
@@ -1612,7 +1589,6 @@ textarea {
 
 }
 
-
 .año-info {
 
     display: flex;
@@ -1632,7 +1608,7 @@ textarea {
 
     border-radius: 10px;
 
-    background: var(--azul-claro);
+    background-color: var(--gris-sub);
 
     color: var(--azul-medio);
 
@@ -1646,7 +1622,10 @@ textarea {
 
 }
 
-
+.año-icono .ic{
+    width:20px;text-align:center;display:flex;align-items:center;justify-content:center;flex-shrink:0; margin-right: 5px;
+}
+.año-icono .ic img{width:18px;height:18px;object-fit:contain;}
 .año-info h2 {
 
     margin: 0;
@@ -2537,9 +2516,8 @@ textarea {
 .btn-mostrar-password {
     position: absolute;
     right: 12px;
-    top: 50%;
     transform: translateY(-50%);
-
+    top:60%;
     border: none;
     background: transparent;
 

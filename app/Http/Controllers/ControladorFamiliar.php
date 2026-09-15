@@ -37,11 +37,12 @@ class ControladorFamiliar extends Controller{
             'familiar.nombre' => 'required|string|max:255',
             'familiar.apellido' => 'required|string|max:255',
             'familiar.dni' => 'required|integer',
+            'familiar.parentesco' => 'required|string|max:255',
             'familiar.fecha_nacimiento' => 'required|date',
             'familiar.email' => 'nullable|email|max:255',
             'familiar.telefono' => 'nullable|string|max:255',
             'familiar.domicilio' => 'nullable|string|max:255',
-            'familiar.parentesco' => 'required|string|max:255',
+            
         ]);
 
         $datosFamiliar = $request->input('familiar');

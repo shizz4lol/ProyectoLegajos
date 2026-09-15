@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('telefono')->nullable();
             $table->date('fecha_nacimiento');
+            $table->integer('año_cursado')->default(0);
+            $table->integer ('año_egreso')->nullable();
             $table->boolean('archivado')->default(false);
             $table->foreignId('id_curso')
             ->constrained('cursos', 'id')

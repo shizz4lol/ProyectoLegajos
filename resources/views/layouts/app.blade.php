@@ -61,6 +61,7 @@
              <span class="label">{{ session('rol') === 'preceptor' ? 'Ver curso' : 'Cursos' }}</span>
         </a>
       </div>
+    
       @if (session('rol') === 'secretaria')
         <div class="item {{ request()->routeIs('legajos.create') ? 'act' : '' }}">
             <a href="{{ route('legajos.create') }}">
@@ -78,6 +79,12 @@
             <a href="{{route('archivados')}}">
             <span class="ic"><img src="/imagen/flecha.png" alt="Archivados"></span>
             <span class="label">Legajos Archivados</span>
+            </a>
+        </div>
+        <div class="item {{ request()->routeIs('registrarusuario') ? 'act' : '' }}">
+            <a href="{{ route('registrarusuario') }}">
+                <span class="ic"><img src="/imagen/mas.png" alt="Crear"></span>
+                <span class="label">Crear usuario</span>
             </a>
         </div>
        @endif
@@ -216,7 +223,7 @@ if (buscador) {
             .then(resultados => {
                 resultadosLive.innerHTML = '';
 
-                resultadosLive.style.display = 'none';
+                resultadosLive.style.display = 'block';
                 if (resultados.length === 0) {
                     resultadosLive.innerHTML = `
                         <div class="resultado-vacio">

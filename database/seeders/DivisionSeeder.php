@@ -27,6 +27,9 @@ class DivisionSeeder extends Seeder
         ]);//div 5
         Division::create([
             'division'=>'6°'
-        ]);//div 5
+        ]);
+        Division::create([
+            'division'=>'7°'
+        ]);
     }
 }

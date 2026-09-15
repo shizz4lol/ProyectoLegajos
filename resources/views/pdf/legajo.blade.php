@@ -52,10 +52,24 @@
             width: 30%;
             font-weight: bold;
         }
+        @page {
+    size: A4;
+    margin: 15mm;
+}
 
-        .seccion {
-            page-break-inside: avoid;
-        }
+.contenedor-imagen {
+    width: 180mm;
+    height: 260mm;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.imagen-documento {
+    max-width: 180mm;
+    max-height: 260mm;
+    width: auto;
+    height: auto;
+}
     </style>
 </head>
 
@@ -64,7 +78,7 @@
     {{-- ENCABEZADO --}}
     <div class="encabezado">
 
-        <h1>LEGAJO DEL ALUMNO</h1>
+        <h1>LEGAJO DE {{ strtoupper($alumno->apellido) }} {{ strtoupper($alumno->nombre)}}</h1>
 
         <div class="subtitulo">
             EPET N°20
@@ -113,75 +127,62 @@
                 <th>Email</th>
                 <td>{{ $alumno->email ?? '-' }}</td>
             </tr>
-
-        </table>
-
-    </div>
-
-
-    {{-- DATOS ACADÉMICOS --}}
-    <div class="seccion">
-
-        <h2>Datos académicos</h2>
-
-        <table>
-
             <tr>
                 <th>Curso</th>
                 <td>
-                    {{ $alumno->curso->curso ?? '-' }}
+                    {{ $alumno->curso->curso ?? '-' }}{{ $alumno->division->division ?? '-' }}
                 </td>
             </tr>
-
-            <tr>
-                <th>División</th>
-                <td>
-                    {{ $alumno->division->division ?? '-' }}
-                </td>
-            </tr>
-
         </table>
 
     </div>
+    {{-- DOCUMENTOS --}}
+@if ($alumno->documentos && $alumno->documentos->count())
 
-
-    {{-- DOCUMENTACIÓN --}}
     <div class="seccion">
 
-        <h2>Documentación</h2>
+        <h2>Documentos</h2>
 
-        <table>
+        @foreach ($alumno->documentos as $documento)
 
-            <tr>
-                <th>Acta de nacimiento</th>
-                <td>{{ $alumno->acta_nacimiento ?? '-' }}</td>
-            </tr>
+            <table>
 
-            <tr>
-                <th>Inscripción</th>
-                <td>{{ $alumno->inscripcion ?? '-' }}</td>
-            </tr>
+                <tr>
+                    <th>Nombre</th>
+                    <td>{{ $documento->nombre ?? '-' }}</td>
+                </tr>
 
-            <tr>
-                <th>Constancia de alumno regular</th>
-                <td>{{ $alumno->constanciaregular ?? '-' }}</td>
-            </tr>
+                <tr>
+                    <th>Tipo</th>
+                    <td>{{ $documento->tipo ?? '-' }}</td>
+                </tr>
 
-            <tr>
-                <th>Apto para herramientas</th>
-                <td>{{ $alumno->apto_herramientas ?? '-' }}</td>
-            </tr>
+                <tr>
+                    <th>Año</th>
+                    <td>{{ $documento->año ?? '-' }}</td>
+                </tr>
 
-            <tr>
-                <th>Certificado 7°</th>
-                <td>{{ $alumno->certificado7mo ?? '-' }}</td>
-            </tr>
+                <tr>
+                    <th>Copia</th>
+                    <td>
+                        {{ $documento->copia ? 'Sí' : 'No' }}
+                    </td>
+                </tr>
 
-        </table>
+            </table>
+            @if ($documento->archivo_adj)
+    <div class="contenedor-imagen">
+        <img
+            src="{{ public_path($documento->archivo_adj) }}"
+            class="imagen-documento"
+        >
+    </div>
+    @endif
+        @endforeach
 
     </div>
 
-
+@endif
     {{-- FAMILIARES --}}
     @if ($alumno->familiares && $alumno->familiares->count())
 
@@ -234,7 +235,7 @@
 
                     <tr>
                         <th>Parentesco</th>
-                        <td>{{ $familiar->parentezco ?? '-' }}</td>
+                        <td>{{ $familiar->parentesco ?? '-' }}</td>
                     </tr>
 
                 </table>

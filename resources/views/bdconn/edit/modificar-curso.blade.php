@@ -10,7 +10,7 @@
             </p>
 
         </div>
-        <form action="{{ route('updatecurso', ['alumno' => $alumno->id_alumno]) }}" method="POST">
+        <form action="{{ route('updatecurso', ['alumno' => $alumno->id_alumno]) }}" method="POST" autocomplete="off">
 
             @csrf
             @method('PUT')

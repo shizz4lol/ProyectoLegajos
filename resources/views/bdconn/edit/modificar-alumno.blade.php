@@ -15,7 +15,7 @@
 
         <!-- FORMULARIO -->
 
-        <form action="{{ route('legajos.update', ['legajo' => $alumno->id_alumno]) }}" method="POST">
+        <form action="{{ route('legajos.update', ['legajo' => $alumno->id_alumno]) }}" method="POST" autocomplete="off">
 
             @csrf
             @method('PUT')
@@ -25,14 +25,10 @@
                 <h2>Datos personales</h2>
 
                 <div class="form-grid">
-
-
                     <div class="campo">
-
                         <label for="nombre">
                             Nombre
                         </label>
-
                         <input
                             type="text"
                             id="nombre"
