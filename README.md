@@ -314,4 +314,151 @@ Esto permite que un mismo familiar pueda estar relacionado con más de un alumno
 
 ### 8.3. Gestión de documentos
 
-Permite
+Permite asociar archivos a los legajos de los alumnos.
+
+Los documentos se almacenan en `public/documentosbd`, mientras que sus datos y su relación con el alumno se administran mediante la base de datos.
+
+Al modificar esta funcionalidad, es importante mantener sincronizados el registro de la base de datos y el archivo físico correspondiente.
+
+### 8.4. Gestión de cursos y divisiones
+
+Permite organizar la información académica y consultar los alumnos correspondientes a cada curso y división.
+
+La selección de estos datos también forma parte del flujo de trabajo del rol Preceptor.
+
+### 8.5. Pase de año
+
+El sistema incorpora una operación administrativa para realizar el avance académico de los alumnos.
+
+El proceso contempla:
+- Avanzar a los alumnos de primero a quinto año al curso siguiente.
+- Conservar la división correspondiente durante el avance.
+- Actualizar el año cursado.
+- Registrar el año de egreso para los alumnos que finalizan sexto año.
+
+La operación utiliza transacciones de base de datos para mantener la consistencia de los cambios.
+
+### 8.6. Gestión de egresados
+
+Los alumnos que finalizaron su trayectoria académica se identifican mediante el campo `año_egreso`.
+
+El sistema permite consultar los egresados y organizarlos según el año en que finalizaron sus estudios.
+
+Esta separación evita que los alumnos egresados continúen apareciendo como estudiantes activos en las consultas habituales.
+
+### 8.7. Archivado de legajos
+
+El sistema contempla una funcionalidad de archivado para separar determinados legajos de los listados habituales.
+
+El diseño utiliza el campo `fecha_archivado`:
+- `NULL`: alumno no archivado.
+- Con fecha: alumno archivado.
+
+La intención de esta funcionalidad es que los legajos archivados puedan consultarse desde una vista específica y no participen en los listados normales ni en el pase de año.
+
+La implementación también contempla la posibilidad de desarchivar un legajo sin modificar sus datos académicos.
+
+**Nota:** verificar el estado de implementación de los filtros, las rutas y las operaciones de archivado y desarchivado antes de considerar esta funcionalidad completamente operativa.
+
+### 8.8. Generación de PDF
+
+El sistema utiliza DomPDF para generar documentos PDF a partir de vistas Blade.
+
+Entre sus usos se encuentra la generación del legajo de un alumno.
+
+La lógica de generación se encuentra vinculada al controlador `ControladorPDF` y a la vista `pdf.legajo`.
+
+Para modificar el contenido del PDF, revisar tanto el controlador como la vista correspondiente.
+
+## 9. Consideraciones para continuar el desarrollo
+
+Antes de modificar una funcionalidad existente, se recomienda revisar sus distintas partes para evitar inconsistencias.
+
+### 9.1. Modificación de la base de datos
+
+Cuando se necesite incorporar un campo, una tabla o modificar una relación:
+
+1. Crear una nueva migración.
+2. Actualizar el modelo correspondiente.
+3. Revisar las relaciones afectadas.
+4. Adaptar los controladores que consultan o modifican esos datos.
+5. Actualizar las vistas que muestran o reciben la información.
+
+No se recomienda modificar directamente la base de datos sin reflejar los cambios en las migraciones.
+
+### 9.2. Incorporación de funcionalidades
+
+Para agregar una nueva funcionalidad:
+
+1. Identificar qué entidades intervienen.
+2. Revisar los modelos y relaciones existentes.
+3. Crear o modificar los métodos del controlador.
+4. Definir las rutas correspondientes en `routes/web.php`.
+5. Crear o actualizar las vistas Blade.
+6. Incorporar validaciones de los datos recibidos.
+7. Comprobar los permisos de acceso según el rol.
+8. Probar el funcionamiento con los distintos tipos de usuario.
+
+### 9.3. Control de permisos
+
+Las restricciones de acceso deben implementarse en el backend, no solamente ocultando botones o enlaces en las vistas.
+
+Por ejemplo:
+
+```php
+abort_unless(session('rol') === 'secretaria', 403);
+```
+
+Esto impide que un usuario sin el rol correspondiente ejecute directamente una operación restringida.
+
+### 9.4. Archivos adjuntos
+
+Al trabajar con documentos, se debe tener en cuenta que existen dos elementos relacionados:
+
+- El registro del documento en la base de datos.
+- El archivo físico almacenado en `public/documentosbd`.
+
+Al eliminar o modificar documentos, ambos elementos deben mantenerse sincronizados.
+
+### 9.5. Pase de año y egresados
+
+Las modificaciones relacionadas con el avance académico requieren especial cuidado.
+
+Es importante conservar las condiciones que diferencian a los alumnos activos, archivados y egresados para evitar que un alumno avance incorrectamente o aparezca en listados que no le corresponden.
+
+## 10. Comandos útiles de Laravel
+
+| Comando | Función |
+|---|---|
+| `php artisan serve` | Inicia el servidor de desarrollo. |
+| `php artisan migrate` | Ejecuta las migraciones pendientes. |
+| `php artisan migrate:fresh --seed` | Reconstruye las tablas y ejecuta los seeders. |
+| `php artisan make:model NombreModelo` | Crea un modelo. |
+| `php artisan make:controller NombreControlador` | Crea un controlador. |
+| `php artisan make:migration nombre_migracion` | Crea una migración. |
+| `php artisan make:seeder NombreSeeder` | Crea un seeder. |
+| `php artisan route:list` | Muestra las rutas registradas. |
+| `php artisan cache:clear` | Limpia la caché de la aplicación. |
+| `php artisan view:clear` | Limpia las vistas compiladas. |
+| `php artisan config:clear` | Limpia la caché de configuración. |
+
+## 11. Recomendaciones de mantenimiento
+
+- Mantener actualizados los modelos y las migraciones cuando se modifica la estructura de la base de datos.
+- Evitar duplicar información de familiares que ya se encuentra registrada.
+- Validar los datos antes de almacenarlos.
+- Comprobar los permisos de cada rol tanto en las vistas como en los controladores.
+- Utilizar transacciones cuando una operación implique modificaciones relacionadas en varias tablas.
+- Mantener sincronizados los documentos físicos y sus registros en la base de datos.
+- Probar las operaciones de pase de año y archivado con especial atención, ya que afectan la situación académica de los alumnos.
+- No ejecutar `migrate:fresh --seed` sobre una base de datos que contenga información que deba conservarse.
+
+---
+
+## 12. Alcance del proyecto
+
+ProyectoLegajos está orientado a la administración de la información escolar mediante un sistema centralizado de legajos.
+
+Su estructura permite continuar incorporando funcionalidades y ampliar las operaciones existentes, manteniendo separadas la lógica de negocio, la persistencia de datos y la presentación de la información.
+
+Este documento describe la organización general y los principales procesos del sistema. Para realizar modificaciones específicas, se recomienda utilizarlo como punto de partida y consultar los modelos, controladores, rutas, vistas y migraciones correspondientes.
