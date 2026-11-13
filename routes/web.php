@@ -73,6 +73,11 @@ Route::put('/alumnos/{alumno}/documentos/{documento}', [ControladorDocumento::cl
         ->name('editarcurso');
     Route::put('/alumnos/{alumno}/editar-curso', [ControladorLegajo::class, 'updatecurso'])
     ->name('updatecurso');
+    //
+    Route::get('/usuarios', [ControladorUser::class, 'index'])
+        ->name('verusuarios');
+
+
    
 });
 Route::middleware(['auth','rol:secretaria'])->group(function(){
@@ -84,8 +89,20 @@ Route::middleware(['auth','rol:secretaria'])->group(function(){
     Route::get('/egresados', [ControladorLegajo::class, 'egresados'])->name('egresados');
     Route::get('/registrar', [ControladorUser::class, 'create'])
         ->name('registrarusuario');
+
+    Route::delete('/usuarios/{id}', [ControladorUser::class, 'destroy'])->name('usuarios.destroy');
+
     Route::post('/registrar', [ControladorUser::class, 'store'])
         ->name('crearusuario');
     Route::post('/pasar', [ControladorLegajo::class, 'pasar'])->name('pasar');
+
+    Route::post('/alumnos/{id_alumno}/archivar', [ControladorLegajo::class, 'archivar'])
+    ->name('alumnos.archivar');
+
+    Route::get('/archivados', [ControladorLegajo::class, 'archivados'])
+        ->name('archivados');
+    Route::post('/alumnos/{id_alumno}/desarchivar', [ControladorLegajo::class, 'desarchivar'])
+        ->name('alumnos.desarchivar');
+        
 });
 

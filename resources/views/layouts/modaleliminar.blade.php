@@ -11,8 +11,10 @@
         <button type="button" class="btn-close" id="eliminar" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-          <p>Esto sera <b>permanente</b>, y se perderan todos los datos personales y/o archivos relacionados con este alumno.</br>
-             Si sus familiares NO estan relacionados a otro alumno, tambien se eliminaran.
+          <p>
+            Tenga en cuenta que puede archivar al alumno antes que eliminarlo. 
+            Eliminar sera <b>permanente</b>, y se perderan todos los datos personales y/o archivos relacionados con este alumno.</br>
+            Si sus familiares NO estan relacionados a otro alumno, tambien se eliminaran.
           </p>
       </div>
       <div class="modal-footer">

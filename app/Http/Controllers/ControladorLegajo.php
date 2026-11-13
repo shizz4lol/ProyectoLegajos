@@ -17,7 +17,7 @@ class ControladorLegajo extends Controller
         $legajos = Alumno::with([
             'familiares',
             'documentos',
-        ])->get();
+        ])->whereNull('archivado_at')->get();
         return $legajos;
     }
     public function alumno(Alumno $alumno){
@@ -38,7 +38,8 @@ class ControladorLegajo extends Controller
             'documentos',
             'curso',
             'division'
-        ])->where('id_curso', $id_curso)->where('id_division', $id_division)->get();
+        ])->where('id_curso', $id_curso)->where('id_division', $id_division)->whereNull('año_egreso')->whereNull('archivado_at')
+        ->get();
         return view('bdconn.curso', compact('alumnos', 'curso', 'division'));
     }
     public function todoscursos(){
@@ -89,12 +90,11 @@ class ControladorLegajo extends Controller
         ])
         ->where('id_curso', $id_curso)
         ->where('id_division', $id_division)
+        ->whereNull('año_egreso')
+        ->whereNull('archivado_at')
         ->get();
 
         return view('iniciotres',compact('alumnos', 'curso', 'division', 'cursoDivision'));
-    }
-    public function archive(){
-
     }
     public function editcurso(Alumno $alumno){
         $curso = $alumno->curso;
@@ -119,28 +119,33 @@ class ControladorLegajo extends Controller
         return redirect()->route('alumnos', $alumno)
         ->with('aviso', 'Curso actualizado correctamente.');
     }
+    
     public function pasar(){
         DB::transaction(function () {
-            $alumnos = Alumno::where('año_cursado', '<', 6)->get();
+            $alumnos = Alumno::where('año_cursado', '<=', 6)
+                ->whereNull('año_egreso')
+                ->whereNull('archivado_at')
+                ->get();
+
             foreach ($alumnos as $alumno) {
                 $cursoActual = Curso::findOrFail($alumno->id_curso);
 
                 switch ($cursoActual->curso) {
                     case '1°':
-                    $siguiente_curso = '2°';
-                    break;
+                        $siguiente_curso = '2°';
+                        break;
                     case '2°':
-                    $siguiente_curso = '3°';
-                    break;
+                        $siguiente_curso = '3°';
+                        break;
                     case '3°':
-                    $siguiente_curso = '4°';
-                    break;
+                        $siguiente_curso = '4°';
+                        break;
                     case '4°':
-                    $siguiente_curso = '5°';
-                    break;
+                        $siguiente_curso = '5°';
+                        break;
                     case '5°':
-                    $siguiente_curso = '6°';
-                    break;
+                        $siguiente_curso = '6°';
+                        break;
                     case '6°':
                         $alumno->año_cursado = 6;
                         $alumno->año_egreso = date('Y');
@@ -149,9 +154,10 @@ class ControladorLegajo extends Controller
                     default:
                         continue 2;
                 }
-                $cursoSiguiente = Curso::where('curso',$siguiente_curso)->firstOrFail();
-                $alumno->id_curso = $cursoSiguiente->id;
 
+                $cursoSiguiente = Curso::where('curso', $siguiente_curso)->firstOrFail();
+
+                $alumno->id_curso = $cursoSiguiente->id;
                 $alumno->año_cursado++;
                 $alumno->save();
             }
@@ -161,10 +167,57 @@ class ControladorLegajo extends Controller
             ->route('cursosfull')
             ->with('aviso', 'Los alumnos pasaron de año correctamente.');
     }
+
     public function egresados(){
-        $egresados = Alumno::where('año_cursado', 6)->get();
+        $egresados = Alumno::whereNotNull('año_egreso')->whereNull('archivado_at')->get();
+
         return view('egresados', compact('egresados'));
     }
+
+    public function archivados(){
+        $archivados = Alumno::whereNotNull('fecha_archivado')->get();
+
+        return view('bdconn.archivados', compact('archivados'));
+    }
+    public function archivar($id_alumno)
+    {
+        if (session('rol') !== 'secretaria') {
+            abort(403);
+        }
+    
+        $alumno = Alumno::findOrFail($id_alumno);
+    
+        if ($alumno->archivado_at !== null) {
+            return redirect()->back()
+                ->with('aviso', 'El legajo ya se encuentra archivado.');
+        }
+    
+        $alumno->archivado_at = now();
+        $alumno->save();
+    
+        return redirect()
+            ->route('inicio')
+            ->with('aviso', 'El legajo fue archivado correctamente.');
+    }
+    public function desarchivar($id_alumno){
+        abort_unless(session('rol') === 'secretaria', 403);
+
+        $alumno = Alumno::findOrFail($id_alumno);
+
+        if ($alumno->fecha_archivado === null) {
+            return redirect()->back()
+                ->with('aviso', 'El legajo no se encuentra archivado.');
+        }
+
+        $alumno->fecha_archivado = null;
+        $alumno->save();
+
+        return redirect()
+            ->route('archivados')
+            ->with('aviso', 'El legajo fue desarchivado correctamente.');
+    }
+    
+
 
 /*  -------------------FUNCIONES CRUD/RESOURCE-------------------  */
     public function index(){

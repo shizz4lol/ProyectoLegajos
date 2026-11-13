@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('fecha_nacimiento');
             $table->integer('año_cursado')->default(0);
             $table->integer ('año_egreso')->nullable();
-            $table->boolean('archivado')->default(false);
+            $table->timestamp('archivado_at')->nullable();
             $table->foreignId('id_curso')
             ->constrained('cursos', 'id')
             ->onDelete('cascade')

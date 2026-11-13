@@ -38,4 +38,9 @@ class Alumno extends Model
     public function division(): BelongsTo{
     return $this->belongsTo(Division::class, 'id_division');
     }
+    protected function casts(): array{   
+        return [
+            'archivado_at' => 'datetime',
+        ];
+    }
 }

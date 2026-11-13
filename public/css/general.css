@@ -1032,7 +1032,17 @@ body {
     color: #d3b610;
     border: 1px #d3b610 solid;
 }
-
+.acciones-secretaria{
+    display: flex;
+    justify-content: space-between;
+    width:90%;
+}
+.btn-archivado{
+    background-color: #d3b610;
+}
+.btn-archivado:hover{
+    background-color: #6b5c07;
+}
 .dato-alumno {
     display: flex;
     align-items: center;
@@ -2132,7 +2142,16 @@ body {
 
 }
 
-
+#desarchivar{
+    margin-top:10px;
+    border:1px solid var(--azul-oscuro);
+    color:var(--azul-oscuro)
+}
+#desarchivar:hover{
+    border: 1px solid var(--azul-medio);
+    background-color: var(--azul-medio);
+    color:white;
+}
 .sin-archivados {
 
     background: white;
@@ -2560,4 +2579,90 @@ body {
 .documentacion{
     width: 65%;
     justify-self: center;
+}
+/* Ver usuarios */
+/* ================= TABLA DE USUARIOS ================= */
+
+.tabla-usuarios {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid var(--gris-borde);
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: left;
+}
+
+.tabla-usuarios thead th {
+    padding: 10px;
+    text-align: left;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    color: var(--gris-sub);
+    font-weight: 800;
+    border-bottom: 1px solid var(--gris-borde);
+}
+
+.tabla-usuarios tbody td {
+    padding: 8px 10px;
+    font-size: 14px;
+    color: var(--gris-texto);
+    border-bottom: 1px solid #f0f1f6;
+    vertical-align: middle;
+}
+
+.tabla-usuarios tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.tabla-usuarios tbody tr:hover {
+    background: var(--gris-suave);
+}
+
+.tabla-usuarios th:nth-child(1),
+.tabla-usuarios td:nth-child(1) {
+    width: 40%;
+}
+
+.tabla-usuarios th:nth-child(2),
+.tabla-usuarios td:nth-child(2) {
+    width: 30%;
+}
+
+.tabla-usuarios th:nth-child(3),
+.tabla-usuarios td:nth-child(3) {
+    width: 30%;
+}
+
+.tabla-usuarios .acciones {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tabla-usuarios .acciones button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--gris-suave);
+    color: var(--gris-sub);
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color .15s ease, color .15s ease, transform .15s ease;
+}
+
+.tabla-usuarios .acciones button:hover {
+    background: var(--azul-claro);
+    color: var(--azul-medio);
+    transform: translateY(-2px);
+}
+
+.tabla-usuarios .acciones svg {
+    width: 15px;
+    height: 15px;
+    pointer-events: none;
 }

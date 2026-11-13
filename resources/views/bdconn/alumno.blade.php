@@ -232,11 +232,19 @@
     </div></br>
 
 
-@if (session('rol') === 'secretaria')
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eliminar">Eliminar</button>
+@if (session('rol') === 'secretaria' && !$alumno->archivado_at)
+<div class="acciones-secretaria">
+    <button type="button" class="btn btn-primary btn-archivado" data-bs-toggle="modal" data-bs-target="#archivar">
+        Archivar
+    </button>
 
-@endif
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eliminar">
+        Eliminar
+    </button>
+</div>
+@include('layouts.modalarchivar')
 @include('layouts.modaleliminar')
+@endif
 
 @endsection
 @section ('script')

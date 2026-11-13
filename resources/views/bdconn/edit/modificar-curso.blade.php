@@ -40,7 +40,7 @@
                     <div class="campo">
 
                         <label for="division">
-                            DNI
+                            Division
                         </label>
 
                         <select name="division" class="select" required>

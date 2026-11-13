@@ -17,10 +17,12 @@
 <header class="topbar">
 
   <button class="ham-btn" id="btnMenu" title="Abrir / cerrar menú">&#9776;</button>
-  <div class="logo">
-    <div id="escudo"><img src="/imagen/epet.png" alt="Escudo EPET 20"></div>
-    <div class="txt"><b>LEGAJOS</b><span>EPET N°20</span></div>
-  </div>
+  <a href="{{ (session('rol') === 'secretaria' || session('rol') === 'jefe') ? route('inicio') : route('inicio3') }}">
+    <div class="logo">
+        <div id="escudo"><img src="/imagen/epet.png" alt="Escudo EPET 20"></div>
+        <div class="txt"><b>LEGAJOS</b><span>EPET N°20</span></div>
+    </div>
+  </a>
 
   <div class="bienvenida-top">
     <b>¡Bienvenido/a, {{Auth::user()->tipo_rol }}!</b>
@@ -88,6 +90,14 @@
             </a>
         </div>
        @endif
+       @if (session('rol') != 'preceptor')
+       <div class="item {{ request()->routeIs('verusuarios') ? 'act' : '' }}">
+            <a href="{{ route('verusuarios') }}">
+                <span class="ic"><img src="/imagen/usuario.png" alt="Ver"></span>
+                <span class="label">Ver usuarios</span>
+            </a>
+        </div>
+        @endif
       <div id="salir" class="salir">
       <span class="ic"><img src="/imagen/puerta.png" ></span>
       <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#cierre">Cerrar Sesion</button>
@@ -232,6 +242,8 @@ if (buscador) {
                     `;
                     return;
                 }
+
+                
                 resultadosLive.style.display = 'block';
                 resultados.forEach(alumno => {
 

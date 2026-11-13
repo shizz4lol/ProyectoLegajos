@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Hash;
 
 class ControladorUser extends Controller
 {
+    public function index(){
+        $usuarios=User::all();
+        return view('auth.usuarios', compact('usuarios'));
+    }
     public function create(){
         return view ('auth.register');
     }
@@ -30,6 +34,13 @@ class ControladorUser extends Controller
     ]);
 
     return redirect()
-        ->route('registrarusuario')->with('aviso', 'Usuario creado correctamente.');
+        ->route('registrarusuario')->with('aviso', 'Usuario creado correctamente. Recuerde los datos, tendra que crearlo de nuevo en caso contrario');
 }
+    public function destroy($id)
+    {
+        $usuario = User::findOrFail($id);
+        $usuario->delete();
+
+        return redirect()->back()->with('success', 'Usuario eliminado correctamente.');
+    }      
 }
